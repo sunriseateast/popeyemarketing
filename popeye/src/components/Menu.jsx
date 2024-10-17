@@ -3,14 +3,16 @@ import React, { useState } from 'react';
 function Menu({isOpen,props,tip}){
     let [fortitle,setFortitle]=useState('')
 
+    //Function to return tittle to tip
     function enter(title){
         if(tip){
-            setFortitle(title)
             tip(title)
-        }
-        
+            setFortitle(title)
+            
+        } 
     }
 
+    //Function for return empty tittle for "Softwares" and "Book a Demo" to disable tooltip
     function leave(event){
         if(tip){
             if(fortitle==='Softwares'){
@@ -29,6 +31,8 @@ function Menu({isOpen,props,tip}){
             }
         }
     }
+
+    //Main body
     return(
         <nav className={props}>
             <a href="#" className={`opacity-0 ${isOpen ? 'opacity-100 transition delay-100 duration-100 ease-in-out -translate-y-6':'transition ease-in-out'} md:opacity-100`} onMouseEnter={()=>enter('Softwares')} onMouseLeave={(event)=>{leave(event)}}>Softwares</a>

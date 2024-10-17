@@ -3,19 +3,37 @@ import Menu from "./Menu.jsx"
 import { useState} from "react"
 import React from 'react';
 import Tooltip from "./Tooltip.jsx";
+
 function Header({isOpen}){
 
     let [hmopen,setHmopen]=useState(false)
-    let [tiptitle,setTiptitle]=useState('')
+    let [tiptitle,setTiptitle]=useState(false)
     
+    
+    //Function listening on resize of window
     function resizewindow(){
         if(window.innerWidth>=768){
             setHmopen(false)
+            setTiptitle(false)
         }  
     }
     window.addEventListener("resize",resizewindow)
     
-
+    
+    //Function for disable tooltip when mouse leave from top of div
+    function leave(event){
+        const element = event.currentTarget; 
+        const rect = element.getBoundingClientRect();
+        if (event.clientY <= rect.top) {
+            setTiptitle()
+        }
+    }
+    //Function for disable tooltip when mouse leave outside of scope of tooltip
+    function leave2(){
+        setTiptitle()
+    }
+    
+    //Humburger Icon default false '='
     const HumIcon=({icon})=>{
         isOpen(icon)
         if(icon){
@@ -38,7 +56,7 @@ function Header({isOpen}){
         }
     }
 
-
+    //Main body
     return(
         <div className="bg-[#06040D] text-white grid grid-cols-6 h-17">
             <div className="bg-lime-400 justify-self-start pl-3 pt-3 col-start-1">
@@ -51,9 +69,9 @@ function Header({isOpen}){
                     </svg>
                 </button>
             </div>
-            <div className="bg-lime-600 hidden md:grid col-start-2 col-end-6 content-center justify-items-center">
+            <div className="bg-lime-600 hidden md:grid col-start-2 col-end-6 content-center justify-items-center" onMouseLeave={(event)=>{leave(event)}}>
                 <Menu tip={setTiptitle} props={"grid grid-cols-4 gap-x-11"}/>
-                <div className="relative">
+                <div className="relative" onMouseLeave={()=>{leave2()}}>
                     <Tooltip value={tiptitle}/>
                 </div>
             </div>
