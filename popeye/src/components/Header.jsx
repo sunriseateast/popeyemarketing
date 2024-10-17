@@ -19,17 +19,9 @@ function Header({isOpen}){
     }
     window.addEventListener("resize",resizewindow)
     
-    
+
     //Function for disable tooltip when mouse leave from top of div
-    function leave(event){
-        const element = event.currentTarget; 
-        const rect = element.getBoundingClientRect();
-        if (event.clientY <= rect.top) {
-            setTiptitle()
-        }
-    }
-    //Function for disable tooltip when mouse leave outside of scope of tooltip
-    function leave2(){
+    function leave(){
         setTiptitle()
     }
     
@@ -59,7 +51,7 @@ function Header({isOpen}){
     //Main body
     return(
         <div className="bg-[#06040D] text-white grid grid-cols-6 h-17">
-            <div className="bg-lime-400 justify-self-start pl-3 pt-3 col-start-1">
+            <div className="bg-lime-500 pl-3 pt-3 col-start-1 md:mt-5 md:pt-0 md:pl-24">
                 <img src={logo} className='h-10 md:h-14' loading="eager"/>
             </div>
             <div className="justify-self-end pr-5 pt-5 col-start-6 md:hidden">
@@ -69,9 +61,9 @@ function Header({isOpen}){
                     </svg>
                 </button>
             </div>
-            <div className="bg-lime-600 hidden md:grid col-start-2 col-end-6 content-center justify-items-center" onMouseLeave={(event)=>{leave(event)}}>
-                <Menu tip={setTiptitle} props={"grid grid-cols-4 gap-x-11"}/>
-                <div className="relative" onMouseLeave={()=>{leave2()}}>
+            <div className="bg-lime-500 hidden md:grid col-start-3 col-end-5 content-center justify-items-center mt-5" onMouseLeave={()=>{leave()}}>
+                <Menu tip={setTiptitle} props={"grid grid-cols-4 gap-x-2"}/>
+                <div className="relative" onMouseLeave={()=>{leave()}}>
                     <Tooltip value={tiptitle}/>
                 </div>
             </div>

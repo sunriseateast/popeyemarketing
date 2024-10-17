@@ -1,35 +1,12 @@
-import React, { useState } from 'react';
 
 function Menu({isOpen,props,tip}){
-    let [fortitle,setFortitle]=useState('')
 
     //Function to return tittle to tip
     function enter(title){
         if(tip){
             tip(title)
-            setFortitle(title)
             
         } 
-    }
-
-    //Function for return empty tittle for "Softwares" and "Book a Demo" to disable tooltip
-    function leave(event){
-        if(tip){
-            if(fortitle==='Softwares'){
-                const element = event.currentTarget; // Get the element where onMouseLeave was triggered
-                const rect = element.getBoundingClientRect(); // Get the element's position
-                if (event.clientX <= rect.left) {
-                    tip()
-                } 
-            }
-            else if(fortitle==='Book a Demo'){
-                const element = event.currentTarget; // Get the element where onMouseLeave was triggered
-                const rect = element.getBoundingClientRect(); // Get the element's position
-                if (event.clientX >= rect.right) {
-                    tip()
-                } 
-            }
-        }
     }
 
     //Main body
