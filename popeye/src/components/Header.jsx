@@ -7,7 +7,7 @@ import Tooltip from "./Tooltip.jsx";
 function Header({isOpen}){
 
     let [hmopen,setHmopen]=useState(false)
-    let [tiptitle,setTiptitle]=useState(false)
+    let [tiptitle,setTiptitle]=useState('')
     
     
     //Function listening on resize of window
@@ -22,7 +22,8 @@ function Header({isOpen}){
 
     //Function for disable tooltip when mouse leave from top of div
     function leave(){
-        setTiptitle()
+        setTiptitle('')
+        
     }
     
     //Humburger Icon default false '='
@@ -63,7 +64,7 @@ function Header({isOpen}){
             </div>
             <div className="bg-lime-500 hidden md:grid col-start-3 col-end-5 content-center justify-items-center mt-5" onMouseLeave={()=>{leave()}}>
                 <Menu tip={setTiptitle} props={"grid grid-cols-4 gap-x-2"}/>
-                <div className="relative" onMouseLeave={()=>{leave()}}>
+                <div className='relative' onMouseLeave={()=>{leave()}}>
                     <Tooltip value={tiptitle}/>
                 </div>
             </div>
