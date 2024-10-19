@@ -51,7 +51,7 @@ function Header({isOpen}){
 
     //Main body
     return(
-        <div className="bg-[#06040D] text-white grid grid-cols-6 h-17">
+        <div className="bg-[#06040D] text-white grid grid-cols-6 h-[95px]">
             <div className="bg-lime-500 pl-3 pt-3 col-start-1 md:mt-5 md:pt-0 md:pl-24">
                 <img src={logo} className='h-10 md:h-14' loading="eager"/>
             </div>
@@ -62,7 +62,7 @@ function Header({isOpen}){
                     </svg>
                 </button>
             </div>
-            <div className="bg-lime-500 hidden md:grid col-start-3 col-end-5 content-center justify-items-center mt-5" onMouseLeave={()=>{leave()}}>
+            <div className="hidden md:grid col-start-3 col-end-5 content-center justify-items-center mt-2" onMouseLeave={()=>{leave()}}>
                 <Menu tip={setTiptitle} props={"grid grid-cols-4 gap-x-2"}/>
                 <div className='relative' onMouseLeave={()=>{leave()}}>
                     <Tooltip value={tiptitle}/>
