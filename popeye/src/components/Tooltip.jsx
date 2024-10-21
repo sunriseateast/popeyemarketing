@@ -11,7 +11,20 @@ function Tooltip({value}){
     
     },[value])
 
-    
+
+    //CSS classes
+    let outerdiv=   `transition-all ${old==='' ? 'duration-150':'duration-300'} 
+                    ease-in-out absolute bg-white text-black w-80 mt-4 rounded-lg`
+
+    let bgbox=      `absolute bg-neutral-800 rounded-lg h-[35px] -translate-y-[45px] z-0 
+                    transition-all duration-500`
+
+    let emptydiv=   `opacity-0 transition-all duration-300 ease-in-out absolute 
+                    translate-y-4`
+
+
+
+
     if(tiptitle===''){
 
         //It gives fade out look to tooltip
@@ -19,45 +32,58 @@ function Tooltip({value}){
         if(old==='Softwares')
         {
             return(
-                <div className='opacity-0 transition-all duration-300 ease-in-out absolute right-0 translate-y-4'></div>
+                <div className={`${emptydiv} right-0`}></div>
             )
         }
         else if(old==='Reseller'){
             return(
-                <div className='opacity-0 transition-all duration-300 ease-in-out absolute -right-24 translate-y-4'></div>
+                <div className={`${emptydiv} -right-24`}></div>
             )
         }
         else if(old==='Support'){
             return(
-                <div className='opacity-0 transition-all duration-300 ease-in-out absolute -right-52 translate-y-4'></div>
+                <div className={`${emptydiv} -right-52`}></div>
             )
         }
         else if(old==='Book a Demo'){
             return(
-                <div className='opacity-0 transition-all duration-300 ease-in-out absolute -right-80 translate-y-4'></div>
+                <div className={`${emptydiv} -right-80`}></div>
             )
         }
     }
     
+    
     //It shows tootlip div
     else if(tiptitle==='Softwares'){
         return(
-            <div className={`transition-all ${old==='' ? 'duration-150':'duration-300'} ease-in-out h-24 absolute right-0 bg-white text-black w-80 mt-4 rounded-lg`}>Softwares</div>
+            <div className={`${outerdiv} h-24 right-0`}>
+                <div className={`${bgbox} translate-x-[101px] w-[105px]`}></div>
+                <div>Softwares</div>
+            </div>
         )
     }
     else if(tiptitle==='Reseller'){
         return(
-            <div className={`transition-all ${old==='' ? 'duration-150':'duration-300'} ease-in-out h-32 absolute -right-24 bg-white text-black w-80 mt-4 rounded-lg`}>Reseller</div>
+            <div className={`${outerdiv} h-32 -right-24`}>
+                <div className={`${bgbox} translate-x-[121px] w-[95px]`}></div>
+                <div>Reseller</div>
+            </div>
         )
     }
     else if(tiptitle==='Support'){
         return(
-            <div className={`transition-all ${old==='' ? 'duration-150':'duration-300'} ease-in-out h-24 absolute -right-52 bg-white text-black w-80 mt-4 rounded-lg`}>Support</div>
+            <div className={`${outerdiv} h-24 -right-52`}>
+                <div className={`${bgbox} translate-x-[121px] w-[95px]`}></div>
+                <div>Support</div>
+            </div>
         )
     }
     else if(tiptitle==='Book a Demo'){
         return(
-            <div className={`transition-all ${old==='' ? 'duration-150':'duration-300'} ease-in-out h-32 absolute -right-80 bg-white text-black w-80 mt-4 rounded-lg`}>Book a Demo</div>
+            <div className={`${outerdiv} h-32 -right-80`}>
+                <div className={`${bgbox} translate-x-[112px] w-[128px]`}></div>
+                <div>Book a Demo</div>
+            </div>
         )
     }
 }

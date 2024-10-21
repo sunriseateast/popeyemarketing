@@ -51,8 +51,8 @@ function Header({isOpen}){
 
     //Main body
     return(
-        <div className="bg-[#06040D] text-white grid grid-cols-6 h-[95px]">
-            <div className="bg-lime-500 pl-3 pt-3 col-start-1 md:mt-5 md:pt-0 md:pl-24">
+        <div className="bg-[#06040D] text-slate-100 grid grid-cols-6 h-[80px]">
+            <div className="bg-lime-500 pl-3 pt-3 col-start-1 md:pt-5 md:pl-24">
                 <img src={logo} className='h-10 md:h-14' loading="eager"/>
             </div>
             <div className="justify-self-end pr-5 pt-5 col-start-6 md:hidden">
@@ -62,12 +62,13 @@ function Header({isOpen}){
                     </svg>
                 </button>
             </div>
-            <div className="hidden md:grid col-start-3 col-end-5 content-center justify-items-center mt-2" onMouseLeave={()=>{leave()}}>
-                <Menu tip={setTiptitle} props={"grid grid-cols-4 gap-x-2"}/>
-                <div className='relative' onMouseLeave={()=>{leave()}}>
+            <div className="hidden md:grid col-start-2 col-end-6 content-center justify-items-center" onMouseLeave={()=>{leave()}}>
+                <Menu tip={setTiptitle} props={"grid grid-cols-4"}/>
+                <div className='relative text-bold'>
                     <Tooltip value={tiptitle}/>
                 </div>
             </div>
+            <div className="bg-white col-start-6">Hello</div>
             <div className="md:hidden">
                 <Menu isOpen={hmopen} props={`bg-[#06040D] h-screen w-screen z-50 absolute content-center justify-items-center grid grid-row-4 gap-y-10 pb-40 text-xl font-medium bg-opacity-20`}/>
             </div>

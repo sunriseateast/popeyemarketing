@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        rubik: ['Rubik', 'sans-serif'],
+        archivo: ['Archivo', 'sans-serif'],
       },
     },
   },

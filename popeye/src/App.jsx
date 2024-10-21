@@ -4,9 +4,9 @@ import { useState } from "react"
 function App() {
   let [hmopen,setHmopen]=useState(false)
   return (
-    <div className="h-screen w-screen bg-[#06040D] text-white font-rubik">
+    <div className="h-screen w-screen bg-[#06040D] font-archivo">
       <Header isOpen={setHmopen}/>
-      <div className={hmopen  ? "blur":'transition ease-in-out'}>  
+      <div className={`text-white ${hmopen  ? "blur":'transition ease-in-out'}`}>  
         Hello
       </div>
     </div>  
