@@ -14,15 +14,16 @@ function Tooltip({value}){
 
     //CSS classes
     let outerdiv=   `transition-all ${old==='' ? 'duration-150':'duration-300'} 
-                    ease-in-out absolute bg-white text-black w-80 mt-4 rounded-lg`
+                    ease-in-out absolute bg-white text-black w-80 mt-7 rounded-lg`
 
-    let bgbox=      `absolute bg-neutral-800 rounded-lg h-[35px] -translate-y-[45px] z-0 
-                    transition-all duration-500`
+    let bgbox=      `absolute bg-neutral-800 rounded-lg h-[35px] -translate-y-[57px] z-0 
+                    transition-all duration-1000`
 
     let emptydiv=   `opacity-0 transition-all duration-300 ease-in-out absolute 
-                    translate-y-4`
+                    translate-y-7`
 
-
+    let arrow=      `absolute bg-white -translate-y-[5px] w-[15px] h-[15px] rotate-45 
+                    transition-all duration-300`
 
 
     if(tiptitle===''){
@@ -58,6 +59,7 @@ function Tooltip({value}){
         return(
             <div className={`${outerdiv} h-24 right-0`}>
                 <div className={`${bgbox} translate-x-[101px] w-[105px]`}></div>
+                <div className={`${arrow} translate-x-[145px]`}></div>
                 <div>Softwares</div>
             </div>
         )
@@ -66,6 +68,7 @@ function Tooltip({value}){
         return(
             <div className={`${outerdiv} h-32 -right-24`}>
                 <div className={`${bgbox} translate-x-[121px] w-[95px]`}></div>
+                <div className={`${arrow} translate-x-[160px]`}></div>
                 <div>Reseller</div>
             </div>
         )
@@ -74,6 +77,7 @@ function Tooltip({value}){
         return(
             <div className={`${outerdiv} h-24 -right-52`}>
                 <div className={`${bgbox} translate-x-[121px] w-[95px]`}></div>
+                <div className={`${arrow} translate-x-[145px]`}></div>
                 <div>Support</div>
             </div>
         )
@@ -82,6 +86,7 @@ function Tooltip({value}){
         return(
             <div className={`${outerdiv} h-32 -right-80`}>
                 <div className={`${bgbox} translate-x-[112px] w-[128px]`}></div>
+                <div className={`${arrow} translate-x-[190px]`}></div>
                 <div>Book a Demo</div>
             </div>
         )
