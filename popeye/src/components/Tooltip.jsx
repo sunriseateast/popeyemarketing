@@ -19,14 +19,12 @@ function Tooltip({value}){
     let outerdiv=   `transition-all ${old==='' ? 'duration-150':'duration-300'} 
                     ease-in-out absolute bg-slate-100 text-black mt-7 rounded-lg`
 
-    let bgbox=      `absolute bg-neutral-800 rounded-lg h-[35px] -translate-y-[57px] z-0 
-                    transition-all duration-1000`
+    let emptydiv=   `opacity-0 absolute bg-slate-100 mt-7 rounded-lg`
 
-    let emptydiv=   `opacity-0 transition-all duration-75 ease-in-out absolute
-                    translate-y-7`
+    let bgbox=      `absolute bg-neutral-800 rounded-lg h-[35px] -translate-y-[57px] z-0`
 
-    let arrow=      `absolute bg-slate-100 -translate-y-[5px] w-[15px] h-[15px] rotate-45 
-                    transition-all duration-300`
+    let arrow=      `absolute bg-slate-100 -translate-y-[5px] w-[15px] h-[15px] rotate-45
+                    transition-all ${old==='' ? 'duration-150':'duration-300'}`
 
 
     if(tiptitle===''){
@@ -36,22 +34,34 @@ function Tooltip({value}){
         if(old==='Softwares')
         {
             return(
-                <div className={`${emptydiv} right-0`}></div>  
+                <div className={`${emptydiv} h-[345px] w-[320px] right-0`}>
+                     <div className={`${bgbox} translate-x-[100px] w-[105px]`}></div>
+                     <div className={`${arrow} translate-x-[145px]`}></div>
+                </div>  
             )
         }
         else if(old==='Reseller'){
             return(
-                <div className={`${emptydiv} -right-24`}></div>
+                <div className={`${emptydiv} h-32 w-[320px] -right-24`}>
+                    <div className={`${bgbox} translate-x-[121px] w-[95px]`}></div>
+                    <div className={`${arrow} translate-x-[160px]`}></div>
+                </div>
             )
         }
         else if(old==='Support'){
             return(
-                <div className={`${emptydiv} -right-52`}></div>
+                <div className={`${emptydiv} h-24 w-[320px] -right-52`}>
+                    <div className={`${bgbox} translate-x-[121px] w-[95px]`}></div>
+                    <div className={`${arrow} translate-x-[145px]`}></div>
+                </div>
             )
         }
         else if(old==='Book a Demo'){
             return(
-                <div className={`${emptydiv} -right-80`}></div>
+                <div className={`${emptydiv} h-32 w-[320px] -right-80`}>
+                    <div className={`${bgbox} translate-x-[113px] w-[128px]`}></div>
+                    <div className={`${arrow} translate-x-[190px]`}></div>
+                </div>
             )
         }
     }
