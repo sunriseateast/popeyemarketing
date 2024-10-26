@@ -32,7 +32,7 @@ function Menu({isOpen,props,tip}){
 
             <a href="#" className={`opacity-0 ${isOpen ? 'opacity-100 transition delay-300 duration-300 ease-in-out -translate-y-6':'transition ease-in-out'}
                                     md:opacity-100 md:text-center md:z-10 md:pl-4`}
-                                    onMouseEnter={()=>enter('Book a Demo')}
+                                    onMouseEnter={()=>enter('Book_a_Demo')}
             >Book a Demo</a>
            
         </nav>

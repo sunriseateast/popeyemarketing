@@ -2,12 +2,12 @@ import logo from "/images/logo.png"
 import Menu from "./Menu.jsx"
 import { useState} from "react"
 import React from 'react';
-import Tooltip from "./Tooltip.jsx";
+import Tooltip2 from "./Tooltip2.jsx";
 
 function Header({isOpen}){
 
     let [hmopen,setHmopen]=useState(false)
-    let [tiptitle,setTiptitle]=useState('')
+    let [tiptitle,setTiptitle]=useState(false)
     
     
     //Function listening on resize of window
@@ -22,7 +22,7 @@ function Header({isOpen}){
 
     //Function for disable tooltip when mouse leave from top of div
     function leave(){
-        setTiptitle('')
+        setTiptitle(false)
         
     }
     
@@ -62,11 +62,9 @@ function Header({isOpen}){
                     </svg>
                 </button>
             </div>
-            <div className="hidden md:grid col-start-2 col-end-6 content-center justify-items-center" onMouseLeave={()=>{leave()}}>
+            <div className="hidden md:grid col-start-2 col-end-6 relative content-center justify-items-center" onMouseLeave={()=>{leave()}}>
                 <Menu tip={setTiptitle} props={"grid grid-cols-4"}/>
-                <div className='relative text-bold'>
-                    <Tooltip value={tiptitle}/>
-                </div>
+                <Tooltip2 value={tiptitle}/>
             </div>
             <div className="bg-white col-start-6">Hello</div>
             <div className="md:hidden">
