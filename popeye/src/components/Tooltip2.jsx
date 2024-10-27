@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useRef} from 'react';
 
 function Tooltip2({value}){
-    let prevsize=useRef()
+    let newSize=useRef()
+    let prevSize=useRef()
+
     let size={
         Softwares:'h-[230px] w-[500px] left-32',
         Reseller: 'h-[200px] w-[300px] left-64',
@@ -11,9 +13,15 @@ function Tooltip2({value}){
 
     let visible=size[value]
 
-    console.log(prevsize)
+    if(newSize.current !== visible){
+        prevSize.current=newSize.current
+        newSize.current=visible
+    }
+
+    let visible2=size[value] || `${prevSize.current} scale-95 opacity-0`
+
     return(
-        <div ref={prevsize} className={`absolute translate-y-[80px] ${visible} bg-slate-100 transistion-all duration-200 rounded-lg ease-in-out`}></div>
+        <div className={`absolute translate-y-[80px] ${visible2} bg-slate-100 duration-100 transistion-all rounded-lg ease-in-out`}></div>
     )
 
 }
