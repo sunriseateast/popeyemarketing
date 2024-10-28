@@ -9,10 +9,10 @@ function Tooltip2({value}){
 
     //Div
     let size={
-        Softwares:'h-[230px] w-[500px] left-32',
-        Reseller: 'h-[200px] w-[300px] left-64',
-        Support:'h-[200px] w-[400px] left-64',
-        Book_a_Demo:'h-[200px] w-[300px] left-96'
+        Softwares:'h-[230px] w-[500px] -translate-x-[70px]',
+        Reseller: 'h-[200px] w-[300px] -translate-x-[50px]',
+        Support:'h-[200px] w-[400px] translate-x-[7px]',
+        Book_a_Demo:'h-[200px] w-[300px] translate-x-[70px]'
     }
 
 
@@ -27,10 +27,10 @@ function Tooltip2({value}){
 
     //Arrow
     let arrow={
-        Softwares:'left-[150px] -translate-y-[5px]',
-        Reseller:'left-[140px] -translate-y-[5px]',
-        Support:'left-[250px] -translate-y-[5px]',
-        Book_a_Demo:'left-[250px] -translate-y-[5px]'
+        Softwares:'translate-x-[150px] -translate-y-[5px]',
+        Reseller:'translate-x-[135px] -translate-y-[5px]',
+        Support:'translate-x-[250px] -translate-y-[5px]',
+        Book_a_Demo:'translate-x-[250px] -translate-y-[5px]'
     }
 
     let arrvisible=arrow[value]
@@ -44,8 +44,8 @@ function Tooltip2({value}){
 
     return(
         <>
-            <div className={`absolute translate-y-[80px] ${visible2} bg-slate-100 ${prevSize.current==undefined ? 'duration-75':'duration-300'} transistion-all rounded-lg ease-in-out`}>
-                <div className={`absolute w-[15px] h-[15px] ${arrvisible2} bg-slate-100 rotate-45`}></div>
+            <div className={`absolute transform translate-y-[80px] ${visible2} bg-slate-100 ${prevSize.current==undefined ? 'duration-75':'duration-300'} transistion-all rounded-lg ease-in-out`}>
+                <div className={`absolute transform w-[15px] h-[15px] ${arrvisible2} bg-slate-100 rotate-45 transistion-all ease-in-out ${prevArrow.current==undefined ? 'duration-75':'duration-200'}`}></div>
             </div>
         </>
     )
