@@ -10,10 +10,10 @@ function Tooltip2({value}){
 
     //Div
     let size={
-        Softwares:'h-[230px] w-[500px] left-32 ',   //Translate is not use 
-        Reseller: 'h-[200px] w-[300px] left-64',    //here because it add jitter effect
-        Support:'h-[200px] w-[400px] left-64',
-        Book_a_Demo:'h-[200px] w-[300px] left-96'
+        Softwares:'h-[230px] w-[500px] left-32 translate-x-[1px]',   //abs pos with translate  use 
+        Reseller: 'h-[200px] w-[300px] left-64 translate-x-[1px]',    //here to rmv jitter and smooth transistion 
+        Support:'h-[200px] w-[400px] left-64 translate-x-[1px]',
+        Book_a_Demo:'h-[200px] w-[300px] left-96 translate-x-[1px]'
     }
 
 
