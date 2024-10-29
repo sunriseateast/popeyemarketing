@@ -7,12 +7,13 @@ function Tooltip2({value}){
     let newArrow=useRef()
     let prevArrow=useRef()
 
+
     //Div
     let size={
-        Softwares:'h-[230px] w-[500px] -translate-x-[70px]',
-        Reseller: 'h-[200px] w-[300px] -translate-x-[50px]',
-        Support:'h-[200px] w-[400px] translate-x-[7px]',
-        Book_a_Demo:'h-[200px] w-[300px] translate-x-[70px]'
+        Softwares:'h-[230px] w-[500px] left-32 ',   //Translate is not use 
+        Reseller: 'h-[200px] w-[300px] left-64',    //here because it add jitter effect
+        Support:'h-[200px] w-[400px] left-64',
+        Book_a_Demo:'h-[200px] w-[300px] left-96'
     }
 
 
