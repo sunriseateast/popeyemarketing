@@ -10,12 +10,11 @@ function Tooltip2({value}){
 
     //Div
     let size={
-        Softwares:'h-[230px] w-[500px] left-32 translate-x-[1px]',   //abs pos with translate  use 
-        Reseller: 'h-[200px] w-[300px] left-64 translate-x-[1px]',    //here to rmv jitter and smooth transistion 
-        Support:'h-[200px] w-[400px] left-64 translate-x-[1px]',
-        Book_a_Demo:'h-[200px] w-[300px] left-96 translate-x-[1px]'
+        Softwares:'h-[230px] w-[500px] -translate-x-[70px]', 
+        Reseller: 'h-[200px] w-[400px] -translate-x-[50px]', 
+        Support:'h-[200px] w-[300px] -translate-x-[50px]',
+        Book_a_Demo:'h-[150px] w-[300px] translate-x-[70px]'
     }
-
 
     let visible=size[value]
     if(newSize.current !== visible){       
@@ -29,8 +28,8 @@ function Tooltip2({value}){
     //Arrow
     let arrow={
         Softwares:'translate-x-[150px] -translate-y-[5px]',
-        Reseller:'translate-x-[135px] -translate-y-[5px]',
-        Support:'translate-x-[250px] -translate-y-[5px]',
+        Reseller:'translate-x-[185px] -translate-y-[5px]',
+        Support:'translate-x-[230px] -translate-y-[5px]',
         Book_a_Demo:'translate-x-[250px] -translate-y-[5px]'
     }
 
@@ -45,8 +44,8 @@ function Tooltip2({value}){
 
     return(
         <>
-            <div className={`absolute transform translate-y-[80px] ${visible2} bg-slate-100 ${prevSize.current==undefined ? 'duration-75':'duration-300'} transistion-all rounded-lg ease-in-out`}>
-                <div className={`absolute transform w-[15px] h-[15px] ${arrvisible2} bg-slate-100 rotate-45 transistion-all ease-in-out ${prevArrow.current==undefined ? 'duration-75':'duration-200'}`}></div>
+            <div className={`absolute transform-gpu translate-y-[80px] ${visible2} bg-slate-100 ${prevSize.current==undefined ? 'duration-75':'duration-300'} transistion-all rounded-lg ease-in-out`}>
+                <div className={`absolute transform-gpu w-[15px] h-[15px] ${arrvisible2} bg-slate-100 rotate-45 transistion-all ease-in-out ${prevArrow.current==undefined ? 'duration-75':'duration-300'}`}></div>
             </div>
         </>
     )

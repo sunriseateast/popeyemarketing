@@ -62,8 +62,8 @@ function Header({isOpen}){
                     </svg>
                 </button>
             </div>
-            <div className="hidden md:grid col-start-2 col-end-6 relative content-center justify-items-center" onMouseLeave={()=>{leave()}}>
-                <Menu tip={setTiptitle} props={"grid grid-cols-4"}/>
+            <div className="hidden md:grid bg-neutral-500 col-start-2 col-end-6 relative content-center justify-items-center" onMouseLeave={()=>{leave()}}>
+                <Menu tip={setTiptitle} props={"bg-neutral-700"}/>
                 <Tooltip2 value={tiptitle}/>
             </div>
             <div className="bg-white col-start-6">Hello</div>

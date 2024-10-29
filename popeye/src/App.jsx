@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="h-screen w-screen bg-[#06040D] font-archivo">
       <Header isOpen={setHmopen}/>
-      <div className={`text-white ${hmopen  ? "blur":'transition ease-in-out'}`}>  
+      <div className={`text-white ${hmopen  ? "blur":'transition-all ease-in-out'}`}>  
         Hello
       </div>
     </div>  

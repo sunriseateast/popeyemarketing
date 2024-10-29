@@ -9,31 +9,34 @@ function Menu({isOpen,props,tip}){
         } 
     }
 
+    // css for large screen
+    const lgscreen=`md:opacity-100 md:z-10 md:p-[10px] md:m-[10px]`
+
     //Main body
     return(
         <nav className={props}>
             <a href="#" className={`opacity-0 ${isOpen ? 'opacity-100 transition delay-100 duration-100 ease-in-out -translate-y-6':'transition ease-in-out'} 
-                                    md:opacity-100 md:text-center md:z-10`} 
+                                    ${lgscreen} bg-lime-500`} 
                                     onMouseEnter={()=>enter('Softwares')}
             >Softwares</a>
 
 
             <a href="#" className={`opacity-0 ${isOpen ? 'opacity-100 transition delay-150 duration-150 ease-in-out -translate-y-6':'transition ease-in-out'}
-                                    md:opacity-100 md:text-center md:z-10`}
+                                    ${lgscreen} bg-amber-500`}
                                     onMouseEnter={()=>enter('Reseller')}
             >Reseller</a>
 
 
             <a href="#" className={`opacity-0 ${isOpen ? 'opacity-100 transition delay-200 duration-200 ease-in-out -translate-y-6':'transition ease-in-out'}
-                                    md:opacity-100 md:text-center md:z-10`}
+                                    ${lgscreen} bg-teal-500`}
                                     onMouseEnter={()=>enter('Support')}
             >Support</a>
 
 
             <a href="#" className={`opacity-0 ${isOpen ? 'opacity-100 transition delay-300 duration-300 ease-in-out -translate-y-6':'transition ease-in-out'}
-                                    md:opacity-100 md:text-center md:z-10 md:pl-4`}
+                                    ${lgscreen} bg-blue-500`}
                                     onMouseEnter={()=>enter('Book_a_Demo')}
-            >Book a Demo</a>
+            >Book_a_Demo</a>
            
         </nav>
     )
