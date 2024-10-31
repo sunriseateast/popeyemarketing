@@ -1,15 +1,16 @@
 import logo from "/images/logo.png"
-import Menu from "./Menu.jsx"
-import { useState} from "react"
+import { useState,useEffect} from "react"
 import React from 'react';
 import Tooltip2 from "./Tooltip2.jsx";
+import Menu from "./Menu.jsx"
+import Menu2 from "./Menu2.jsx";
 
 function Header({isOpen}){
 
     let [hmopen,setHmopen]=useState(false)
     let [tiptitle,setTiptitle]=useState(false)
-    
-    
+
+
     //Function listening on resize of window
     function resizewindow(){
         if(window.innerWidth>=768){
@@ -38,7 +39,6 @@ function Header({isOpen}){
             )
         }
         else{
-            
             return(
                 <>
                     <line x1="4" y1="6" x2="20" y2="6" stroke-width="2" stroke="white" stroke-linecap="round"></line>
@@ -48,6 +48,7 @@ function Header({isOpen}){
             )
         }
     }
+
 
     //Main body
     return(
@@ -63,12 +64,12 @@ function Header({isOpen}){
                 </button>
             </div>
             <div className="hidden md:grid bg-neutral-500 col-start-2 col-end-6 relative content-center justify-items-center" onMouseLeave={()=>{leave()}}>
-                <Menu tip={setTiptitle} props={"bg-neutral-700"}/>
+                <Menu2 value={setTiptitle} css={`bg-slate-700`}/>
                 <Tooltip2 value={tiptitle}/>
             </div>
             <div className="bg-white col-start-6">Hello</div>
-            <div className="md:hidden">
-                <Menu isOpen={hmopen} props={`bg-[#06040D] h-screen w-screen z-50 absolute content-center justify-items-center grid grid-row-4 gap-y-10 pb-40 text-xl font-medium bg-opacity-20`}/>
+            <div className="relative bg-slate-200 h-[400px] w-[320px] place-content-center md:hidden">
+                <Menu2 css={`grid grid-row-4 place-items-center gap-y-[40px]`}/>
             </div>
         </div>
     )

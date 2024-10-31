@@ -7,6 +7,9 @@ function Tooltip2({value}){
     let newArrow=useRef()
     let prevArrow=useRef()
 
+    let newBox=useRef()
+    let prevBox=useRef()
+
 
     //Div
     let size={
@@ -27,10 +30,10 @@ function Tooltip2({value}){
 
     //Arrow
     let arrow={
-        Softwares:'translate-x-[150px] -translate-y-[5px]',
-        Reseller:'translate-x-[185px] -translate-y-[5px]',
-        Support:'translate-x-[230px] -translate-y-[5px]',
-        Book_a_Demo:'translate-x-[250px] -translate-y-[5px]'
+        Softwares:'translate-x-[150px] w-[15px] h-[15px]',
+        Reseller:'translate-x-[185px] w-[15px] h-[15px]',
+        Support:'translate-x-[230px] w-[15px] h-[15px]',
+        Book_a_Demo:'translate-x-[250px] w-[15px] h-[15px]'
     }
 
     let arrvisible=arrow[value]
@@ -41,12 +44,28 @@ function Tooltip2({value}){
     let arrvisible2=arrow[value] || `${prevArrow.current}`
 
 
+    //bgbox
+    let box={
+        Softwares:`h-[38px] w-[91px] -translate-x-[167px] opacity-50 rounded`,
+        Reseller:`h-[38px] w-[78px] -translate-x-[61px] opacity-50 rounded`,
+        Support:`h-[38px] w-[76px] translate-x-[37px] opacity-50 rounded`,
+        Book_a_Demo:`h-[38px] w-[119px] translate-x-[153px] opacity-50 rounded`
+    }
+
+    let boxvisible=box[value]
+    // if(newBox.current!==boxvisible){
+    //     prevBox.current=newBox.current
+    //     newBox.current=boxvisible
+    // }
+    // let boxvisible2=box[value] || `${prevBox.current} opacity-0`
+    //console.log(boxvisible)
 
     return(
         <>
             <div className={`absolute transform-gpu translate-y-[80px] ${visible2} bg-slate-100 ${prevSize.current==undefined ? 'duration-75':'duration-300'} transistion-all rounded-lg ease-in-out`}>
-                <div className={`absolute transform-gpu w-[15px] h-[15px] ${arrvisible2} bg-slate-100 rotate-45 transistion-all ease-in-out ${prevArrow.current==undefined ? 'duration-75':'duration-300'}`}></div>
+                <div className={`absolute transform-gpu -translate-y-[5px] ${arrvisible2} bg-slate-100 rotate-45 transistion-all ease-in-out ${prevArrow.current==undefined ? 'duration-75':'duration-300'}`}></div>
             </div>
+            {/* <div className={`absolute transform-gpu bg-zinc-100 translate-y-[21px] ${boxvisible} transistion-all ease-in-out duration-500`}></div> */}
         </>
     )
 
