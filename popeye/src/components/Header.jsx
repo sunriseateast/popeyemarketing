@@ -64,12 +64,12 @@ function Header({isOpen}){
                 </button>
             </div>
             <div className="hidden md:grid bg-neutral-500 col-start-2 col-end-6 relative content-center justify-items-center" onMouseLeave={()=>{leave()}}>
-                <Menu2 value={setTiptitle} css={`bg-slate-700`}/>
+                <Menu2 value={setTiptitle} css={`bg-slate-700`} icon={true}/>
                 <Tooltip2 value={tiptitle}/>
             </div>
             <div className="bg-white col-start-6">Hello</div>
-            <div className="relative bg-slate-200 h-[400px] w-[320px] place-content-center md:hidden">
-                <Menu2 css={`grid grid-row-4 place-items-center gap-y-[40px]`}/>
+            <div className="h-[400px] w-[320px] place-content-center text-xl md:hidden">
+                <Menu2 css={`grid grid-row-4 place-items-center gap-y-[40px]`} icon={hmopen}/>
             </div>
         </div>
     )

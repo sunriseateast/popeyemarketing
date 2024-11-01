@@ -52,20 +52,19 @@ function Tooltip2({value}){
         Book_a_Demo:`h-[38px] w-[119px] translate-x-[153px] opacity-50 rounded`
     }
 
-    let boxvisible=box[value]
+    // let boxvisible=box[value]
     // if(newBox.current!==boxvisible){
     //     prevBox.current=newBox.current
     //     newBox.current=boxvisible
     // }
     // let boxvisible2=box[value] || `${prevBox.current} opacity-0`
-    //console.log(boxvisible)
 
     return(
         <>
-            <div className={`absolute transform-gpu translate-y-[80px] ${visible2} bg-slate-100 ${prevSize.current==undefined ? 'duration-75':'duration-300'} transistion-all rounded-lg ease-in-out`}>
-                <div className={`absolute transform-gpu -translate-y-[5px] ${arrvisible2} bg-slate-100 rotate-45 transistion-all ease-in-out ${prevArrow.current==undefined ? 'duration-75':'duration-300'}`}></div>
+            <div className={`absolute transform-gpu  translate-y-[80px] ${visible2} bg-slate-100 ${prevSize.current==undefined ? 'duration-75':'duration-300'} transition-all rounded-lg ease-in-out`}>
+                <div className={`absolute transform-gpu -translate-y-[5px] ${arrvisible2} bg-slate-100 rotate-45 transition-all ease-in-out ${prevArrow.current==undefined ? 'duration-75':'duration-300'}`}></div>
             </div>
-            {/* <div className={`absolute transform-gpu bg-zinc-100 translate-y-[21px] ${boxvisible} transistion-all ease-in-out duration-500`}></div> */}
+            {/* <div className={`absolute transform-gpu bg-zinc-100 translate-y-[21px] ${boxvisible2} transition-all ease-in-out duration-500`}></div> */}
         </>
     )
 
