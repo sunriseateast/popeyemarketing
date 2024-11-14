@@ -2,7 +2,6 @@ import logo from "/images/logo.png"
 import { useState,useEffect} from "react"
 import React from 'react';
 import Tooltip2 from "./Tooltip2.jsx";
-import Menu from "./Menu.jsx"
 import Menu2 from "./Menu2.jsx";
 
 function Header({isOpen}){
@@ -23,10 +22,9 @@ function Header({isOpen}){
 
     //Function for disable tooltip when mouse leave from top of div
     function leave(){
-        setTiptitle(false)
-        
+        setTiptitle(false) 
     }
-    
+
     //Humburger Icon default false '='
     const HumIcon=({icon})=>{
         isOpen(icon)
@@ -63,8 +61,8 @@ function Header({isOpen}){
                     </svg>
                 </button>
             </div>
-            <div className="hidden md:grid bg-neutral-500 col-start-2 col-end-6 relative content-center justify-items-center" onMouseLeave={()=>{leave()}}>
-                <Menu2 value={setTiptitle} css={`bg-slate-700`} icon={true}/>
+            <div className="hidden md:grid  col-start-2 col-end-6 relative content-center justify-items-center" onMouseLeave={leave}>
+                <Menu2 value={setTiptitle} css={``} icon={true}/>
                 <Tooltip2 value={tiptitle}/>
             </div>
             <div className="bg-white col-start-6">Hello</div>

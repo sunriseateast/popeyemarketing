@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 
 function Menu2({value,css,icon}){
     let [hmopen,setHmopen]=useState(icon)
+
     function moenter(title){
         if(value){
             value(title)
@@ -18,16 +19,16 @@ function Menu2({value,css,icon}){
     if(icon){
         return(
             <nav className={`${css}`}>
-                <a href="#" className={`${smscreen} bg-lime-500 ${lgscreen}`} 
+                <a href="#" className={`${smscreen} ${lgscreen}`} 
                 onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
     
-                <a href="#" className={`${smscreen} delay-75 bg-amber-500 ${lgscreen}`} 
+                <a href="#" className={`${smscreen} delay-75  ${lgscreen}`} 
                 onMouseEnter={()=>{moenter('Reseller')}}>Reseller</a>
     
-                <a href="#" className={`${smscreen} delay-100 bg-teal-500 ${lgscreen}`} 
+                <a href="#" className={`${smscreen} delay-100 ${lgscreen}`} 
                 onMouseEnter={()=>{moenter('Support')}}>Support</a>
     
-                <a href="#" className={`${smscreen} delay-150 bg-blue-500 ${lgscreen}`}
+                <a href="#" className={`${smscreen} delay-150 ${lgscreen}`}
                 onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
             </nav>
         )
