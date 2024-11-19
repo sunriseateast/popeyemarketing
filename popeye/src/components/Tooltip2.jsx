@@ -1,4 +1,6 @@
 import React, {useRef} from 'react';
+import whatsapp from "/images/whatsapp.png";
+import data from "/images/database.png";
 
 function Tooltip2({value}){
 
@@ -8,15 +10,15 @@ function Tooltip2({value}){
     let newArrow=useRef()
     let prevArrow=useRef()
 
-    let newBox=useRef()
-    let prevBox=useRef()
+    let newContent=useRef()
+    let prevContent=useRef()
 
 
     //Div
     let size={
-        Softwares:'h-[230px] w-[500px] -translate-x-[140px]', 
-        Reseller: 'h-[200px] w-[400px] -translate-x-[50px]', 
-        Support:'h-[200px] w-[300px] -translate-x-[50px]',
+        Softwares:'h-[230px] w-[600px] -translate-x-[140px] ', 
+        Reseller: 'h-[200px] w-[400px] -translate-x-[50px] ', 
+        Support:'h-[200px] w-[300px] -translate-x-[50px] ',
         Book_a_Demo:'h-[150px] w-[300px] translate-x-[70px]',
     }
 
@@ -56,10 +58,37 @@ function Tooltip2({value}){
 
     let boxvisible=box[value]
     
+
+    let divs={
+        Softwares:
+        <div>
+            <div className='grid grid-cols-2 mt-[25px]'>
+                <div className='bg-slate-500 grid grid-cols-3'>
+                    <div className='bg-slate-200 grid justify-items-end'>
+                        <div className='bg-white rounded-[22px] grid content-center justify-items-center h-[60px] w-[60px]'>
+                            <img src={whatsapp} className='h-[35px] w-[35px]'/>
+                        </div>
+                    </div>
+                    <div className='bg-slate-300 col-span-2 grid content-center justify-items-center'>
+                        <p className='text-black font-medium'>Whatsapp Marketing</p>
+                    </div>
+                </div>
+                <div className='bg-lime-500'>
+                    <img src={data} className='h-[40px] w-[40px]'/>
+                </div>
+            </div>
+        </div>
+        
+    }
+    let content=divs[value]
+
     return(
         <>
-            <div className={`absolute transform-gpu z-10 translate-y-[80px] ${visible2} bg-slate-100 ${prevSize.current==undefined ? 'duration-75':'duration-300'} transition-all rounded-lg ease-in-out`}>
-                <div className={`absolute transform-gpu -translate-y-[5px] ${arrvisible2} bg-slate-100 rotate-45 transition-all ease-in-out ${prevArrow.current==undefined ? 'duration-75':'duration-300'}`}></div>
+            <div className={`absolute transform-gpu z-10 translate-y-[80px] ${visible2} bg-slate-100 ${newSize.current!==undefined && 'duration-300'} transition-all rounded-lg ease-in-out`}>
+                <div className={`absolute transform-gpu -translate-y-[5px] ${arrvisible2} bg-slate-100 rotate-45 transition-all ease-in-out`}></div>
+                <div className=' transform-gpu transition-all ease-in-out'>
+                    {content}
+                </div>
             </div>
             {boxvisible}
         </>
