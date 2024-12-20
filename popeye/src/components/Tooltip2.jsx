@@ -10,15 +10,11 @@ function Tooltip2({value}){
     let newArrow=useRef()
     let prevArrow=useRef()
 
-    let newContent=useRef()
-    let prevContent=useRef()
-
-
     //Div
     let size={
         Softwares:'h-[230px] w-[600px] -translate-x-[140px] ', 
         Reseller: 'h-[200px] w-[400px] -translate-x-[50px] ', 
-        Support:'h-[200px] w-[300px] -translate-x-[50px] ',
+        Support:'h-[200px] w-[300px] -translate-x-[50px]',
         Book_a_Demo:'h-[150px] w-[300px] translate-x-[70px]',
     }
 
@@ -33,7 +29,7 @@ function Tooltip2({value}){
 
     //Arrow
     let arrow={
-        Softwares:'translate-x-[215px] w-[15px] h-[15px]',
+        Softwares:'translate-x-[230px] w-[15px] h-[15px]',
         Reseller:'translate-x-[185px] w-[15px] h-[15px]',
         Support:'translate-x-[230px] w-[15px] h-[15px]',
         Book_a_Demo:'translate-x-[250px] w-[15px] h-[15px]'
@@ -47,7 +43,7 @@ function Tooltip2({value}){
     let arrvisible2=arrow[value] || `${prevArrow.current}`
 
 
-    //bgbox
+    //Bgbox
     let boxcss=`bg-zinc-400 translate-y-[21px] opacity-20 rounded transition-all ease-in-out duration-500`
     let box={
         Softwares:<div className={`absolute transform-gpu h-[38px] w-[91px] ${boxcss} -translate-x-[167px]`}></div>,
@@ -59,25 +55,99 @@ function Tooltip2({value}){
     let boxvisible=box[value]
     
 
+    //Content
     let divs={
         Softwares:
-        <div>
-            <div className='grid grid-cols-2 mt-[25px]'>
-                <div className='bg-slate-500 grid grid-cols-3'>
-                    <div className='bg-slate-200 grid justify-items-end'>
-                        <div className='bg-white rounded-[22px] grid content-center justify-items-center h-[60px] w-[60px]'>
-                            <img src={whatsapp} className='h-[35px] w-[35px]'/>
+            <div className='bg-slate-500 flex justify-center  rounded-lg h-full'>
+                <div className='bg-amber-500 w-full rounded-lg m-[10px]'>
+                   <div className='hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
+                        <div className='flex space-x-[10px]'>
+                            <div className="bg-white rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
+                                <img src={whatsapp} className="h-[35px] w-[35px]" alt="WhatsApp" />
+                            </div>
+                            <p className='whitespace-nowrap text-black font-medium mt-[17px]'>Whatsapp Marketing</p>
                         </div>
-                    </div>
-                    <div className='bg-slate-300 col-span-2 grid content-center justify-items-center'>
-                        <p className='text-black font-medium'>Whatsapp Marketing</p>
-                    </div>
+                        <p className='whitespace-nowrap mt-[9px] text-neutral-500'>Send Bulk Messages Anytime</p>
+                   </div>
                 </div>
-                <div className='bg-lime-500'>
-                    <img src={data} className='h-[40px] w-[40px]'/>
+                
+
+                <div className='flex bg-lime-500 w-full rounded-lg m-[10px]'>
+                    <p className='text-neutral-500'>Data Software</p>
                 </div>
             </div>
-        </div>
+
+        // Softwares:
+        //     <div className='flex m-[25px] space-x-24'>
+
+        //             <div className='whitespace-nowrap'>
+        //                 <div className="grid grid-cols-3 gap-3 items-center">
+        //                     <div className="flex justify-end">
+        //                         <div className="bg-white rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
+        //                             <img src={whatsapp} className="h-[35px] w-[35px]" alt="WhatsApp" />
+        //                         </div>
+        //                     </div>
+        //                     <div className="col-span-2 flex items-center justify-start">
+        //                         <p className="text-black font-medium">Whatsapp Marketing</p>
+        //                     </div>
+        //                 </div>
+        //             </div>
+
+        //             <div className='whitespace-nowrap'>
+        //                 <div className='grid grid-cols-3 gap-3 items-center'>
+        //                     <div className='flex justify-end'>
+        //                         <div className='bg-white rounded-[22px] flex items-center justify-center h-[60px] w-[60px]'>
+        //                             <img src={data} className='h-[35px] w-[35px]' alt='Data'/>
+        //                         </div>
+        //                     </div>
+        //                     <div className='col-span-2 flex item-center justify-start bg-amber-500'>
+        //                         <p className='text-neutral-500 font-medium grow-0'>Data Software</p>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //     </div>
+        
+    //     Supporta:
+    //     <div className={``}>
+    //     <div className='grid grid-cols-2 m-[25px]'>
+    //         <div className='grid grid-cols-3 gap-5 bg-amber-400'>
+    //             <div className='grid justify-items-end'>
+    //                 <div className='bg-white rounded-[22px] grid content-center justify-items-center h-[60px] w-[60px]'>
+    //                     {/* <img src={whatsapp} className='h-[35px] w-[35px]'/> */}
+    //                 </div>
+    //             </div>
+    //             <div className='col-span-2 grid content-center justify-items-start'>
+    //                 <p className='text-black font-medium'>Whatsapp Marketing</p>
+    //             </div>
+    //         </div>
+    //         <div className='grid grid-cols-3 gap-5 bg-lime-300'>
+    //             <div className='grid justify-items-end'>
+    //                 <div className='bg-white rounded-[22px] grid content-center justify-items-center h-[60px] w-[60px]'>
+    //                     {/* <img src={data} className='h-[35px] w-[35px]'/> */}
+    //                 </div>
+    //             </div>
+    //             <div className='col-span-2 grid content-center justify-items-start'>
+    //                 <p className='text-black font-medium'>Data Software</p>
+    //             </div>
+    //         </div>
+    //     </div>
+    // </div>
+
+    
+        // Softwares:
+        //     <div className='flex flex-row justify-between'>
+        //         <div className='flex flex-row'>
+        //             <div className='bg-white rounded-[22px] grid content-center justify-items-center h-[60px] w-[60px]'>
+        //             </div>
+        //             <p className='text-black font-medium flex-auto'>Whatsapp Marketing</p>
+        //         </div>
+        //         <div className='flex flex-row'>
+        //             <div className='bg-white rounded-[22px] grid content-center justify-items-center h-[60px] w-[60px]'>
+        //             </div>
+        //             <p className='text-black font-medium'>Data Software</p>
+        //         </div>
+        //     </div>
+            
         
     }
     let content=divs[value]
@@ -86,9 +156,7 @@ function Tooltip2({value}){
         <>
             <div className={`absolute transform-gpu z-10 translate-y-[80px] ${visible2} bg-slate-100 ${newSize.current!==undefined && 'duration-300'} transition-all rounded-lg ease-in-out`}>
                 <div className={`absolute transform-gpu -translate-y-[5px] ${arrvisible2} bg-slate-100 rotate-45 transition-all ease-in-out`}></div>
-                <div className=' transform-gpu transition-all ease-in-out'>
-                    {content}
-                </div>
+                {content}
             </div>
             {boxvisible}
         </>
