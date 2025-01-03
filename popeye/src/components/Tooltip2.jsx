@@ -58,8 +58,8 @@ function Tooltip2({value}){
     //Content
     let divs={
         Softwares:
-            <div className='bg-slate-500 flex justify-center  rounded-lg h-full'>
-                <div className='bg-amber-500 w-full rounded-lg m-[10px]'>
+        <div className='flex justify-center  rounded-lg h-full'>
+                <div className='w-full rounded-lg m-[10px]'>
                    <div className='hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
                         <div className='flex space-x-[10px]'>
                             <div className="bg-white rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
@@ -72,11 +72,57 @@ function Tooltip2({value}){
                 </div>
                 
 
-                <div className='flex bg-lime-500 w-full rounded-lg m-[10px]'>
-                    <p className='text-neutral-500'>Data Software</p>
+                <div className='overflow-hidden w-full rounded-lg m-[10px]'>
+                   <div className='hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
+                        <div className='flex space-x-[10px]'>
+                            <div className="bg-white rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
+                                <img src={whatsapp} className="h-[35px] w-[35px]" alt="WhatsApp" />
+                            </div>
+                            <p className='whitespace-nowrap text-black font-medium mt-[17px]'>Whatsapp Marketing</p>
+                        </div>
+                        <p className='whitespace-nowrap mt-[9px] text-neutral-500'>Send Bulk Messages Anytime</p>
+                   </div>
+                   <div className='flex justify-end m-[10px]'>
+                        <button className='bg-lime-500 whitespace-nowrap rounded-lg h-[40px] w-[110px]'>All Softwares</button>
+                   </div>
                 </div>
             </div>
+        // <div className="rounded-lg flex space-x-[20px] space-x-[120px]">
 
+        //    <div className='bg-slate-300 rounded-lg'>
+        //         <div className='flex h-[120px] w-[120px]'>
+        //             <div>
+        //                 <div className="bg-white rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
+        //                     <img src={whatsapp} className="h-[35px] w-[35px]" alt="WhatsApp" />
+        //                 </div>
+        //             </div>
+        //             <div>
+        //                 <p className='text-slate-500 whitespace-nowrap mt-[15px] ml-[10px]'>Whatsapp Marketing</p>
+        //             </div>
+        //         </div>
+        //         <div>
+        //             <p className='text-slate-500 whitespace-nowrap ml-[20px]'>Send Bulk Messages Anytime</p>
+        //         </div>
+        //    </div>
+
+        //     <div className='overflow-hidden rounded-lg bg-slate-300'>
+        //         <div className='flex'>
+        //             <div>
+        //                 <div className="bg-white rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
+        //                     <img src={whatsapp} className="h-[35px] w-[35px]" alt="WhatsApp" />
+        //                 </div>
+        //             </div>
+        //             <div>
+        //                 <p className='text-slate-500 whitespace-nowrap mt-[15px] ml-[10px]'>Data Software</p>
+        //             </div>
+        //         </div>
+        //         <div>
+        //             <p className='text-slate-500 whitespace-nowrap ml-[20px]'>Scrap Data Easily</p>
+        //         </div>
+        //     </div>
+        // </div>
+
+        
         // Softwares:
         //     <div className='flex m-[25px] space-x-24'>
 
