@@ -61,7 +61,7 @@ function Tooltip2({value}){
     let divs={
         Softwares:
         <div className='flex justify-center rounded-lg h-full'>
-                <div className='w-full rounded-lg m-[10px]'>
+                <div className='overflow-hidden w-full rounded-lg m-[10px]'>
                    <div className='group border border-slate-200 hover:cursor-pointer hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
                         <div className='flex space-x-[10px]'>
                             <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
