@@ -1,6 +1,8 @@
 import React, {useRef} from 'react';
 import whatsapp from "/images/whatsapp.png";
 import data from "/images/database.png";
+import windows from "/images/windows.png";
+import apple from "/images/apple.png"
 
 function Tooltip2({value}){
 
@@ -58,143 +60,40 @@ function Tooltip2({value}){
     //Content
     let divs={
         Softwares:
-        <div className='flex justify-center  rounded-lg h-full'>
+        <div className='flex justify-center rounded-lg h-full'>
                 <div className='w-full rounded-lg m-[10px]'>
-                   <div className='hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
+                   <div className='group border border-slate-200 hover:cursor-pointer hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
                         <div className='flex space-x-[10px]'>
-                            <div className="bg-white rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
+                            <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
                                 <img src={whatsapp} className="h-[35px] w-[35px]" alt="WhatsApp" />
                             </div>
                             <p className='whitespace-nowrap text-black font-medium mt-[17px]'>Whatsapp Marketing</p>
                         </div>
                         <p className='whitespace-nowrap mt-[9px] text-neutral-500'>Send Bulk Messages Anytime</p>
+                   </div>
+                   <div className='flex justify-start pt-[15px] m-[10px] transform-gpu transition-all ease-in-out'>
+                        <nav>
+                            <a href='#' className='text-neutral-400 underline underline-offset-1 hover:text-blue-400'>Terms & Conditions</a>
+                        </nav>
                    </div>
                 </div>
                 
 
                 <div className='overflow-hidden w-full rounded-lg m-[10px]'>
-                   <div className='hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
+                   <div className='group border border-slate-200 hover:cursor-pointer hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
                         <div className='flex space-x-[10px]'>
-                            <div className="bg-white rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
-                                <img src={whatsapp} className="h-[35px] w-[35px]" alt="WhatsApp" />
+                            <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
+                                <img src={data} className="h-[35px] w-[35px]" alt="data" />
                             </div>
-                            <p className='whitespace-nowrap text-black font-medium mt-[17px]'>Whatsapp Marketing</p>
+                            <p className='whitespace-nowrap text-black font-medium mt-[17px]'>Data Software</p>
                         </div>
-                        <p className='whitespace-nowrap mt-[9px] text-neutral-500'>Send Bulk Messages Anytime</p>
+                        <p className='whitespace-nowrap mt-[9px] text-neutral-500'>Scrap Genuine Data Easily</p>
                    </div>
-                   <div className='flex justify-end m-[10px]'>
-                        <button className='bg-lime-500 whitespace-nowrap rounded-lg h-[40px] w-[110px]'>All Softwares</button>
+                   <div className='flex justify-end m-[10px] transform-gpu transition-all ease-in-out'>
+                        <button className='text-black active:scale-95 active:bg-neutral-800 hover:shadow-md hover:bg-neutral-900 hover:text-white border border-neutral-900 rounded-lg p-[8px]'>All Softwares</button>
                    </div>
                 </div>
-            </div>
-        // <div className="rounded-lg flex space-x-[20px] space-x-[120px]">
-
-        //    <div className='bg-slate-300 rounded-lg'>
-        //         <div className='flex h-[120px] w-[120px]'>
-        //             <div>
-        //                 <div className="bg-white rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
-        //                     <img src={whatsapp} className="h-[35px] w-[35px]" alt="WhatsApp" />
-        //                 </div>
-        //             </div>
-        //             <div>
-        //                 <p className='text-slate-500 whitespace-nowrap mt-[15px] ml-[10px]'>Whatsapp Marketing</p>
-        //             </div>
-        //         </div>
-        //         <div>
-        //             <p className='text-slate-500 whitespace-nowrap ml-[20px]'>Send Bulk Messages Anytime</p>
-        //         </div>
-        //    </div>
-
-        //     <div className='overflow-hidden rounded-lg bg-slate-300'>
-        //         <div className='flex'>
-        //             <div>
-        //                 <div className="bg-white rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
-        //                     <img src={whatsapp} className="h-[35px] w-[35px]" alt="WhatsApp" />
-        //                 </div>
-        //             </div>
-        //             <div>
-        //                 <p className='text-slate-500 whitespace-nowrap mt-[15px] ml-[10px]'>Data Software</p>
-        //             </div>
-        //         </div>
-        //         <div>
-        //             <p className='text-slate-500 whitespace-nowrap ml-[20px]'>Scrap Data Easily</p>
-        //         </div>
-        //     </div>
-        // </div>
-
-        
-        // Softwares:
-        //     <div className='flex m-[25px] space-x-24'>
-
-        //             <div className='whitespace-nowrap'>
-        //                 <div className="grid grid-cols-3 gap-3 items-center">
-        //                     <div className="flex justify-end">
-        //                         <div className="bg-white rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
-        //                             <img src={whatsapp} className="h-[35px] w-[35px]" alt="WhatsApp" />
-        //                         </div>
-        //                     </div>
-        //                     <div className="col-span-2 flex items-center justify-start">
-        //                         <p className="text-black font-medium">Whatsapp Marketing</p>
-        //                     </div>
-        //                 </div>
-        //             </div>
-
-        //             <div className='whitespace-nowrap'>
-        //                 <div className='grid grid-cols-3 gap-3 items-center'>
-        //                     <div className='flex justify-end'>
-        //                         <div className='bg-white rounded-[22px] flex items-center justify-center h-[60px] w-[60px]'>
-        //                             <img src={data} className='h-[35px] w-[35px]' alt='Data'/>
-        //                         </div>
-        //                     </div>
-        //                     <div className='col-span-2 flex item-center justify-start bg-amber-500'>
-        //                         <p className='text-neutral-500 font-medium grow-0'>Data Software</p>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //     </div>
-        
-    //     Supporta:
-    //     <div className={``}>
-    //     <div className='grid grid-cols-2 m-[25px]'>
-    //         <div className='grid grid-cols-3 gap-5 bg-amber-400'>
-    //             <div className='grid justify-items-end'>
-    //                 <div className='bg-white rounded-[22px] grid content-center justify-items-center h-[60px] w-[60px]'>
-    //                     {/* <img src={whatsapp} className='h-[35px] w-[35px]'/> */}
-    //                 </div>
-    //             </div>
-    //             <div className='col-span-2 grid content-center justify-items-start'>
-    //                 <p className='text-black font-medium'>Whatsapp Marketing</p>
-    //             </div>
-    //         </div>
-    //         <div className='grid grid-cols-3 gap-5 bg-lime-300'>
-    //             <div className='grid justify-items-end'>
-    //                 <div className='bg-white rounded-[22px] grid content-center justify-items-center h-[60px] w-[60px]'>
-    //                     {/* <img src={data} className='h-[35px] w-[35px]'/> */}
-    //                 </div>
-    //             </div>
-    //             <div className='col-span-2 grid content-center justify-items-start'>
-    //                 <p className='text-black font-medium'>Data Software</p>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>
-
-    
-        // Softwares:
-        //     <div className='flex flex-row justify-between'>
-        //         <div className='flex flex-row'>
-        //             <div className='bg-white rounded-[22px] grid content-center justify-items-center h-[60px] w-[60px]'>
-        //             </div>
-        //             <p className='text-black font-medium flex-auto'>Whatsapp Marketing</p>
-        //         </div>
-        //         <div className='flex flex-row'>
-        //             <div className='bg-white rounded-[22px] grid content-center justify-items-center h-[60px] w-[60px]'>
-        //             </div>
-        //             <p className='text-black font-medium'>Data Software</p>
-        //         </div>
-        //     </div>
-            
-        
+            </div>  
     }
     let content=divs[value]
 
