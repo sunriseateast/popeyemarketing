@@ -1,8 +1,7 @@
 import React, {useRef} from 'react';
 import whatsapp from "/images/whatsapp.png";
 import data from "/images/database.png";
-import windows from "/images/windows.png";
-import apple from "/images/apple.png"
+import user from "/images/user.png";
 
 function Tooltip2({value}){
 
@@ -15,7 +14,7 @@ function Tooltip2({value}){
     //Div
     let size={
         Softwares:'h-[230px] w-[600px] -translate-x-[140px] ', 
-        Reseller: 'h-[200px] w-[400px] -translate-x-[50px] ', 
+        Reseller: 'h-[300px] w-[300px] -translate-x-[50px] ', 
         Support:'h-[200px] w-[300px] -translate-x-[50px]',
         Book_a_Demo:'h-[150px] w-[300px] translate-x-[70px]',
     }
@@ -71,9 +70,9 @@ function Tooltip2({value}){
                         </div>
                         <p className='whitespace-nowrap mt-[9px] text-neutral-500'>Send Bulk Messages Anytime</p>
                    </div>
-                   <div className='flex justify-start pt-[15px] m-[10px] transform-gpu transition-all ease-in-out'>
+                   <div className='flex justify-start pt-[13px] m-[10px] transform-gpu transition-all ease-in-out'>
                         <nav>
-                            <a href='#' className='text-neutral-400 underline underline-offset-1 hover:text-blue-400'>Terms & Conditions</a>
+                            <a href='#' className='text-neutral-400 underline underline-offset-1 hover:text-blue-500 whitespace-nowrap'>Terms & Conditions</a>
                         </nav>
                    </div>
                 </div>
@@ -93,10 +92,45 @@ function Tooltip2({value}){
                         <button className='text-black active:scale-95 active:bg-neutral-800 hover:shadow-md hover:bg-neutral-900 hover:text-white border border-neutral-900 rounded-lg p-[8px]'>All Softwares</button>
                    </div>
                 </div>
-            </div>  
+            </div>,
+
+        Reseller:
+        <div className='flex justify-center h-full rounded-lg'>
+            <div className='flex flex-col m-[20px] space-y-[20px]'>
+
+                <div className='overflow-hidden flex flex-col space-y-[10px]'>
+                    <div className="flex items-center justify-center">
+                        <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
+                            <img src={user} className="h-[35px] w-[35px]" alt="data" />
+                        </div>
+                    </div>
+                    <div className="text-center overflow-hidden w-[290px]">
+                        <p className='text-wrap text-neutral-500'>
+                            Gain access to top-notch software solutions and 
+                            earn profits by helping businesses grow...
+                            <span>
+                                <a href='#' className='underline underline-offset-1 hover:text-blue-500'>Know More</a>
+                            </span>
+                        </p>
+                    </div> 
+                </div>
+
+
+                <div className='overflow-hidden flex flex-col space-y-[10px]'>
+                    <div className='flex items-center justify-center'>
+                        <button className='text-black active:scale-95 active:bg-neutral-800 hover:shadow-md hover:bg-neutral-900 hover:text-white border border-neutral-900 rounded-lg p-[8px]'>Master Login</button>
+                    </div>
+                    <div className='flex items-center justify-center'>
+                        <button className='text-black active:scale-95 active:bg-neutral-800 hover:shadow-md hover:bg-neutral-900 hover:text-white border border-neutral-900 rounded-lg p-[8px]'>Reseller Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     }
     let content=divs[value]
 
+    // Gain access to top-notch software solutions and 
+    // earn profits by helping businesses grow...
     return(
         <>
             <div className={`absolute transform-gpu z-10 translate-y-[80px] ${visible2} bg-slate-100 ${newSize.current!==undefined && 'duration-300'} transition-all rounded-lg ease-in-out`}>
