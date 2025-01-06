@@ -2,6 +2,7 @@ import React, {useRef} from 'react';
 import whatsapp from "/images/whatsapp.png";
 import data from "/images/database.png";
 import user from "/images/user.png";
+import './components.css';
 
 function Tooltip2({value}){
 
@@ -109,14 +110,14 @@ function Tooltip2({value}){
                             Gain access to top-notch software solutions and 
                             earn profits by helping businesses grow...
                             <span>
-                                <a href='#' className='underline underline-offset-1 hover:text-blue-500'>Know More</a>
+                                <a href='#' className='hover:text-blue-500 animated-gradient'>Know More</a>
                             </span>
                         </p>
                     </div> 
                 </div>
 
 
-                <div className='overflow-hidden flex flex-col space-y-[10px]'>
+                <div className='flex flex-col space-y-[10px]'>
                     <div className='flex items-center justify-center'>
                         <button className='text-black active:scale-95 active:bg-neutral-800 hover:shadow-md hover:bg-neutral-900 hover:text-white border border-neutral-900 rounded-lg p-[8px]'>Master Login</button>
                     </div>
