@@ -2,6 +2,7 @@ import React, {useRef} from 'react';
 import whatsapp from "/images/whatsapp.png";
 import data from "/images/database.png";
 import user from "/images/user.png";
+import chat from "/images/chat.png";
 import './components.css';
 
 function Tooltip2({value}){
@@ -16,7 +17,7 @@ function Tooltip2({value}){
     let size={
         Softwares:'h-[230px] w-[600px] -translate-x-[140px] ', 
         Reseller: 'h-[300px] w-[300px] -translate-x-[50px] ', 
-        Support:'h-[200px] w-[300px] -translate-x-[50px]',
+        Support:'h-[180px] w-[310px] -translate-x-[50px]',
         Book_a_Demo:'h-[150px] w-[300px] translate-x-[70px]',
     }
 
@@ -110,7 +111,7 @@ function Tooltip2({value}){
                             Gain access to top-notch software solutions and 
                             earn profits by helping businesses grow...
                             <span>
-                                <a href='#' className='hover:text-blue-500 animated-gradient'>Know More</a>
+                                <a href='#' className='animated-gradient'>Know More</a>
                             </span>
                         </p>
                     </div> 
@@ -123,6 +124,24 @@ function Tooltip2({value}){
                     </div>
                     <div className='flex items-center justify-center'>
                         <button className='text-black active:scale-95 active:bg-neutral-800 hover:shadow-md hover:bg-neutral-900 hover:text-white border border-neutral-900 rounded-lg p-[8px]'>Reseller Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>,
+
+        Support:
+        <div className='flex justify-center h-full rounded-lg '>
+            <div className='flex items-center justify-center m-[20px] hover:cursor-pointer hover:bg-slate-200 rounded-lg'>
+                <div className='flex m-[10px] overflow-hidden gap-x-[10px]'>
+                    <div className='shrink-0'>
+                        <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
+                            <img src={chat} className="h-[35px] w-[35px]" alt="chat" />
+                        </div>
+                    </div>
+                    <div className='bg-amber-500'>
+                        <p className='text-neutral-500'>
+                            Our <span className='text-black font-bold'>Dedicated Support</span> Team is here to ensure a smooth experience
+                        </p>
                     </div>
                 </div>
             </div>
