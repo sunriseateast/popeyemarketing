@@ -132,13 +132,13 @@ function Tooltip2({value}){
         Support:
         <div className='flex justify-center h-full rounded-lg '>
             <div className='flex items-center justify-center m-[20px] hover:cursor-pointer hover:bg-slate-200 rounded-lg'>
-                <div className='flex m-[10px] overflow-hidden gap-x-[10px]'>
+                <div className='flex m-[7px] overflow-hidden gap-x-[10px]'>
                     <div className='shrink-0'>
                         <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
                             <img src={chat} className="h-[35px] w-[35px]" alt="chat" />
                         </div>
                     </div>
-                    <div className='bg-amber-500'>
+                    <div className='w-[200px]'>
                         <p className='text-neutral-500'>
                             Our <span className='text-black font-bold'>Dedicated Support</span> Team is here to ensure a smooth experience
                         </p>
