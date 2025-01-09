@@ -65,7 +65,7 @@ function Header({isOpen}){
                 <Menu2 value={setTiptitle} css={``} icon={true}/>
                 <Tooltip2 value={tiptitle}/>
             </div>
-            <div className="bg-white col-start-6">Hello</div>
+            <div className="hidden md:grid bg-white col-start-6">Hello</div>
             <div className="h-[400px] w-[320px] place-content-center text-xl md:hidden">
                 <Menu2 css={`grid grid-row-4 place-items-center gap-y-[40px]`} icon={hmopen}/>
             </div>
