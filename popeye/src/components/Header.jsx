@@ -54,7 +54,7 @@ function Header({isOpen}){
             <div className="bg-lime-500 pl-3 pt-3 col-start-1 md:pt-5 md:pl-24">
                 <img src={logo} className='h-10 md:h-14' loading="eager"/>
             </div>
-            <div className="justify-self-end pr-5 pt-5 col-start-6 md:hidden">
+            <div className="bg-lime-500 justify-self-end pr-5 pt-5 col-start-6 md:hidden">
                 <button onClick={()=>setHmopen((prev)=>!prev)}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 cursor-pointer transition duration-150 ease-in-out" fill="none" viewBox="0 0 24 24" id="hamburger">
                         <HumIcon icon={hmopen}/>
@@ -65,8 +65,7 @@ function Header({isOpen}){
                 <Menu2 value={setTiptitle} css={``} icon={true}/>
                 <Tooltip2 value={tiptitle}/>
             </div>
-            <div className="hidden md:grid bg-white col-start-6">Hello</div>
-            <div className="h-[400px] w-[320px] place-content-center text-xl md:hidden">
+            <div className="mt-[150px] col-start-1 col-end-7 flex items-center justify-center text-xl md:hidden">
                 <Menu2 css={`grid grid-row-4 place-items-center gap-y-[40px]`} icon={hmopen}/>
             </div>
         </div>

@@ -18,7 +18,6 @@ function Tooltip2({value}){
         Softwares:'h-[230px] w-[600px] -translate-x-[140px] ', 
         Reseller: 'h-[300px] w-[300px] -translate-x-[50px] ', 
         Support:'h-[180px] w-[310px] -translate-x-[50px]',
-        Book_a_Demoo:'h-[150px] w-[300px] translate-x-[70px]',
     }
 
     let visible=size[value]
@@ -34,8 +33,7 @@ function Tooltip2({value}){
     let arrow={
         Softwares:'translate-x-[230px] w-[15px] h-[15px]',
         Reseller:'translate-x-[185px] w-[15px] h-[15px]',
-        Support:'translate-x-[230px] w-[15px] h-[15px]',
-        Book_a_Demoo:'translate-x-[250px] w-[15px] h-[15px]'
+        Support:'translate-x-[230px] w-[15px] h-[15px]'
     }
 
     let arrvisible=arrow[value]
