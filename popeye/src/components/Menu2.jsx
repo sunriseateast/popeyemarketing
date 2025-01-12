@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 function Menu2({value,css,icon}){
     let [hmopen,setHmopen]=useState(icon)   // Get hm icon
-    let [clk_value,setClk_Value]=useState(false)    //To set values for sm screen
+    let [clk_value,setClk_Value]=useState(null)    //To set values for sm screen
 
     useEffect(()=>{
         setHmopen(icon)
@@ -24,16 +24,21 @@ function Menu2({value,css,icon}){
     //Object to show for sm screen
     const divs={
         Softwares:
-        <div className="md:hidden h-[550px] w-80 bg-slate-100 text-black rounded-lg ">
+        <div className="md:hidden h-[550px] w-80 delay-150 translate-y-[170px] bg-slate-100 text-black rounded-lg transition-all duration-300 transform-gpu ease-in-out ">
             Softwares Clicked
         </div>,
 
         Reseller:
-        <div className="md:hidden h-[100px] w-[120px] bg-slate-100 text-black">
+        <div className="md:hidden h-[550px] w-80 delay-150 translate-y-[170px] bg-slate-100 text-black rounded-lg transition-all duration-300 transform-gpu ease-in-out">
             Reseller Clicked
         </div>
+        
     }
-    const content=divs[clk_value]
+    const content=divs[clk_value] || (
+        <div className="md:hidden w-80 opacity-0 delay-150 translate-y-[380px] bg-slate-100 text-black rounded-lg transition-all transform-gpu ease-in-out">
+            Hello
+        </div>
+    )
 
     // CSS for lg & sm screen
     const lgscreen=`md:opacity-100 md:z-10 md:p-[10px] md:m-[10px] md:text-base md:border-none`
@@ -55,8 +60,7 @@ function Menu2({value,css,icon}){
                     <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onClick={()=>{click('Book_a_Demo')}}
                     onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
                 </nav>
-
-                <div className={`absolute ${content ? 'translate-y-[165px] transition-all duration-300 transform-gpu ease-in-out':'translate-y-[230px] transition-all duration-300 transform-gpu ease-in-out'}`}>
+                <div className="absolute">
                     {content}
                 </div>
             </div>
