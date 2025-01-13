@@ -24,19 +24,28 @@ function Menu2({value,css,icon}){
     //Object to show for sm screen
     const divs={
         Softwares:
-        <div className="md:hidden h-[550px] w-80 delay-150 translate-y-[170px] bg-slate-100 text-black rounded-lg transition-all duration-300 transform-gpu ease-in-out ">
+        <div className="md:hidden h-[550px] w-80 delay-150  bg-slate-100 text-black rounded-lg transition-all duration-500 transform-gpu ease-in-out ">
             Softwares Clicked
         </div>,
 
         Reseller:
-        <div className="md:hidden h-[550px] w-80 delay-150 translate-y-[170px] bg-slate-100 text-black rounded-lg transition-all duration-300 transform-gpu ease-in-out">
+        <div className="md:hidden h-[550px] w-80 delay-150  bg-slate-100 text-black rounded-lg transition-all duration-500 transform-gpu ease-in-out ">
             Reseller Clicked
-        </div>
+        </div>,
+
+        Support:
+        <div className="md:hidden h-[550px] w-80 delay-150 bg-slate-100 text-black rounded-lg transition-all duration-500 transform-gpu ease-in-out ">
+            Support Clicked
+        </div>,
+
+        Book_a_Demo:
+        <div className="md:hidden h-[550px] w-80 delay-150  bg-slate-100 text-black rounded-lg transition-all duration-500 transform-gpu ease-in-out ">
+            Book a Demo Clicked
+        </div>,
         
     }
     const content=divs[clk_value] || (
-        <div className="md:hidden w-80 opacity-0 delay-150 translate-y-[380px] bg-slate-100 text-black rounded-lg transition-all transform-gpu ease-in-out">
-            Hello
+        <div className="md:hidden h-[50px] w-80 delay-150 translate-y-[600px] bg-slate-100 text-black rounded-lg transition-all transform-gpu ease-in-out">
         </div>
     )
 
@@ -46,24 +55,27 @@ function Menu2({value,css,icon}){
 
     if(icon){
         return(
-            <div className="flex items-center justify-center relative">
-                 <nav className={`${css}`}>
-                    <a href="#" className={`${lgscreen} ${smscreen}`} onClick={()=>{click('Softwares')}}
-                    onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
-                    
-                    <a href="#" className={`${smscreen} delay-75  ${lgscreen}`} onClick={()=>{click('Reseller')}}
-                    onMouseEnter={()=>{moenter('Reseller')}}>Reseller</a>
+            <div className="relative">
+                <div className="grid place-items-center justify-content-center">
+                    <nav className={`${css}`}>
+                        <a href="#" className={`${lgscreen} ${smscreen}`} onClick={()=>{click('Softwares')}}
+                        onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
+                        
+                        <a href="#" className={`${smscreen} delay-75  ${lgscreen}`} onClick={()=>{click('Reseller')}}
+                        onMouseEnter={()=>{moenter('Reseller')}}>Reseller</a>
 
-                    <a href="#" className={`${smscreen} delay-100 ${lgscreen}`} onClick={()=>{click('Support')}}
-                    onMouseEnter={()=>{moenter('Support')}}>Support</a>
-        
-                    <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onClick={()=>{click('Book_a_Demo')}}
-                    onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
-                </nav>
-                <div className="absolute">
-                    {content}
+                        <a href="#" className={`${smscreen} delay-100 ${lgscreen}`} onClick={()=>{click('Support')}}
+                        onMouseEnter={()=>{moenter('Support')}}>Support</a>
+            
+                        <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onClick={()=>{click('Book_a_Demo')}}
+                        onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
+                    </nav>
+                    <div className="absolute top-[10px]">
+                        {content}
+                    </div>
                 </div>
             </div>
+            
         )
     }
 }
