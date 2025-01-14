@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import whatsapp from "/images/whatsapp.png";
+import data from "/images/database.png";
 
 function Menu2({value,css,icon}){
     let [hmopen,setHmopen]=useState(icon)   // Get hm icon
@@ -24,16 +26,42 @@ function Menu2({value,css,icon}){
     }
     
     //Object to show for sm screen
-    const divcss=`flex flex-col items-center justify-center bg-amber-500 space-y-[100px] h-[550px] m-[20px] rounded-lg transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[300px]'}`
+    const divcss=`flex flex-col h-[550px] m-[20px] rounded-lg transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[400px]'}`
     const divs={
 
         Softwares:
         <div className={divcss}>
-            Software clicked
+            <div className="border-slate-200 bg-slate-200 m-[10px] rounded-lg p-[13px]">
+               <div className="flex space-x-[10px] transition-all transform-gpu ease-in-out">
+                    <div className="bg-white rounded-[22px] shrink-0 flex items-center justify-center h-[50px] w-[50px]">
+                        <img src={whatsapp} className="h-[30px] w-[30px]" alt="WhatsApp" />
+                    </div>
+                    <p className='text-[17px] text-black font-medium mt-[12px] shrink-0'>Whatsapp Marketing</p>
+               </div>
+               <p className='mt-[9px] text-base text-neutral-500'>Send Bulk Messages Anytime</p>
+            </div>
+            
+            <div className={`border-slate-200 bg-slate-200 m-[10px] rounded-lg p-[13px] transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[400px]'}`}>
+               <div className="flex space-x-[10px] transition-all transform-gpu ease-in-out">
+                    <div className="bg-white rounded-[22px] shrink-0 flex items-center justify-center h-[50px] w-[50px]">
+                        <img src={data} className="h-[30px] w-[30px]" alt="data" />
+                    </div>
+                    <p className='text-[17px] text-black font-medium mt-[12px] shrink-0'>Data Software</p>
+               </div>
+               <p className='mt-[9px] text-base text-neutral-500'>Scrap Genuine Data Easily</p>
+            </div>
+            <div className={`mt-[20px] flex items-center justify-center transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[400px]'}`}>
+                <button className='text-base text-black active:text-slate-100 active:bg-neutral-800 border border-neutral-900 rounded-lg p-[8px]'>All Softwares</button>
+            </div>
+            <div className={`flex items-center justify-center mt-[30px] transform-gpu transition-all ease-in-out duration-700 ${isRendered ? '' :'translate-y-[400px]'}`}>
+                <nav>
+                    <a href='#' className='underline underline-offset-1 text-blue-500 text-sm'>Terms & Conditions</a>
+                </nav>
+            </div>
         </div>,
          
          Reseller:
-         <div className={`flex flex-col items-center justify-center space-y-[100px] h-[550px] m-[20px] rounded-lg transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[300px]'}`}>
+         <div className={divcss}>
              Reseller clicked
          </div>
         
