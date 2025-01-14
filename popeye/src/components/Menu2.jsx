@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 function Menu2({value,css,icon}){
     let [hmopen,setHmopen]=useState(icon)   // Get hm icon
     let [clk_value,setClk_Value]=useState(null)    //To set values for sm screen
-    let [openc,setOpenc]=useState(false)
     let [isRendered, setIsRendered] = useState(false);
 
     useEffect(()=>{
@@ -21,41 +20,25 @@ function Menu2({value,css,icon}){
     //Function to pass value for sm screen
     function click(value){
         setClk_Value(value)
-        setIsRendered(false)
         setTimeout(()=>{setIsRendered(true)},700)
     }
     
     //Object to show for sm screen
-    const divcss='md:hidden h-[550px] w-80 delay-150  bg-slate-100 text-black rounded-lg transition-all duration-700 transform-gpu ease-in-out'
+    const divcss=`flex flex-col items-center justify-center bg-amber-500 space-y-[100px] h-[550px] m-[20px] rounded-lg transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[300px]'}`
     const divs={
 
         Softwares:
-        <div className={`${divcss}`}>
-            <div className={`flex flex-col items-center justify-center space-y-[100px] bg-amber-500 h-[550px] m-[15px] rounded-lg transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[300px]'}`}>
-
-            </div>
+        <div className={divcss}>
+            Software clicked
         </div>,
-
-        Reseller:
-        <div className={`${divcss}`}>
-            Reseller Clicked
-        </div>,
-
-        Support:
-        <div className={`${divcss}`}>
-            Support Clicked
-        </div>,
-
-        Book_a_Demo:
-        <div className={`${divcss}`}>
-            Book a Demo Clicked
-        </div>,
+         
+         Reseller:
+         <div className={`flex flex-col items-center justify-center space-y-[100px] h-[550px] m-[20px] rounded-lg transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[300px]'}`}>
+             Reseller clicked
+         </div>
         
     }
-    const content=divs[clk_value] || (
-        <div className="md:hidden h-[50px] w-80 delay-150 translate-y-[600px] bg-slate-100 text-black rounded-lg transition-all transform-gpu ease-in-out">
-        </div>
-    )
+    const content=divs[clk_value]
 
 
     // CSS for lg & sm screen
@@ -79,8 +62,8 @@ function Menu2({value,css,icon}){
                         <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onClick={()=>{click('Book_a_Demo')}}
                         onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
                     </nav>
-                    <div className="absolute flex top-0">
-                        {content}
+                    <div className={`md:hidden absolute top-1 h-[550px] w-80 delay-150 ${clk_value ? '':'translate-y-[550px]'} bg-slate-100 text-black duration-700 rounded-lg transition-all transform-gpu ease-in-out`}>
+                        {content} 
                     </div>
                 </div>
             </div>
