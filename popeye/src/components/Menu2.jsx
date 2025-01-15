@@ -10,7 +10,7 @@ function Menu2({value,css,icon}){
     useEffect(()=>{
         setHmopen(icon)
     },[icon])
-
+    
 
     //Function to pass value for lg screen
     function moenter(title){
@@ -26,7 +26,7 @@ function Menu2({value,css,icon}){
     }
     
     //Object to show for sm screen
-    const divcss=`flex flex-col h-[550px] m-[20px] rounded-lg transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[400px]'}`
+    const divcss=`flex flex-col  m-[20px] rounded-lg transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[400px]'}`
     const divs={
 
         Softwares:
@@ -90,12 +90,11 @@ function Menu2({value,css,icon}){
                         <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onClick={()=>{click('Book_a_Demo')}}
                         onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
                     </nav>
-                    <div className={`md:hidden absolute top-1 h-[550px] w-80 delay-150 ${clk_value ? '':'translate-y-[550px]'} bg-slate-100 text-black duration-700 rounded-lg transition-all transform-gpu ease-in-out`}>
+                    <div className={`md:hidden absolute overflow-hidden top-2 w-80 delay-150 ${clk_value ? '':'translate-y-[550px]'} bg-slate-100 text-black duration-700 rounded-lg transition-all transform-gpu ease-in-out`}>
                         {content} 
                     </div>
                 </div>
             </div>
-            
         )
     }
 }
