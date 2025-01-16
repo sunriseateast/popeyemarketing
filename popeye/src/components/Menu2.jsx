@@ -26,7 +26,7 @@ function Menu2({value,css,icon}){
     }
     
     //Object to show for sm screen
-    const divcss=`flex flex-col  m-[20px] rounded-lg transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[400px]'}`
+    const divcss=`flex flex-col m-[20px] rounded-lg transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[400px]'}`
     const divs={
 
         Softwares:
@@ -63,7 +63,17 @@ function Menu2({value,css,icon}){
          Reseller:
          <div className={divcss}>
              Reseller clicked
-         </div>
+         </div>,
+
+         Support:
+         <div className={divcss}>
+             Support clicked
+         </div>,
+
+         Book_a_Demo:
+         <div className={divcss}>
+             Book a Demo clicked
+         </div>,
         
     }
     const content=divs[clk_value]
@@ -71,13 +81,12 @@ function Menu2({value,css,icon}){
 
     // CSS for lg & sm screen
     const lgscreen=`md:opacity-100 md:z-10 md:p-[10px] md:m-[10px] md:text-base md:border-none`
-    const smscreen=`opacity-0 ${hmopen && 'transition-all opacity-100 duration-300 transform-gpu -translate-y-[30px] ease-in-out border-b border-slate-300 '}`
-
+    const smscreen=`opacity-0 ${hmopen && `transition-all opacity-100 duration-300 transform-gpu ease-in-out`}`
     if(icon){
         return(
-            <div className="relative">
-                <div className="grid place-items-center justify-content-center">
-                    <nav className={`${css}`}>
+            <div className="bg-lime-500 h-full w-full relative">
+                <div className="bg-amber-500 grid place-items-center justify-content-center">
+                    <nav className={`${clk_value ? 'transition-all duration-700 transform-gpu ease-in-out whitespace-nowrap -translate-y-[40px] bg-slate-500 overflow-x-auto flex flex-row gap-x-[20px] w-[120px]':css}`}>
                         <a href="#" className={`${lgscreen} ${smscreen}`} onClick={()=>{click('Softwares')}}
                         onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
                         
@@ -90,7 +99,7 @@ function Menu2({value,css,icon}){
                         <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onClick={()=>{click('Book_a_Demo')}}
                         onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
                     </nav>
-                    <div className={`md:hidden absolute overflow-hidden top-2 w-80 delay-150 ${clk_value ? '':'translate-y-[550px]'} bg-slate-100 text-black duration-700 rounded-lg transition-all transform-gpu ease-in-out`}>
+                    <div className={`md:hidden absolute overflow-hidden top-2 w-80 delay-150 ${clk_value ? '':'translate-y-[600px]'} bg-slate-100 text-black duration-700 rounded-lg transition-all transform-gpu ease-in-out`}>
                         {content} 
                     </div>
                 </div>
