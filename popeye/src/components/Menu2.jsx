@@ -84,9 +84,21 @@ function Menu2({value,css,icon}){
     const smscreen=`opacity-0 ${hmopen && `transition-all opacity-100 duration-300 transform-gpu ease-in-out`}`
     if(icon){
         return(
-            <div className="bg-lime-500 h-full w-full relative">
-                <div className="bg-amber-500 grid place-items-center justify-content-center">
-                    <nav className={`${clk_value ? 'transition-all duration-700 transform-gpu ease-in-out whitespace-nowrap -translate-y-[40px] bg-slate-500 overflow-x-auto flex flex-row gap-x-[20px] w-[120px]':css}`}>
+            <div className="h-full w-full relative">
+                <div className="grid place-items-center justify-content-center">
+                    <nav className={`${clk_value ? 'transition-all duration-700 transform-gpu ease-in-out whitespace-nowrap -translate-y-[45px] bg-zinc-950 overflow-x-auto flex flex-row gap-x-[25px] py-[10px] w-[125px] nav':css}`}>
+                        <a href="#" className={`${lgscreen} ${smscreen}`} onClick={()=>{click('Softwares')}}
+                        onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
+                        
+                        <a href="#" className={`${smscreen} delay-75  ${lgscreen}`} onClick={()=>{click('Reseller')}}
+                        onMouseEnter={()=>{moenter('Reseller')}}>Reseller</a>
+
+                        <a href="#" className={`${smscreen} delay-100 ${lgscreen}`} onClick={()=>{click('Support')}}
+                        onMouseEnter={()=>{moenter('Support')}}>Support</a>
+            
+                        <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onClick={()=>{click('Book_a_Demo')}}
+                        onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
+
                         <a href="#" className={`${lgscreen} ${smscreen}`} onClick={()=>{click('Softwares')}}
                         onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
                         
