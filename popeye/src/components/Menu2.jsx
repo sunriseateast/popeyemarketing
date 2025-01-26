@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState,useRef} from "react"
 import whatsapp from "/images/whatsapp.png";
 import data from "/images/database.png";
 
@@ -6,12 +6,30 @@ function Menu2({value,css,icon}){
     let [hmopen,setHmopen]=useState(icon)   // Get hm icon
     let [clk_value,setClk_Value]=useState(null)    //To set values for sm screen
     let [isRendered, setIsRendered] = useState(false);
+    const containerRef = useRef(null);
+    let timeout
 
     useEffect(()=>{
         setHmopen(icon)
     },[icon])
-    
 
+    const handleScroll = () => {
+        const container = containerRef.current;
+        if (container) {
+            // Check if the user has scrolled to the end
+            const isAtEnd = container.scrollTop + container.clientHeight >= container.scrollHeight - 5;
+            if(isAtEnd){
+                const clone=container.childNodes
+                console.log(clone)
+                clone.forEach(child => {
+                    // Append each child node individually
+                    container.append(child.cloneNode(true)); // Use cloneNode to create a deep copy
+                });
+            }
+
+        }
+    }
+    
     //Function to pass value for lg screen
     function moenter(title){
         if(value){
@@ -78,7 +96,6 @@ function Menu2({value,css,icon}){
     }
     const content=divs[clk_value]
 
-
     // CSS for lg & sm screen
     const lgscreen=`md:opacity-100 md:z-10 md:p-[10px] md:m-[10px] md:text-base md:border-none`
     const smscreen=`opacity-0 ${hmopen && `transition-all opacity-100 duration-300 transform-gpu ease-in-out`}`
@@ -86,32 +103,25 @@ function Menu2({value,css,icon}){
         return(
             <div className="h-full w-full relative">
                 <div className="grid place-items-center justify-content-center">
-                    <nav className={`${clk_value ? 'transition-all duration-700 transform-gpu ease-in-out whitespace-nowrap -translate-y-[45px] bg-zinc-950 overflow-x-auto flex flex-row gap-x-[25px] py-[10px] w-[125px] nav':css}`}>
-                        <a href="#" className={`${lgscreen} ${smscreen}`} onClick={()=>{click('Softwares')}}
-                        onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
-                        
-                        <a href="#" className={`${smscreen} delay-75  ${lgscreen}`} onClick={()=>{click('Reseller')}}
-                        onMouseEnter={()=>{moenter('Reseller')}}>Reseller</a>
+                    <nav ref={containerRef} onScroll={()=>{
+                        if (timeout) clearTimeout(timeout)
+                        timeout=setTimeout(handleScroll,100)
+                    }} 
+                    className={`${isRendered ? 'transition-all duration-700 transform-gpu ease-in-out whitespace-nowrap -translate-y-[45px] bg-zinc-900 overflow-x-auto flex flex-row gap-x-[25px] py-[10px] w-[125px] nav':css}`}>
+                            <a href="#" className={`${lgscreen} ${smscreen}`} onClick={()=>{click('Softwares')}}
+                            onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
+                            
+                            <a href="#" className={`${smscreen} delay-75  ${lgscreen}`} onClick={()=>{click('Reseller')}}
+                            onMouseEnter={()=>{moenter('Reseller')}}>Reseller</a>
 
-                        <a href="#" className={`${smscreen} delay-100 ${lgscreen}`} onClick={()=>{click('Support')}}
-                        onMouseEnter={()=>{moenter('Support')}}>Support</a>
-            
-                        <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onClick={()=>{click('Book_a_Demo')}}
-                        onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
-
-                        <a href="#" className={`${lgscreen} ${smscreen}`} onClick={()=>{click('Softwares')}}
-                        onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
-                        
-                        <a href="#" className={`${smscreen} delay-75  ${lgscreen}`} onClick={()=>{click('Reseller')}}
-                        onMouseEnter={()=>{moenter('Reseller')}}>Reseller</a>
-
-                        <a href="#" className={`${smscreen} delay-100 ${lgscreen}`} onClick={()=>{click('Support')}}
-                        onMouseEnter={()=>{moenter('Support')}}>Support</a>
-            
-                        <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onClick={()=>{click('Book_a_Demo')}}
-                        onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
+                            <a href="#" className={`${smscreen} delay-100 ${lgscreen}`} onClick={()=>{click('Support')}}
+                            onMouseEnter={()=>{moenter('Support')}}>Support</a>
+                
+                            <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onClick={()=>{click('Book_a_Demo')}}
+                            onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
+                            
                     </nav>
-                    <div className={`md:hidden absolute overflow-hidden top-2 w-80 delay-150 ${clk_value ? '':'translate-y-[600px]'} bg-slate-100 text-black duration-700 rounded-lg transition-all transform-gpu ease-in-out`}>
+                    <div className={`md:hidden absolute overflow-hidden top-2 w-80 delay-150 ${clk_value ? 'translate-y-[15px]':'translate-y-[600px]'} bg-slate-100 text-black duration-700 rounded-lg transition-all transform-gpu ease-in-out`}>
                         {content} 
                     </div>
                 </div>
