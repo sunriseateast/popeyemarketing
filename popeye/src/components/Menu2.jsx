@@ -1,4 +1,4 @@
-import { useEffect, useState,useRef} from "react"
+import { useEffect,useState,useRef,useCallback} from "react"
 import whatsapp from "/images/whatsapp.png";
 import data from "/images/database.png";
 
@@ -7,20 +7,19 @@ function Menu2({value,css,icon}){
     let [clk_value,setClk_Value]=useState(null)    //To set values for sm screen
     let [isRendered, setIsRendered] = useState(false);
     const containerRef = useRef(null);
-    let timeout
+
 
     useEffect(()=>{
         setHmopen(icon)
     },[icon])
 
-    const handleScroll = () => {
+    const handleScroll = useCallback(() => {
         const container = containerRef.current;
         if (container) {
             // Check if the user has scrolled to the end
-            const isAtEnd = container.scrollTop + container.clientHeight >= container.scrollHeight - 5;
+            const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
             if(isAtEnd){
                 const clone=container.childNodes
-                console.log(clone)
                 clone.forEach(child => {
                     // Append each child node individually
                     container.append(child.cloneNode(true)); // Use cloneNode to create a deep copy
@@ -28,8 +27,9 @@ function Menu2({value,css,icon}){
             }
 
         }
-    }
+    },[])
     
+
     //Function to pass value for lg screen
     function moenter(title){
         if(value){
@@ -103,10 +103,12 @@ function Menu2({value,css,icon}){
         return(
             <div className="h-full w-full relative">
                 <div className="grid place-items-center justify-content-center">
-                    <nav ref={containerRef} onScroll={()=>{
+                    <nav ref={containerRef} 
+                    onScroll={() => {
+                        let timeout
                         if (timeout) clearTimeout(timeout)
                         timeout=setTimeout(handleScroll,100)
-                    }} 
+                    }}
                     className={`${isRendered ? 'transition-all duration-700 transform-gpu ease-in-out whitespace-nowrap -translate-y-[45px] bg-zinc-900 overflow-x-auto flex flex-row gap-x-[25px] py-[10px] w-[125px] nav':css}`}>
                             <a href="#" className={`${lgscreen} ${smscreen}`} onClick={()=>{click('Softwares')}}
                             onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
