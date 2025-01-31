@@ -11,22 +11,41 @@ function Menu2({value,css,icon}){
 
     useEffect(()=>{
         setHmopen(icon)
-    },[icon])
+        const container = containerRef.current;
+        if (container && isRendered) {
+            // Check if 'hi' has already been prepended
+            if (!container.textContent.includes('hi')) {
+                container.prepend('hi'); // Prepend 'hi' only if it hasn't been added yet
+            }
+        }
+        
+    },[icon,isRendered])
+
 
     const handleScroll = useCallback(() => {
-        const container = containerRef.current;
-        if (container) {
-            // Check if the user has scrolled to the end
-            const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
-            if(isAtEnd){
-                const clone=container.childNodes
-                clone.forEach(child => {
-                    // Append each child node individually
-                    container.append(child.cloneNode(true)); // Use cloneNode to create a deep copy
-                });
+        requestAnimationFrame(()=>{
+            const fragment = document.createDocumentFragment();
+            const container = containerRef.current;
+            const clone=container.childNodes;
+            console.log(clone)
+            if (container) {
+                // Check if the user has scrolled to the end
+                const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
+                if(isAtEnd){
+                    for (let i = 1; i < container.childNodes.length; i++) {
+                        const child = container.childNodes[i];
+                        fragment.append(child.cloneNode(true)); // Use cloneNode to create a deep copy
+                    }
+                    // clone.forEach(child => {
+                    //     // Append each child node individually
+                    //     fragment.append(child.cloneNode(true)); // Use cloneNode to create a deep copy
+                    // });
+                    // Append the fragment to the container in a single operation
+                    container.append(fragment);
+                }
             }
-
-        }
+            
+        })
     },[])
     
 
@@ -109,7 +128,7 @@ function Menu2({value,css,icon}){
                         if (timeout) clearTimeout(timeout)
                         timeout=setTimeout(handleScroll,100)
                     }}
-                    className={`${isRendered ? 'transition-all duration-700 transform-gpu ease-in-out whitespace-nowrap -translate-y-[45px] bg-zinc-900 overflow-x-auto flex flex-row gap-x-[25px] py-[10px] w-[125px] nav':css}`}>
+                    className={`${isRendered ? 'transition-all duration-700 transform-gpu ease-in-out whitespace-nowrap -translate-y-[45px] bg-zinc-900 overflow-x-auto flex gap-x-[25px] py-[10px] w-[120px] nav':css}`}>
                             <a href="#" className={`${lgscreen} ${smscreen}`} onClick={()=>{click('Softwares')}}
                             onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
                             
