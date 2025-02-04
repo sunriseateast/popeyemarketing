@@ -35,14 +35,33 @@ function Menu2({value,css,icon}){
     //     })
     // },[])
     
+
+    //Bucket Logic
     let container=containerRef.current
     if(container){
         const secondChild=container.children[1]
-        console.log(secondChild)
         if(secondChild){
             secondChild.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
         }
     }
+
+    const navItems=Object.freeze(['Softwares','Reseller','Support','Book a Demo'])
+    let firstChild
+    let secondChild
+    let thirdChild
+    navItems.find(item=>
+        {
+            if (item.replace(/\s+/g, '_') === clk_value) { // Replace spaces with underscores for comparison
+                secondChild = item;
+              }
+        }
+    )
+
+    if(secondChild){
+        firstChild=navItems[(navItems.indexOf(secondChild) - 1 + navItems.length) % navItems.length]
+        thirdChild=navItems[(navItems.indexOf(secondChild) + 1) % navItems.length]
+    }
+
 
     //Function to pass value for lg screen
     function moenter(title){
@@ -121,9 +140,9 @@ function Menu2({value,css,icon}){
                             clk_value ?
                             <>
                                 <nav ref={containerRef} className="flex flex-row w-[130px] overflow-x-auto gap-x-[30px] nav bg-zinc-900 whitespace-nowrap -translate-y-[45px] py-[10px]">
-                                    <a href="#">Book a Demo</a>
-                                    <a href="#">Softwares</a>
-                                    <a href="#">Reseller</a>
+                                    <a href="#">{firstChild}</a>
+                                    <a href="#">{secondChild}</a>
+                                    <a href="#">{thirdChild}</a>
                                 </nav>
 
                             </> :
