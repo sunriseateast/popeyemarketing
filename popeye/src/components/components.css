@@ -63,9 +63,18 @@
 .nav{
   -webkit-mask: linear-gradient(90deg,transparent,white 20%,white 80%,transparent);
   mask: linear-gradient(90deg,transparent,white 20%,white 80%,transparent);
-  scroll-behavior:smooth;
+  scroll-behavior:initial;
   scrollbar-width:none;
+  scroll-snap-type: x mandatory;
 }
+
+.nav a {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  text-align: center;
+  min-width: 120px;
+}
+
   
 
   

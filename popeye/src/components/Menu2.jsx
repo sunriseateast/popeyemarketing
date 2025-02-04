@@ -120,7 +120,7 @@ function Menu2({value,css,icon}){
                         {
                             clk_value ?
                             <>
-                                <nav ref={containerRef} className="flex flex-row w-[120px] overflow-x-auto nav gap-x-[30px] bg-zinc-900 whitespace-nowrap -translate-y-[45px] py-[10px]">
+                                <nav ref={containerRef} className="flex flex-row w-[130px] overflow-x-auto gap-x-[30px] nav bg-zinc-900 whitespace-nowrap -translate-y-[45px] py-[10px]">
                                     <a href="#">Book a Demo</a>
                                     <a href="#">Softwares</a>
                                     <a href="#">Reseller</a>
