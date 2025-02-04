@@ -11,43 +11,38 @@ function Menu2({value,css,icon}){
 
     useEffect(()=>{
         setHmopen(icon)
-        const container = containerRef.current;
-        if (container && isRendered) {
-            // Check if 'hi' has already been prepended
-            if (!container.textContent.includes('hi')) {
-                container.prepend('hi'); // Prepend 'hi' only if it hasn't been added yet
-            }
-        }
-        
-    },[icon,isRendered])
+    },[icon])
 
 
-    const handleScroll = useCallback(() => {
-        requestAnimationFrame(()=>{
-            const fragment = document.createDocumentFragment();
-            const container = containerRef.current;
-            const clone=container.childNodes;
-            console.log(clone)
-            if (container) {
-                // Check if the user has scrolled to the end
-                const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
-                if(isAtEnd){
-                    for (let i = 1; i < container.childNodes.length; i++) {
-                        const child = container.childNodes[i];
-                        fragment.append(child.cloneNode(true)); // Use cloneNode to create a deep copy
-                    }
-                    // clone.forEach(child => {
-                    //     // Append each child node individually
-                    //     fragment.append(child.cloneNode(true)); // Use cloneNode to create a deep copy
-                    // });
-                    // Append the fragment to the container in a single operation
-                    container.append(fragment);
-                }
-            }
+    // const handleScroll = useCallback(() => {
+    //     requestAnimationFrame(()=>{
+    //         const fragment = document.createDocumentFragment();
+    //         const container = containerRef.current;
+
+    //         if (container) {
+    //             // Check if the user has scrolled to the end
+    //             const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
+    //             if(isAtEnd){
+    //                 for (let i = 0; i < container.childNodes.length; i++) {
+    //                     const child = container.childNodes[i];
+    //                     fragment.append(child.cloneNode(true)); // Use cloneNode to create a deep copy
+    //                 }
+    //                 // Append the fragment to the container in a single operation
+    //                 container.append(fragment);
+    //             }
+    //         }
             
-        })
-    },[])
+    //     })
+    // },[])
     
+    let container=containerRef.current
+    if(container){
+        const secondChild=container.children[1]
+        console.log(secondChild)
+        if(secondChild){
+            secondChild.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        }
+    }
 
     //Function to pass value for lg screen
     function moenter(title){
@@ -122,26 +117,32 @@ function Menu2({value,css,icon}){
         return(
             <div className="h-full w-full relative">
                 <div className="grid place-items-center justify-content-center">
-                    <nav ref={containerRef} 
-                    onScroll={() => {
-                        let timeout
-                        if (timeout) clearTimeout(timeout)
-                        timeout=setTimeout(handleScroll,100)
-                    }}
-                    className={`${isRendered ? 'transition-all duration-700 transform-gpu ease-in-out whitespace-nowrap -translate-y-[45px] bg-zinc-900 overflow-x-auto flex gap-x-[25px] py-[10px] w-[120px] nav':css}`}>
-                            <a href="#" className={`${lgscreen} ${smscreen}`} onClick={()=>{click('Softwares')}}
-                            onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
-                            
-                            <a href="#" className={`${smscreen} delay-75  ${lgscreen}`} onClick={()=>{click('Reseller')}}
-                            onMouseEnter={()=>{moenter('Reseller')}}>Reseller</a>
+                        {
+                            clk_value ?
+                            <>
+                                <nav ref={containerRef} className="flex flex-row w-[120px] overflow-x-auto nav gap-x-[30px] bg-zinc-900 whitespace-nowrap -translate-y-[45px] py-[10px]">
+                                    <a href="#">Book a Demo</a>
+                                    <a href="#">Softwares</a>
+                                    <a href="#">Reseller</a>
+                                </nav>
 
-                            <a href="#" className={`${smscreen} delay-100 ${lgscreen}`} onClick={()=>{click('Support')}}
-                            onMouseEnter={()=>{moenter('Support')}}>Support</a>
-                
-                            <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onClick={()=>{click('Book_a_Demo')}}
-                            onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
-                            
-                    </nav>
+                            </> :
+                            <>
+                                <nav className={`${css}`}>
+                                    <a href="#" className={`${lgscreen} ${smscreen}`} onClick={()=>{click('Softwares')}}
+                                    onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
+                                    
+                                    <a href="#" className={`${smscreen} delay-75  ${lgscreen}`} onClick={()=>{click('Reseller')}}
+                                    onMouseEnter={()=>{moenter('Reseller')}}>Reseller</a>
+
+                                    <a href="#" className={`${smscreen} delay-100 ${lgscreen}`} onClick={()=>{click('Support')}}
+                                    onMouseEnter={()=>{moenter('Support')}}>Support</a>
+                        
+                                    <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onClick={()=>{click('Book_a_Demo')}}
+                                    onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
+                                </nav>
+                            </>
+                        }                
                     <div className={`md:hidden absolute overflow-hidden top-2 w-80 delay-150 ${clk_value ? 'translate-y-[15px]':'translate-y-[600px]'} bg-slate-100 text-black duration-700 rounded-lg transition-all transform-gpu ease-in-out`}>
                         {content} 
                     </div>
