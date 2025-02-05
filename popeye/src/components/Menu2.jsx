@@ -6,12 +6,50 @@ function Menu2({value,css,icon}){
     let [hmopen,setHmopen]=useState(icon)   // Get hm icon
     let [clk_value,setClk_Value]=useState(null)    //To set values for sm screen
     let [isRendered, setIsRendered] = useState(false);
+    let [firstChild,setfirstChild]=useState(null)
+    let [secondChild,setsecondChild]=useState(null)
+    let [thirdChild,sethirdChild]=useState(null)
     const containerRef = useRef(null);
-
 
     useEffect(()=>{
         setHmopen(icon)
-    },[icon])
+
+        const navItems=Object.freeze(['Softwares','Reseller','Support','Book a Demo'])
+        let container=containerRef.current
+
+        navItems.find(item=>
+            {
+                if (item.replace(/\s+/g, '_') === clk_value) { // Replace spaces with underscores for comparison
+                    setsecondChild(item)      
+                    setfirstChild(navItems[(navItems.indexOf(secondChild) - 1 + navItems.length) % navItems.length])
+                    sethirdChild(navItems[(navItems.indexOf(secondChild) + 1) % navItems.length]) 
+                }
+            }
+        )
+
+        if(container){
+            const Child=container.children[1]
+            if(Child){
+                Child.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+            }
+        }
+
+        let observer=new IntersectionObserver((item)=>{
+        let itemText=item[0].target.innerText
+        if(itemText===thirdChild){
+            setfirstChild(secondChild)
+            setsecondChild(thirdChild)
+            sethirdChild("Support")
+        }
+        },{ threshold: 0.5 })
+
+
+        if(container){
+            Array.from(container.children).forEach(element => {
+                observer.observe(element)
+            });
+        }
+    },[icon,clk_value,firstChild,secondChild,thirdChild])
 
 
     // const handleScroll = useCallback(() => {
@@ -37,32 +75,46 @@ function Menu2({value,css,icon}){
     
 
     //Bucket Logic
-    let container=containerRef.current
-    if(container){
-        const secondChild=container.children[1]
-        if(secondChild){
-            secondChild.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-        }
-    }
+    // const navItems=Object.freeze(['Softwares','Reseller','Support','Book a Demo'])
+    // let firstChild
+    // let thirdChild
+    // let container=containerRef.current
 
-    const navItems=Object.freeze(['Softwares','Reseller','Support','Book a Demo'])
-    let firstChild
-    let secondChild
-    let thirdChild
-    navItems.find(item=>
-        {
-            if (item.replace(/\s+/g, '_') === clk_value) { // Replace spaces with underscores for comparison
-                secondChild = item;
-              }
-        }
-    )
+    // navItems.find(item=>
+    //     {
+    //         if (item.replace(/\s+/g, '_') === clk_value) { // Replace spaces with underscores for comparison
+    //             secondChild = item;
+    //             firstChild=navItems[(navItems.indexOf(secondChild) - 1 + navItems.length) % navItems.length]
+    //             thirdChild=navItems[(navItems.indexOf(secondChild) + 1) % navItems.length]
+    //           }
+    //     }
+    // )
 
-    if(secondChild){
-        firstChild=navItems[(navItems.indexOf(secondChild) - 1 + navItems.length) % navItems.length]
-        thirdChild=navItems[(navItems.indexOf(secondChild) + 1) % navItems.length]
-    }
+    // if(container){
+    //     const Child=container.children[1]
+    //     if(Child){
+    //         Child.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    //     }
+    // }
+
+    // let observer=new IntersectionObserver((item)=>{
+    //     let itemText=item[0].target.innerText
+    //     if(itemText===thirdChild){
+    //         firstChild=secondChild
+    //         secondChild=thirdChild
+    //         thirdChild="Support"
+    //     }
+    // },{ threshold: 0.5 })
 
 
+    // if(container){
+    //     Array.from(container.children).forEach(element => {
+    //         observer.observe(element)
+    //     });
+    // }
+
+
+    
     //Function to pass value for lg screen
     function moenter(title){
         if(value){
