@@ -9,20 +9,22 @@ function Menu2({value,css,icon}){
     let [firstChild,setfirstChild]=useState(null)
     let [secondChild,setsecondChild]=useState(null)
     let [thirdChild,sethirdChild]=useState(null)
+    let [observedText,setobservedText]=useState(null)
     const containerRef = useRef(null);
 
-    useEffect(()=>{
-        setHmopen(icon)
+    useEffect(() => {
+        setHmopen(icon);
 
-        const navItems=Object.freeze(['Softwares','Reseller','Support','Book a Demo'])
+        //Bucket Logic
         let container=containerRef.current
+        const navItems=Object.freeze(['Softwares','Reseller','Support','Book a Demo'])
 
         navItems.find(item=>
             {
                 if (item.replace(/\s+/g, '_') === clk_value) { // Replace spaces with underscores for comparison
-                    setsecondChild(item)      
-                    setfirstChild(navItems[(navItems.indexOf(secondChild) - 1 + navItems.length) % navItems.length])
-                    sethirdChild(navItems[(navItems.indexOf(secondChild) + 1) % navItems.length]) 
+                    setsecondChild(item)
+                    setfirstChild(navItems[(navItems.indexOf(item) - 1 + navItems.length) % navItems.length])
+                    sethirdChild(navItems[(navItems.indexOf(item) + 1) % navItems.length])
                 }
             }
         )
@@ -30,27 +32,42 @@ function Menu2({value,css,icon}){
         if(container){
             const Child=container.children[1]
             if(Child){
-                Child.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+                setTimeout(()=>{
+                    Child.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+                },700)
+                
             }
         }
 
         let observer=new IntersectionObserver((item)=>{
-        let itemText=item[0].target.innerText
-        if(itemText===thirdChild){
-            setfirstChild(secondChild)
-            setsecondChild(thirdChild)
-            sethirdChild("Support")
-        }
-        },{ threshold: 0.5 })
-
-
+            setobservedText(item[0].target.innerText)
+        },{ threshold: 0 })
+ 
         if(container){
             Array.from(container.children).forEach(element => {
                 observer.observe(element)
             });
         }
-    },[icon,clk_value,firstChild,secondChild,thirdChild])
+        return () => observer.disconnect();
 
+    }, [icon,clk_value]);
+
+
+    useEffect(()=>{
+        if(observedText=='Reseller'){
+
+            const navItems=Object.freeze(['Softwares','Reseller','Support','Book a Demo'])
+            navItems.find(item=>
+                {
+                    if (item.replace(/\s+/g, '_') === observedText) { // Replace spaces with underscores for comparison
+                        setsecondChild(item)
+                        setfirstChild(navItems[(navItems.indexOf(item) - 1 + navItems.length) % navItems.length])
+                        // sethirdChild(navItems[(navItems.indexOf(item) + 1) % navItems.length])
+                    }
+                }
+            )
+        }
+    },[observedText])
 
     // const handleScroll = useCallback(() => {
     //     requestAnimationFrame(()=>{
@@ -73,47 +90,6 @@ function Menu2({value,css,icon}){
     //     })
     // },[])
     
-
-    //Bucket Logic
-    // const navItems=Object.freeze(['Softwares','Reseller','Support','Book a Demo'])
-    // let firstChild
-    // let thirdChild
-    // let container=containerRef.current
-
-    // navItems.find(item=>
-    //     {
-    //         if (item.replace(/\s+/g, '_') === clk_value) { // Replace spaces with underscores for comparison
-    //             secondChild = item;
-    //             firstChild=navItems[(navItems.indexOf(secondChild) - 1 + navItems.length) % navItems.length]
-    //             thirdChild=navItems[(navItems.indexOf(secondChild) + 1) % navItems.length]
-    //           }
-    //     }
-    // )
-
-    // if(container){
-    //     const Child=container.children[1]
-    //     if(Child){
-    //         Child.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-    //     }
-    // }
-
-    // let observer=new IntersectionObserver((item)=>{
-    //     let itemText=item[0].target.innerText
-    //     if(itemText===thirdChild){
-    //         firstChild=secondChild
-    //         secondChild=thirdChild
-    //         thirdChild="Support"
-    //     }
-    // },{ threshold: 0.5 })
-
-
-    // if(container){
-    //     Array.from(container.children).forEach(element => {
-    //         observer.observe(element)
-    //     });
-    // }
-
-
     
     //Function to pass value for lg screen
     function moenter(title){
@@ -128,6 +104,7 @@ function Menu2({value,css,icon}){
         setTimeout(()=>{setIsRendered(true)},700)
     }
     
+
     //Object to show for sm screen
     const divcss=`flex flex-col m-[20px] rounded-lg transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[400px]'}`
     const divs={
