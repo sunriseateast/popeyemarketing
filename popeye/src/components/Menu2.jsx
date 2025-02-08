@@ -6,89 +6,56 @@ function Menu2({value,css,icon}){
     let [hmopen,setHmopen]=useState(icon)   // Get hm icon
     let [clk_value,setClk_Value]=useState(null)    //To set values for sm screen
     let [isRendered, setIsRendered] = useState(false);
-    let [firstChild,setfirstChild]=useState(null)
-    let [secondChild,setsecondChild]=useState(null)
-    let [thirdChild,sethirdChild]=useState(null)
-    let [observedText,setobservedText]=useState(null)
     const containerRef = useRef(null);
 
     useEffect(() => {
+
         setHmopen(icon);
 
-        //Bucket Logic
-        let container=containerRef.current
-        const navItems=Object.freeze(['Softwares','Reseller','Support','Book a Demo'])
+    }, [icon]);
 
-        navItems.find(item=>
-            {
-                if (item.replace(/\s+/g, '_') === clk_value) { // Replace spaces with underscores for comparison
-                    setsecondChild(item)
-                    setfirstChild(navItems[(navItems.indexOf(item) - 1 + navItems.length) % navItems.length])
-                    sethirdChild(navItems[(navItems.indexOf(item) + 1) % navItems.length])
-                }
-            }
-        )
 
-        if(container){
-            const Child=container.children[1]
-            if(Child){
-                setTimeout(()=>{
-                    Child.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-                },700)
-                
-            }
-        }
-
-        let observer=new IntersectionObserver((item)=>{
-            setobservedText(item[0].target.innerText)
-        },{ threshold: 0 })
- 
-        if(container){
+    if(clk_value){
+        const container = containerRef.current;
+        if(container){    
             Array.from(container.children).forEach(element => {
-                observer.observe(element)
-            });
+            if(element.innerText.replace(/\s+/g, '_')==clk_value){       // Replace spaces with underscores for comparison
+                element.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+            }
+           });
         }
-        return () => observer.disconnect();
-
-    }, [icon,clk_value]);
+    }
 
 
-    useEffect(()=>{
-        if(observedText=='Reseller'){
+    const handleScroll = useCallback(() => {
+        requestAnimationFrame(()=>{
+            const fragment = document.createDocumentFragment();
+            const container = containerRef.current;
 
-            const navItems=Object.freeze(['Softwares','Reseller','Support','Book a Demo'])
-            navItems.find(item=>
-                {
-                    if (item.replace(/\s+/g, '_') === observedText) { // Replace spaces with underscores for comparison
-                        setsecondChild(item)
-                        setfirstChild(navItems[(navItems.indexOf(item) - 1 + navItems.length) % navItems.length])
-                        // sethirdChild(navItems[(navItems.indexOf(item) + 1) % navItems.length])
+            if (container) {
+                // Check if the user has scrolled to the end
+                const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
+                if(isAtEnd){
+                    for (let i = 0; i < container.childNodes.length; i++) {
+                        const child = container.childNodes[i];
+                        fragment.append(child.cloneNode(true)); // Use cloneNode to create a deep copy
                     }
+                    // Append the fragment to the container in a single operation
+                    container.append(fragment);
                 }
-            )
-        }
-    },[observedText])
 
-    // const handleScroll = useCallback(() => {
-    //     requestAnimationFrame(()=>{
-    //         const fragment = document.createDocumentFragment();
-    //         const container = containerRef.current;
-
-    //         if (container) {
-    //             // Check if the user has scrolled to the end
-    //             const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
-    //             if(isAtEnd){
-    //                 for (let i = 0; i < container.childNodes.length; i++) {
-    //                     const child = container.childNodes[i];
-    //                     fragment.append(child.cloneNode(true)); // Use cloneNode to create a deep copy
-    //                 }
-    //                 // Append the fragment to the container in a single operation
-    //                 container.append(fragment);
-    //             }
-    //         }
-            
-    //     })
-    // },[])
+                // Check if user has scrolled to start after scroll function called
+                const start=container.scrollLeft
+                if(start==0){
+                    for(let i=container.childNodes.length-1 ; i >=0 ; i--){
+                        const child = container.childNodes[i];
+                        fragment.prepend(child.cloneNode(true));
+                    }
+                    container.prepend(fragment);
+                }
+            }
+        })
+    },[])
     
     
     //Function to pass value for lg screen
@@ -168,10 +135,12 @@ function Menu2({value,css,icon}){
                         {
                             clk_value ?
                             <>
-                                <nav ref={containerRef} className="flex flex-row w-[130px] overflow-x-auto gap-x-[30px] nav bg-zinc-900 whitespace-nowrap -translate-y-[45px] py-[10px]">
-                                    <a href="#">{firstChild}</a>
-                                    <a href="#">{secondChild}</a>
-                                    <a href="#">{thirdChild}</a>
+                                <nav ref={containerRef} 
+                                onScroll={handleScroll} className="flex flex-row w-[130px] overflow-x-auto gap-x-[30px] nav bg-zinc-900 whitespace-nowrap -translate-y-[45px] py-[10px]">
+                                    <a href="#">Softwares</a>
+                                    <a href="#">Reseller</a>
+                                    <a href="#">Support</a>
+                                    <a href="#">Book a Demo</a>
                                 </nav>
 
                             </> :
