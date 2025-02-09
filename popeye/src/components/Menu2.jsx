@@ -6,29 +6,40 @@ function Menu2({value,css,icon}){
     let [hmopen,setHmopen]=useState(icon)   // Get hm icon
     let [clk_value,setClk_Value]=useState(null)    //To set values for sm screen
     let [isRendered, setIsRendered] = useState(false);
+    let observerRef=useRef(null)
     const containerRef = useRef(null);
 
     useEffect(() => {
 
         setHmopen(icon);
 
+       
+        observerRef.current=new IntersectionObserver((item)=>{
+            item.find(element => {
+                if(element.isIntersecting){
+                    setClk_Value(element.target.innerText)
+                }
+            });
+        },{threshold:0})
+
+        return(()=>{
+            if(observerRef.current){
+                observerRef.current.disconnect()
+            }
+        })
+
     }, [icon]);
 
 
-    if(clk_value){
-        const container = containerRef.current;
-        if(container){    
-            Array.from(container.children).forEach(element => {
-            if(element.innerText.replace(/\s+/g, '_')==clk_value){       // Replace spaces with underscores for comparison
-                element.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-            }
-           });
-        }
+    const container = containerRef.current;
+    if(container){
+        Array.from(container.children).forEach((element)=>{
+            observerRef.current.observe(element)
+        })
     }
-
-
+    
     const handleScroll = useCallback(() => {
-        requestAnimationFrame(()=>{
+        setTimeout(()=>{
             const fragment = document.createDocumentFragment();
             const container = containerRef.current;
 
@@ -42,9 +53,13 @@ function Menu2({value,css,icon}){
                     }
                     // Append the fragment to the container in a single operation
                     container.append(fragment);
+
+                    // Observe the newly appended children
+                    Array.from(container.children).slice(-container.childNodes.length / 2).forEach((element) => {
+                        observerRef.current.observe(element);
+                    });
                 }
 
-                // Check if user has scrolled to start after scroll function called
                 const start=container.scrollLeft
                 if(start==0){
                     for(let i=container.childNodes.length-1 ; i >=0 ; i--){
@@ -52,12 +67,27 @@ function Menu2({value,css,icon}){
                         fragment.prepend(child.cloneNode(true));
                     }
                     container.prepend(fragment);
+
+                    // Observe the newly prepended children
+                    Array.from(container.children).slice(0, container.childNodes.length / 2).forEach((element) => {
+                        observerRef.current.observe(element);
+                    });
                 }
             }
-        })
+        },0)
     },[])
     
-    
+
+    // if(clk_value){
+    //     if(container){
+    //         Array.from(container.children).forEach(element => {
+    //             if(element.innerText===clk_value){       // Replace spaces with underscores for comparison
+    //                 element.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    //             }
+    //        });
+    //     }
+    // }
+
     //Function to pass value for lg screen
     function moenter(title){
         if(value){
@@ -123,6 +153,7 @@ function Menu2({value,css,icon}){
          </div>,
         
     }
+
     const content=divs[clk_value]
 
     // CSS for lg & sm screen
@@ -136,7 +167,12 @@ function Menu2({value,css,icon}){
                             clk_value ?
                             <>
                                 <nav ref={containerRef} 
-                                onScroll={handleScroll} className="flex flex-row w-[130px] overflow-x-auto gap-x-[30px] nav bg-zinc-900 whitespace-nowrap -translate-y-[45px] py-[10px]">
+                                 onScroll={() => {
+                                    let timeout
+                                    if (timeout) clearTimeout(timeout)
+                                    timeout=setTimeout(handleScroll,100)
+                                }}
+                                className="flex flex-row w-[130px] overflow-x-auto gap-x-[30px] nav bg-zinc-900 whitespace-nowrap -translate-y-[45px] py-[10px]">
                                     <a href="#">Softwares</a>
                                     <a href="#">Reseller</a>
                                     <a href="#">Support</a>
@@ -146,16 +182,16 @@ function Menu2({value,css,icon}){
                             </> :
                             <>
                                 <nav className={`${css}`}>
-                                    <a href="#" className={`${lgscreen} ${smscreen}`} onClick={()=>{click('Softwares')}}
+                                    <a href="#" className={`${lgscreen} ${smscreen}`} onTouchStart={()=>{click('Softwares')}}
                                     onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
                                     
-                                    <a href="#" className={`${smscreen} delay-75  ${lgscreen}`} onClick={()=>{click('Reseller')}}
+                                    <a href="#" className={`${smscreen} delay-75  ${lgscreen}`} onTouchStart={()=>{click('Reseller')}}
                                     onMouseEnter={()=>{moenter('Reseller')}}>Reseller</a>
 
-                                    <a href="#" className={`${smscreen} delay-100 ${lgscreen}`} onClick={()=>{click('Support')}}
+                                    <a href="#" className={`${smscreen} delay-100 ${lgscreen}`} onTouchStart={()=>{click('Support')}}
                                     onMouseEnter={()=>{moenter('Support')}}>Support</a>
                         
-                                    <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onClick={()=>{click('Book_a_Demo')}}
+                                    <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onTouchStart={()=>{click('Book_a_Demo')}}
                                     onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
                                 </nav>
                             </>
