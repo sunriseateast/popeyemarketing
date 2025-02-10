@@ -6,13 +6,13 @@ function Menu2({value,css,icon}){
     let [hmopen,setHmopen]=useState(icon)   // Get hm icon
     let [clk_value,setClk_Value]=useState(null)    //To set values for sm screen
     let [isRendered, setIsRendered] = useState(false);
+    let [scrollFlag, setscrollFlag]= useState(false);
     let observerRef=useRef(null)
     const containerRef = useRef(null);
 
     useEffect(() => {
 
         setHmopen(icon);
-
        
         observerRef.current=new IntersectionObserver((item)=>{
             item.find(element => {
@@ -20,7 +20,7 @@ function Menu2({value,css,icon}){
                     setClk_Value(element.target.innerText)
                 }
             });
-        },{threshold:0})
+        },{threshold:0})    
 
         return(()=>{
             if(observerRef.current){
@@ -32,12 +32,26 @@ function Menu2({value,css,icon}){
 
 
     const container = containerRef.current;
-    if(container){
-        Array.from(container.children).forEach((element)=>{
-            observerRef.current.observe(element)
-        })
-    }
     
+    if(container){
+        if(scrollFlag==false){
+            Array.from(container.children).find(element => {
+                if(element.innerText===clk_value){       // Replace spaces with underscores for comparison
+                    element.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+                    setscrollFlag(true)
+                }
+            })
+        }
+        else{
+            Array.from(container.children).forEach((element)=>{
+                setTimeout(()=>{
+                    observerRef.current.observe(element)
+                },700)
+            })
+        }
+    }
+
+
     const handleScroll = useCallback(() => {
         setTimeout(()=>{
             const fragment = document.createDocumentFragment();
@@ -76,17 +90,9 @@ function Menu2({value,css,icon}){
             }
         },0)
     },[])
-    
 
-    // if(clk_value){
-    //     if(container){
-    //         Array.from(container.children).forEach(element => {
-    //             if(element.innerText===clk_value){       // Replace spaces with underscores for comparison
-    //                 element.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-    //             }
-    //        });
-    //     }
-    // }
+   
+
 
     //Function to pass value for lg screen
     function moenter(title){
