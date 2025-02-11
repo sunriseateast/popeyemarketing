@@ -1,6 +1,8 @@
 import { useEffect,useState,useRef,useCallback} from "react"
 import whatsapp from "/images/whatsapp.png";
 import data from "/images/database.png";
+import user from "/images/user.png";
+import chat from "/images/chat.png";
 
 function SmallscreenMenu({css,icon}){
     let [hmopen,setHmopen] = useState(icon)   // Get hm icon
@@ -115,7 +117,7 @@ function SmallscreenMenu({css,icon}){
         Softwares:
         <div className={divcss}>
             <div className="border-slate-200 bg-slate-200 m-[10px] rounded-lg p-[13px]">
-               <div className="flex space-x-[10px] transition-all transform-gpu ease-in-out">
+               <div className="flex space-x-[10px]">
                     <div className="bg-white rounded-[22px] shrink-0 flex items-center justify-center h-[50px] w-[50px]">
                         <img src={whatsapp} className="h-[30px] w-[30px]" alt="WhatsApp" />
                     </div>
@@ -125,7 +127,7 @@ function SmallscreenMenu({css,icon}){
             </div>
             
             <div className={`border-slate-200 bg-slate-200 m-[10px] rounded-lg p-[13px] transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[400px]'}`}>
-               <div className="flex space-x-[10px] transition-all transform-gpu ease-in-out">
+               <div className="flex space-x-[10px]">
                     <div className="bg-white rounded-[22px] shrink-0 flex items-center justify-center h-[50px] w-[50px]">
                         <img src={data} className="h-[30px] w-[30px]" alt="data" />
                     </div>
@@ -145,12 +147,58 @@ function SmallscreenMenu({css,icon}){
          
          Reseller:
          <div className={divcss}>
-             Reseller clicked
+            <div className='flex justify-center h-full rounded-lg'>
+                <div className='flex flex-col m-[20px] space-y-[20px]'>
+                    <div className={`overflow-hidden flex flex-col space-y-[10px] ${isRendered ? '' :'translate-y-[400px]'}`}>
+                        <div className="flex items-center justify-center ">
+                            <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[50px] w-[50px]">
+                                <img src={user} className="h-[30px] w-[30px]" alt="data" />
+                            </div>
+                        </div>
+
+                        <div className="text-center overflow-hidden w-[290px]">
+                            <p className='text-base text-neutral-500'>
+                                Gain access to top-notch software solutions and 
+                                earn profits by helping businesses grow...
+                                <span>
+                                    <a href='#' className='animated-gradient'>Know More</a>
+                                </span>
+                            </p>
+                        </div> 
+                    </div>
+              
+              
+                    <div className={`flex flex-col space-y-[10px] ${isRendered ? '' :'translate-y-[400px]'}`}>
+                        <div className='flex items-center justify-center'>
+                            <button className='text-base text-black active:text-slate-100 active:bg-neutral-800 border border-neutral-900 rounded-lg p-[8px]'>Master Login</button>
+                        </div>
+                        <div className='flex items-center justify-center'>
+                            <button className='text-base text-black active:text-slate-100 active:bg-neutral-800 border border-neutral-900 rounded-lg p-[8px]'>Reseller Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
          </div>,
 
          Support:
          <div className={divcss}>
-             Support clicked
+            <div className='flex justify-center h-full rounded-lg '>
+                <div className='flex items-center justify-center m-[25px] rounded-lg'>
+                    <div className='flex m-[5px] overflow-hidden gap-x-[10px]'>
+                        <div className='shrink-0'>
+                            <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[50px] w-[50px]">
+                                <img src={chat} className="h-[30px] w-[30px]" alt="chat" />
+                            </div>
+                        </div>
+                        <div className='w-[200px]'>
+                            <p className='text-base text-neutral-500'>
+                                Our <span className='text-black font-bold'>Dedicated Support</span> Team is here to ensure a smooth experience.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
          </div>,
 
          Book_a_Demo:
