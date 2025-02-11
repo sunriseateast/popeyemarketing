@@ -2,30 +2,38 @@ import { useEffect,useState,useRef,useCallback} from "react"
 import whatsapp from "/images/whatsapp.png";
 import data from "/images/database.png";
 
-function Menu2({value,css,icon}){
-    let [hmopen,setHmopen]=useState(icon)   // Get hm icon
-    let [clk_value,setClk_Value]=useState(null)    //To set values for sm screen
+function SmallscreenMenu({css,icon}){
+    let [hmopen,setHmopen] = useState(icon)   // Get hm icon
+    let [clk_value,setClk_Value] = useState(false)    //To set values for sm screen
     let [isRendered, setIsRendered] = useState(false);
     let [scrollFlag, setscrollFlag]= useState(false);
     let observerRef=useRef(null)
     const containerRef = useRef(null);
 
+    let timer = function(fn,delay){
+        setTimeout(fn,delay)
+    }
+
     useEffect(() => {
 
         setHmopen(icon);
-       
+
         observerRef.current=new IntersectionObserver((item)=>{
             item.find(element => {
                 if(element.isIntersecting){
-                    setClk_Value(element.target.innerText)
+                    setClk_Value(element.target.innerText.replace(/\s+/g, '_'))
                 }
             });
-        },{threshold:0})    
+        },{threshold:0.8})    
 
         return(()=>{
             if(observerRef.current){
                 observerRef.current.disconnect()
             }
+            setClk_Value(false)
+            setIsRendered(false)
+            setscrollFlag(false)
+            clearTimeout(timer)
         })
 
     }, [icon]);
@@ -33,10 +41,11 @@ function Menu2({value,css,icon}){
 
     const container = containerRef.current;
     
+    //Logic for scroll onto clk node
     if(container){
         if(scrollFlag==false){
             Array.from(container.children).find(element => {
-                if(element.innerText===clk_value){       // Replace spaces with underscores for comparison
+                if(element.innerText.replace(/\s+/g, '_')==clk_value){       // Replace spaces with underscores for comparison
                     element.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
                     setscrollFlag(true)
                 }
@@ -44,7 +53,7 @@ function Menu2({value,css,icon}){
         }
         else{
             Array.from(container.children).forEach((element)=>{
-                setTimeout(()=>{
+                timer(()=>{
                     observerRef.current.observe(element)
                 },700)
             })
@@ -53,7 +62,7 @@ function Menu2({value,css,icon}){
 
 
     const handleScroll = useCallback(() => {
-        setTimeout(()=>{
+        timer(()=>{
             const fragment = document.createDocumentFragment();
             const container = containerRef.current;
 
@@ -91,20 +100,11 @@ function Menu2({value,css,icon}){
         },0)
     },[])
 
-   
-
-
-    //Function to pass value for lg screen
-    function moenter(title){
-        if(value){
-            value(title)
-        }
-    }
 
     //Function to pass value for sm screen
     function click(value){
         setClk_Value(value)
-        setTimeout(()=>{setIsRendered(true)},700)
+        timer(()=>{setIsRendered(true)},700)
     }
     
 
@@ -160,10 +160,9 @@ function Menu2({value,css,icon}){
         
     }
 
-    const content=divs[clk_value]
+    let content=divs[clk_value]
 
     // CSS for lg & sm screen
-    const lgscreen=`md:opacity-100 md:z-10 md:p-[10px] md:m-[10px] md:text-base md:border-none`
     const smscreen=`opacity-0 ${hmopen && `transition-all opacity-100 duration-300 transform-gpu ease-in-out`}`
     if(icon){
         return(
@@ -176,7 +175,7 @@ function Menu2({value,css,icon}){
                                  onScroll={() => {
                                     let timeout
                                     if (timeout) clearTimeout(timeout)
-                                    timeout=setTimeout(handleScroll,100)
+                                    timeout=timer(handleScroll,100)
                                 }}
                                 className="flex flex-row w-[130px] overflow-x-auto gap-x-[30px] nav bg-zinc-900 whitespace-nowrap -translate-y-[45px] py-[10px]">
                                     <a href="#">Softwares</a>
@@ -188,16 +187,16 @@ function Menu2({value,css,icon}){
                             </> :
                             <>
                                 <nav className={`${css}`}>
-                                    <a href="#" className={`${lgscreen} ${smscreen}`} onTouchStart={()=>{click('Softwares')}}
+                                    <a href="#" className={`${smscreen}`} onTouchStart={()=>{click('Softwares')}}
                                     onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
                                     
-                                    <a href="#" className={`${smscreen} delay-75  ${lgscreen}`} onTouchStart={()=>{click('Reseller')}}
+                                    <a href="#" className={`delay-75  ${smscreen}`} onTouchStart={()=>{click('Reseller')}}
                                     onMouseEnter={()=>{moenter('Reseller')}}>Reseller</a>
 
-                                    <a href="#" className={`${smscreen} delay-100 ${lgscreen}`} onTouchStart={()=>{click('Support')}}
+                                    <a href="#" className={`delay-100 ${smscreen}`} onTouchStart={()=>{click('Support')}}
                                     onMouseEnter={()=>{moenter('Support')}}>Support</a>
                         
-                                    <a href="#" className={`${smscreen} delay-150 ${lgscreen}`} onTouchStart={()=>{click('Book_a_Demo')}}
+                                    <a href="#" className={`delay-150 ${smscreen}`} onTouchStart={()=>{click('Book_a_Demo')}}
                                     onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
                                 </nav>
                             </>
@@ -211,4 +210,4 @@ function Menu2({value,css,icon}){
     }
 }
 
-export default Menu2
+export default SmallscreenMenu;

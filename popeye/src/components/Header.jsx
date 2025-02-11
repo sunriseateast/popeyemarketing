@@ -2,7 +2,8 @@ import logo from "/images/logo.png"
 import { useState,useEffect} from "react"
 import React from 'react';
 import Tooltip2 from "./Tooltip2.jsx";
-import Menu2 from "./Menu2.jsx";
+import SmallscreenMenu from "./SmallscreenMenu.jsx";
+import LargescreenMenu from "./LargescreenMenu.jsx";
 
 function Header({isOpen}){
 
@@ -62,11 +63,11 @@ function Header({isOpen}){
                 </button>
             </div>
             <div className="hidden md:grid  col-start-2 col-end-6 relative content-center justify-items-center" onMouseLeave={leave}>
-                <Menu2 value={setTiptitle} css={``} icon={true}/>
+                <LargescreenMenu value={setTiptitle}/>
                 <Tooltip2 value={tiptitle}/>
             </div>
             <div className="h-full mt-[150px] col-start-1 col-end-7 flex items-center justify-center text-xl md:hidden">
-                <Menu2 css={`grid grid-rows-4 place-items-center gap-y-[40px]`} icon={hmopen}/>
+                <SmallscreenMenu css={`grid grid-rows-4 place-items-center gap-y-[40px]`} icon={hmopen}/>
             </div>
         </div>
     )
