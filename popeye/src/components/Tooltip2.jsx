@@ -1,9 +1,9 @@
 import React, {useRef} from 'react';
-import whatsapp from "/images/whatsapp.png";
-import data from "/images/database.png";
-import user from "/images/user.png";
-import chat from "/images/chat.png";
 import './components.css';
+import Whatsapp from '../svg/Whatsapp';
+import Database from '../svg/Database';
+import User from '../svg/User';
+import Chat from '../svg/Chat';
 
 function Tooltip2({value}){
 
@@ -62,9 +62,9 @@ function Tooltip2({value}){
         <div className='flex justify-center rounded-lg h-full'>
                 <div className='overflow-hidden w-full rounded-lg m-[10px]'>
                    <div className='group border border-slate-200 hover:cursor-pointer hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
-                        <div className='flex space-x-[10px] transition-all transform-gpu ease-in-out'>
-                            <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
-                                <img src={whatsapp} className="h-[35px] w-[35px]" alt="WhatsApp" />
+                        <div className='shrink-0 flex space-x-[10px] transition-all transform-gpu ease-in-out'>
+                            <div className="text-black group-hover:text-[#5CB338] bg-white group-hover:shadow-sm rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
+                                <Whatsapp size={'h-[35px] w-[35px]'}/>
                             </div>
                             <p className='whitespace-nowrap text-black font-medium mt-[17px]'>Whatsapp Marketing</p>
                         </div>
@@ -81,8 +81,8 @@ function Tooltip2({value}){
                 <div className='overflow-hidden w-full rounded-lg m-[10px]'>
                    <div className='group border border-slate-200 hover:cursor-pointer hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
                         <div className='flex space-x-[10px] transition-all transform-gpu ease-in-out'>
-                            <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
-                                <img src={data} className="h-[35px] w-[35px]" alt="data" />
+                            <div className="text-black bg-white group-hover:shadow-sm rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
+                                <Database size={'h-[35px] w-[35px]'}/>
                             </div>
                             <p className='whitespace-nowrap text-black font-medium mt-[17px]'>Data Software</p>
                         </div>
@@ -100,8 +100,8 @@ function Tooltip2({value}){
 
                 <div className='overflow-hidden flex flex-col space-y-[10px]'>
                     <div className="flex items-center justify-center transition-all transform-gpu ease-in-out">
-                        <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
-                            <img src={user} className="h-[35px] w-[35px]" alt="data" />
+                        <div className="text-black bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
+                            <User size={'h-[35px] w-[35px]'}/>
                         </div>
                     </div>
                     <div className="text-center overflow-hidden w-[290px]">
@@ -127,13 +127,13 @@ function Tooltip2({value}){
             </div>
         </div>,
 
-        Support:
+         Support:
         <div className='flex justify-center h-full rounded-lg '>
-            <div className='flex items-center justify-center m-[25px] hover:cursor-pointer hover:bg-slate-200 rounded-lg'>
+            <div className='flex items-center justify-center m-[25px] hover:cursor-pointer rounded-lg'>
                 <div className='flex m-[5px] overflow-hidden gap-x-[10px]'>
                     <div className='shrink-0 transition-all transform-gpu ease-in-out'>
-                        <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
-                            <img src={chat} className="h-[35px] w-[35px]" alt="chat" />
+                        <div className="text-black bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
+                            <Chat size={'h-[35px] w-[35px]'}/>
                         </div>
                     </div>
                     <div className='w-[200px]'>

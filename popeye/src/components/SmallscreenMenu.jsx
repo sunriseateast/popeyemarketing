@@ -1,8 +1,8 @@
 import { useEffect,useState,useRef,useCallback} from "react"
-import whatsapp from "/images/whatsapp.png";
-import data from "/images/database.png";
-import user from "/images/user.png";
-import chat from "/images/chat.png";
+import Whatsapp from '../svg/Whatsapp';
+import Database from '../svg/Database';
+import User from '../svg/User';
+import Chat from '../svg/Chat';
 
 function SmallscreenMenu({css,icon}){
     let [hmopen,setHmopen] = useState(icon)   // Get hm icon
@@ -118,8 +118,8 @@ function SmallscreenMenu({css,icon}){
         <div className={divcss}>
             <div className="border-slate-200 bg-slate-200 m-[10px] rounded-lg p-[13px]">
                <div className="flex space-x-[10px]">
-                    <div className="bg-white rounded-[22px] shrink-0 flex items-center justify-center h-[50px] w-[50px]">
-                        <img src={whatsapp} className="h-[30px] w-[30px]" alt="WhatsApp" />
+                    <div className="overflow-hidden bg-white rounded-[22px] shrink-0 flex items-center justify-center h-[50px] w-[50px]">
+                       <Whatsapp size={'h-[30px] w-[30px]'}/>
                     </div>
                     <p className='text-[17px] text-black font-medium mt-[12px] shrink-0'>Whatsapp Marketing</p>
                </div>
@@ -129,7 +129,7 @@ function SmallscreenMenu({css,icon}){
             <div className={`border-slate-200 bg-slate-200 m-[10px] rounded-lg p-[13px] transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[400px]'}`}>
                <div className="flex space-x-[10px]">
                     <div className="bg-white rounded-[22px] shrink-0 flex items-center justify-center h-[50px] w-[50px]">
-                        <img src={data} className="h-[30px] w-[30px]" alt="data" />
+                        <Database size={'h-[30px] w-[30px]'}/>
                     </div>
                     <p className='text-[17px] text-black font-medium mt-[12px] shrink-0'>Data Software</p>
                </div>
@@ -149,10 +149,10 @@ function SmallscreenMenu({css,icon}){
          <div className={divcss}>
             <div className='flex justify-center h-full rounded-lg'>
                 <div className='flex flex-col m-[20px] space-y-[20px]'>
-                    <div className={`overflow-hidden flex flex-col space-y-[10px] ${isRendered ? '' :'translate-y-[400px]'}`}>
+                    <div className={`overflow-hidden flex flex-col space-y-[10px]`}>
                         <div className="flex items-center justify-center ">
                             <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[50px] w-[50px]">
-                                <img src={user} className="h-[30px] w-[30px]" alt="data" />
+                                <User size={'h-[30px] w-[30px]'}/>
                             </div>
                         </div>
 
@@ -168,7 +168,7 @@ function SmallscreenMenu({css,icon}){
                     </div>
               
               
-                    <div className={`flex flex-col space-y-[10px] ${isRendered ? '' :'translate-y-[400px]'}`}>
+                    <div className={`flex flex-col space-y-[10px] duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[400px]'}`}>
                         <div className='flex items-center justify-center'>
                             <button className='text-base text-black active:text-slate-100 active:bg-neutral-800 border border-neutral-900 rounded-lg p-[8px]'>Master Login</button>
                         </div>
@@ -188,7 +188,7 @@ function SmallscreenMenu({css,icon}){
                     <div className='flex m-[5px] overflow-hidden gap-x-[10px]'>
                         <div className='shrink-0'>
                             <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[50px] w-[50px]">
-                                <img src={chat} className="h-[30px] w-[30px]" alt="chat" />
+                                <Chat size={'h-[30px] w-[30px]'}/>
                             </div>
                         </div>
                         <div className='w-[200px]'>

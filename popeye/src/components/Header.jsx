@@ -32,17 +32,17 @@ function Header({isOpen}){
         if(icon){
             return(
                 <>
-                    <line x1="6" y1="6" x2="18" y2="18" stroke-width="2.2" stroke="white" stroke-linecap="round" className=""></line>
-                    <line x1="6" y1="18" x2="18" y2="6" stroke-width="2.2" stroke="white" stroke-linecap="round" className=""></line>
+                    <line x1="6" y1="6" x2="18" y2="18" strokeWidth="2.2" stroke="white" strokeLinecap="round" className=""></line>
+                    <line x1="6" y1="18" x2="18" y2="6" strokeWidth="2.2" stroke="white" strokeLinecap="round" className=""></line>
                 </>
             )
         }
         else{
             return(
                 <>
-                    <line x1="4" y1="6" x2="20" y2="6" stroke-width="2" stroke="white" stroke-linecap="round"></line>
-                    <line x1="4" y1="12" x2="20" y2="12" stroke-width="2" stroke="white" stroke-linecap="round"></line>
-                    <line x1="4" y1="18" x2="20" y2="18" stroke-width="2" stroke="white" stroke-linecap="round"></line>
+                    <line x1="4" y1="6" x2="20" y2="6" strokeWidth="2" stroke="white" strokeLinecap="round"></line>
+                    <line x1="4" y1="12" x2="20" y2="12" strokeWidth="2" stroke="white" strokeLinecap="round"></line>
+                    <line x1="4" y1="18" x2="20" y2="18" strokeWidth="2" stroke="white" strokeLinecap="round"></line>
                 </>
             )
         }
