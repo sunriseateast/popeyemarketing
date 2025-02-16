@@ -42,7 +42,7 @@
   height:100%;
   width: 100%;
   background-image: conic-gradient(from var(--angle),transparent 75%,#ff0080, #ff8c00, #40e0d0, #007cff);
-  top: 50%;
+  top:50%;
   left:50%;
   translate: -50% -50%;
   z-index: -1;

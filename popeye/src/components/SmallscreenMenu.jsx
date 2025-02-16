@@ -118,8 +118,12 @@ function SmallscreenMenu({css,icon}){
         <div className={divcss}>
             <div className="border-slate-200 bg-slate-200 m-[10px] rounded-lg p-[13px]">
                <div className="flex space-x-[10px]">
-                    <div className="overflow-hidden bg-white rounded-[22px] shrink-0 flex items-center justify-center h-[50px] w-[50px]">
-                       <Whatsapp size={'h-[30px] w-[30px]'}/>
+                    <div className="bg-white rounded-[22px] flex items-center justify-center h-[50px] w-[50px]">
+                        <div className='flex items-center justify-center h-full w-full'>
+                            <div className='h-[30px] w-[30x]'>
+                                <Whatsapp className="flex"/>
+                            </div>
+                        </div>
                     </div>
                     <p className='text-[17px] text-black font-medium mt-[12px] shrink-0'>Whatsapp Marketing</p>
                </div>
@@ -128,15 +132,19 @@ function SmallscreenMenu({css,icon}){
             
             <div className={`border-slate-200 bg-slate-200 m-[10px] rounded-lg p-[13px] transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[400px]'}`}>
                <div className="flex space-x-[10px]">
-                    <div className="bg-white rounded-[22px] shrink-0 flex items-center justify-center h-[50px] w-[50px]">
-                        <Database size={'h-[30px] w-[30px]'}/>
+                    <div className="bg-white rounded-[22px] flex items-center justify-center h-[50px] w-[50px]">
+                        <div className='flex items-center justify-center h-full w-full'>
+                            <div className='h-[30px] w-[30x]'>
+                                <Database className="flex"/>
+                            </div>
+                        </div>
                     </div>
                     <p className='text-[17px] text-black font-medium mt-[12px] shrink-0'>Data Software</p>
                </div>
                <p className='mt-[9px] text-base text-neutral-500'>Scrap Genuine Data Easily</p>
             </div>
             <div className={`mt-[20px] flex items-center justify-center transition-all duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[400px]'}`}>
-                <button className='text-base text-black active:text-slate-100 active:bg-neutral-800 border border-neutral-900 rounded-lg p-[8px]'>All Softwares</button>
+                <button className='text-base text-black active:text-slate-100 active:bg-neutral-800 border border-neutral-900 rounded-xl p-[8px]'>All Softwares</button>
             </div>
             <div className={`flex items-center justify-center mt-[30px] transform-gpu transition-all ease-in-out duration-700 ${isRendered ? '' :'translate-y-[400px]'}`}>
                 <nav>
@@ -152,7 +160,11 @@ function SmallscreenMenu({css,icon}){
                     <div className={`overflow-hidden flex flex-col space-y-[10px]`}>
                         <div className="flex items-center justify-center ">
                             <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[50px] w-[50px]">
-                                <User size={'h-[30px] w-[30px]'}/>
+                                <div className='flex items-center justify-center h-full w-full'>
+                                    <div className='h-[30px] w-[30x]'>
+                                        <User className="flex"/>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -170,10 +182,10 @@ function SmallscreenMenu({css,icon}){
               
                     <div className={`flex flex-col space-y-[10px] duration-700 transform-gpu ease-in-out ${isRendered ? '' :'translate-y-[400px]'}`}>
                         <div className='flex items-center justify-center'>
-                            <button className='text-base text-black active:text-slate-100 active:bg-neutral-800 border border-neutral-900 rounded-lg p-[8px]'>Master Login</button>
+                            <button className='text-base text-black active:text-slate-100 active:bg-neutral-800 border border-neutral-900 rounded-xl p-[8px]'>Master Login</button>
                         </div>
                         <div className='flex items-center justify-center'>
-                            <button className='text-base text-black active:text-slate-100 active:bg-neutral-800 border border-neutral-900 rounded-lg p-[8px]'>Reseller Login</button>
+                            <button className='text-base text-black active:text-slate-100 active:bg-neutral-800 border border-neutral-900 rounded-xl p-[8px]'>Reseller Login</button>
                         </div>
                     </div>
                 </div>
@@ -188,7 +200,11 @@ function SmallscreenMenu({css,icon}){
                     <div className='flex m-[5px] overflow-hidden gap-x-[10px]'>
                         <div className='shrink-0'>
                             <div className="bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[50px] w-[50px]">
-                                <Chat size={'h-[30px] w-[30px]'}/>
+                                <div className='flex items-center justify-center h-full w-full'>
+                                    <div className='h-[30px] w-[30x]'>
+                                        <Chat className="flex"/>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className='w-[200px]'>

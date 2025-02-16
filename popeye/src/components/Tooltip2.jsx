@@ -4,6 +4,10 @@ import Whatsapp from '../svg/Whatsapp';
 import Database from '../svg/Database';
 import User from '../svg/User';
 import Chat from '../svg/Chat';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
+
 
 function Tooltip2({value}){
 
@@ -12,6 +16,10 @@ function Tooltip2({value}){
 
     let newArrow=useRef()
     let prevArrow=useRef()
+
+    let button=useRef()
+    const { contextSafe } = useGSAP({ scope: button });
+
 
     //Div
     let size={
@@ -26,7 +34,6 @@ function Tooltip2({value}){
         newSize.current=visible
     }
     let visible2=size[value] || `${prevSize.current} scale-95 opacity-0`
-
 
 
     //Arrow
@@ -55,6 +62,46 @@ function Tooltip2({value}){
 
     let boxvisible=box[value]
     
+    const buttonanimationEnter = contextSafe(() => {
+        if (button.current) {
+            gsap.killTweensOf(button.current); // Kill any ongoing animations
+            
+            gsap.fromTo(button.current, 
+                { 
+                    backgroundImage: 'radial-gradient(circle at 0% 50%, #262626 0%, transparent 0%)',
+                    color: "white",
+                    border: "none"
+                },
+                { 
+                    backgroundImage: 'radial-gradient(circle at 50% 100%, #262626 100%, transparent 0%)',
+                    duration: 0.7,
+                    color: "white",
+                    border: "none",
+                    ease: "power2.out"
+                }
+            );
+        }
+    });
+    
+    const buttonanimationExit = contextSafe(() => {
+        if (button.current) {
+            gsap.killTweensOf(button.current); // Kill any ongoing animations
+            
+            gsap.to(button.current, {
+                backgroundImage: 'radial-gradient(circle at 0% 100%, #262626 0%, transparent 0%)',
+                duration: 0.3,
+                ease: "power2.in",
+                onComplete: () => {
+                    gsap.set(button.current, { 
+                        clearProps: "backgroundImage,color,border" // Clear inline styles
+                    });
+                }
+            });
+        }
+    });
+    
+
+
 
     //Content
     let divs={
@@ -64,7 +111,11 @@ function Tooltip2({value}){
                    <div className='group border border-slate-200 hover:cursor-pointer hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
                         <div className='shrink-0 flex space-x-[10px] transition-all transform-gpu ease-in-out'>
                             <div className="text-black group-hover:text-[#5CB338] bg-white group-hover:shadow-sm rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
-                                <Whatsapp size={'h-[35px] w-[35px]'}/>
+                                <div className='flex items-center justify-center h-full w-full'>
+                                    <div className='h-[35px] w-[35x]'>
+                                        <Whatsapp className="flex"/>
+                                    </div>
+                                </div>
                             </div>
                             <p className='whitespace-nowrap text-black font-medium mt-[17px]'>Whatsapp Marketing</p>
                         </div>
@@ -82,14 +133,18 @@ function Tooltip2({value}){
                    <div className='group border border-slate-200 hover:cursor-pointer hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
                         <div className='flex space-x-[10px] transition-all transform-gpu ease-in-out'>
                             <div className="text-black bg-white group-hover:shadow-sm rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
-                                <Database size={'h-[35px] w-[35px]'}/>
+                                <div className='flex items-center justify-center h-full w-full'>
+                                    <div className='h-[35px] w-[35x]'>
+                                        <Database className="flex"/>
+                                    </div>
+                                </div>
                             </div>
                             <p className='whitespace-nowrap text-black font-medium mt-[17px]'>Data Software</p>
                         </div>
                         <p className='whitespace-nowrap mt-[9px] text-neutral-500'>Scrap Genuine Data Easily</p>
                    </div>
                    <div className='flex justify-end m-[10px] transform-gpu transition-all ease-in-out'>
-                        <button className='text-black active:scale-95 active:bg-neutral-800 hover:shadow-md hover:bg-neutral-900 hover:text-white border border-neutral-900 rounded-lg p-[8px]'>All Softwares</button>
+                        <button ref={button} className='text-neutral-800 border border-neutral-400 rounded-xl p-[8px]' onMouseEnter={buttonanimationEnter} onMouseLeave={buttonanimationExit}>All Softwares</button>
                    </div>
                 </div>
             </div>,
@@ -101,7 +156,11 @@ function Tooltip2({value}){
                 <div className='overflow-hidden flex flex-col space-y-[10px]'>
                     <div className="flex items-center justify-center transition-all transform-gpu ease-in-out">
                         <div className="text-black bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
-                            <User size={'h-[35px] w-[35px]'}/>
+                            <div className='flex items-center justify-center h-full w-full'>
+                                <div className='h-[35px] w-[35x]'>
+                                    <User className="flex"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="text-center overflow-hidden w-[290px]">
@@ -118,10 +177,10 @@ function Tooltip2({value}){
 
                 <div className='flex flex-col space-y-[10px]'>
                     <div className='flex items-center justify-center'>
-                        <button className='text-black active:scale-95 active:bg-neutral-800 hover:shadow-md hover:bg-neutral-900 hover:text-white border border-neutral-900 rounded-lg p-[8px]'>Master Login</button>
+                        <button ref={button} className='text-neutral-800 border border-neutral-400 rounded-xl p-[8px] hover:bg-[#262626] hover:text-white hover:border-none'>Master Login</button>
                     </div>
                     <div className='flex items-center justify-center'>
-                        <button className='text-black active:scale-95 active:bg-neutral-800 hover:shadow-md hover:bg-neutral-900 hover:text-white border border-neutral-900 rounded-lg p-[8px]'>Reseller Login</button>
+                        <button ref={button} className='text-neutral-800 border border-neutral-400 rounded-xl p-[8px] hover:bg-[#262626] hover:text-white hover:border-none'>Reseller Login</button>
                     </div>
                 </div>
             </div>
@@ -133,7 +192,11 @@ function Tooltip2({value}){
                 <div className='flex m-[5px] overflow-hidden gap-x-[10px]'>
                     <div className='shrink-0 transition-all transform-gpu ease-in-out'>
                         <div className="text-black bg-white group-hover:shadow-md rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
-                            <Chat size={'h-[35px] w-[35px]'}/>
+                            <div className='flex items-center justify-center h-full w-full'>
+                                <div className='h-[35px] w-[35x]'>
+                                    <Chat className="flex"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className='w-[200px]'>
@@ -146,6 +209,7 @@ function Tooltip2({value}){
         </div>
     }
     let content=divs[value]
+
 
     // Gain access to top-notch software solutions and 
     // earn profits by helping businesses grow...

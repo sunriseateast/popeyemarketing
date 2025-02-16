@@ -1,7 +1,7 @@
 import logo from "/images/logo.png"
-import { useState,useEffect} from "react"
+import {useState} from "react"
 import React from 'react';
-import Tooltip2 from "./Tooltip2.jsx";
+const Tooltip2 = React.lazy(() => import('./Tooltip2.jsx'));
 import SmallscreenMenu from "./SmallscreenMenu.jsx";
 import LargescreenMenu from "./LargescreenMenu.jsx";
 
@@ -56,7 +56,7 @@ function Header({isOpen}){
                 <img src={logo} className='h-10 md:h-14' loading="eager"/>
             </div>
             <div className="bg-lime-500 justify-self-end pr-5 pt-5 col-start-6 md:hidden">
-                <button onClick={()=>setHmopen((prev)=>!prev)}>
+                <button onTouchStart={()=>setHmopen((prev)=>!prev)}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 cursor-pointer transition duration-150 ease-in-out" fill="none" viewBox="0 0 24 24" id="hamburger">
                         <HumIcon icon={hmopen}/>
                     </svg>
