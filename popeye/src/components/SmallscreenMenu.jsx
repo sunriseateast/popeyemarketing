@@ -20,6 +20,7 @@ function SmallscreenMenu({css,icon}){
 
         setHmopen(icon);
 
+        //Logic to show content for inital elements
         observerRef.current=new IntersectionObserver((item)=>{
             item.find(element => {
                 if(element.isIntersecting){
@@ -219,7 +220,16 @@ function SmallscreenMenu({css,icon}){
 
          Book_a_Demo:
          <div className={divcss}>
-             Book a Demo clicked
+            <div className="flex justify-center h-full rounded-lg">
+                <div className="flex flex-col m-[20px] space-y-[20px]">
+                    <div className="flex justify-center text-center text-base text-neutral-500">
+                        <p>Ready to see our software in action? Book a demo today!</p>
+                    </div>
+                    <div className='flex items-center justify-center'>
+                        <button className='text-base text-black active:text-slate-100 active:bg-neutral-800 border border-neutral-900 rounded-xl p-[8px]'>Book a Demo</button>
+                    </div>
+                </div>
+            </div>
          </div>,
         
     }

@@ -14,9 +14,6 @@ function Tooltip2({value}){
     let newSize=useRef()
     let prevSize=useRef()
 
-    let newArrow=useRef()
-    let prevArrow=useRef()
-
     let button=useRef()
     const { contextSafe } = useGSAP({ scope: button });
 
@@ -36,21 +33,6 @@ function Tooltip2({value}){
     let visible2=size[value] || `${prevSize.current} scale-95 opacity-0`
 
 
-    //Arrow
-    let arrow={
-        Softwares:'translate-x-[230px] w-[15px] h-[15px]',
-        Reseller:'translate-x-[185px] w-[15px] h-[15px]',
-        Support:'translate-x-[230px] w-[15px] h-[15px]'
-    }
-
-    let arrvisible=arrow[value]
-    if(newArrow.current!==arrvisible){
-        prevArrow.current=newArrow.current
-        newArrow.current=arrvisible
-    }
-    let arrvisible2=arrow[value] || `${prevArrow.current}`
-
-
     //Bgbox
     let boxcss=`-z-1 hover:cursor-pointer bg-zinc-400 translate-y-[21px] opacity-20 rounded transition-all ease-in-out duration-500`
     let box={
@@ -62,6 +44,7 @@ function Tooltip2({value}){
 
     let boxvisible=box[value]
     
+    //GSAP animation for softwares
     const buttonanimationEnter = contextSafe(() => {
         if (button.current) {
             gsap.killTweensOf(button.current); // Kill any ongoing animations
@@ -107,26 +90,27 @@ function Tooltip2({value}){
     let divs={
         Softwares:
         <div className='flex justify-center rounded-lg h-full'>
-                <div className='overflow-hidden w-full rounded-lg m-[10px]'>
-                   <div className='group border border-slate-200 hover:cursor-pointer hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
-                        <div className='shrink-0 flex space-x-[10px] transition-all transform-gpu ease-in-out'>
-                            <div className="text-black group-hover:text-[#5CB338] bg-white group-hover:shadow-sm rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
-                                <div className='flex items-center justify-center h-full w-full'>
-                                    <div className='h-[35px] w-[35x]'>
-                                        <Whatsapp className="flex"/>
-                                    </div>
+            <div className={`absolute transform-gpu -translate-x-[50px] -translate-y-[5px] w-[15px] h-[15px] bg-slate-100 rotate-45 transform-gpu transition-all ease-in-out`}></div>
+            <div className='overflow-hidden w-full rounded-lg m-[10px]'>
+                <div className='group border border-slate-200 hover:cursor-pointer hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
+                    <div className='shrink-0 flex space-x-[10px] transition-all transform-gpu ease-in-out'>
+                        <div className="text-black group-hover:text-[#5CB338] bg-white group-hover:shadow-sm rounded-[22px] flex items-center justify-center h-[60px] w-[60px]">
+                            <div className='flex items-center justify-center h-full w-full'>
+                                <div className='h-[35px] w-[35x]'>
+                                    <Whatsapp className="flex"/>
                                 </div>
                             </div>
-                            <p className='whitespace-nowrap text-black font-medium mt-[17px]'>Whatsapp Marketing</p>
                         </div>
-                        <p className='whitespace-nowrap mt-[9px] text-neutral-500'>Send Bulk Messages Anytime</p>
-                   </div>
-                   <div className='flex justify-start pt-[13px] m-[10px] transform-gpu transition-all ease-in-out'>
-                        <nav>
-                            <a href='#' className='text-neutral-400 underline underline-offset-1 hover:text-blue-500 whitespace-nowrap'>Terms & Conditions</a>
-                        </nav>
-                   </div>
+                        <p className='whitespace-nowrap text-black font-medium mt-[17px]'>Whatsapp Marketing</p>
+                    </div>
+                    <p className='whitespace-nowrap mt-[9px] text-neutral-500'>Send Bulk Messages Anytime</p>
                 </div>
+                <div className='flex justify-start pt-[13px] m-[10px] transform-gpu transition-all ease-in-out'>
+                    <nav>
+                        <a href='#' className='text-neutral-400 underline underline-offset-1 hover:text-blue-500 whitespace-nowrap'>Terms & Conditions</a>
+                    </nav>
+                </div>
+            </div>
                 
 
                 <div className='overflow-hidden w-full rounded-lg m-[10px]'>
@@ -151,6 +135,7 @@ function Tooltip2({value}){
 
         Reseller:
         <div className='flex justify-center h-full rounded-lg'>
+            <div className={`absolute transform-gpu -translate-x-[10px] -translate-y-[5px] w-[15px] h-[15px] bg-slate-100 rotate-45 transform-gpu transition-all ease-in-out`}></div>
             <div className='flex flex-col m-[20px] space-y-[20px]'>
 
                 <div className='overflow-hidden flex flex-col space-y-[10px]'>
@@ -188,6 +173,7 @@ function Tooltip2({value}){
 
          Support:
         <div className='flex justify-center h-full rounded-lg '>
+            <div className={`absolute transform-gpu translate-x-[110px] -translate-y-[5px] w-[15px] h-[15px] bg-slate-100 rotate-45 transform-gpu transition-all ease-in-out`}></div>
             <div className='flex items-center justify-center m-[25px] hover:cursor-pointer rounded-lg'>
                 <div className='flex m-[5px] overflow-hidden gap-x-[10px]'>
                     <div className='shrink-0 transition-all transform-gpu ease-in-out'>
@@ -216,7 +202,6 @@ function Tooltip2({value}){
     return(
         <>
             <div className={`absolute transform-gpu z-10 translate-y-[80px] ${visible2} bg-slate-100 ${newSize.current!==undefined && 'duration-300'} transition-all rounded-lg ease-in-out`}>
-                <div className={`absolute transform-gpu -translate-y-[5px] ${arrvisible2} bg-slate-100 rotate-45 transition-all ease-in-out`}></div>
                 {content}
             </div>
             {boxvisible}

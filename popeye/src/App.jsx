@@ -1,14 +1,17 @@
-import Header from "./components/Header.jsx"
-import { useState } from "react"
+import Header from "./components/Header.jsx";
+import Herosec from "./HeroSection/Herosec.jsx";
+import { useState } from "react";
 
 function App() {
   let [hmopen,setHmopen]=useState(false)
   return (
-    <div className="h-screen w-screen bg-[#06040D] font-archivo">
-      <Header isOpen={setHmopen}/>
-      <div className={`text-white ${hmopen  ? "blur":'transform-gpu transition-all ease-in-out'}`}>  
-        Hello
-      </div>
+    <div className="bg-[#06040D] font-archivo h-screen w-screen flex flex-col">
+        <div className="relative z-10">
+          <Header isOpen={setHmopen}/>
+        </div>
+        <div className={`h-full w-full relative z-0 text-white ${hmopen  ? "blur":'transform-gpu transition-all ease-in-out'}`}>  
+          <Herosec/>
+        </div>
     </div>  
   )
 }

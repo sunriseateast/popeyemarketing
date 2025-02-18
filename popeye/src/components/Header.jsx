@@ -1,4 +1,4 @@
-import logo from "/images/logo.png"
+import logo from "/images/AE2.svg"
 import {useState} from "react"
 import React from 'react';
 const Tooltip2 = React.lazy(() => import('./Tooltip2.jsx'));
@@ -52,8 +52,10 @@ function Header({isOpen}){
     //Main body
     return(
         <div className="bg-[#06040D] text-slate-100 grid grid-cols-6 h-[80px]">
-            <div className="bg-lime-500 pl-3 pt-3 col-start-1 md:pt-5 md:pl-24">
-                <img src={logo} className='h-10 md:h-14' loading="eager"/>
+            <div className="pl-3 pt-3 col-start-1 md:pt-5 md:pl-24">
+                <div>
+                    <img src={logo} className='h-10 md:h-14' loading="eager"/>
+                </div>
             </div>
             <div className="bg-lime-500 justify-self-end pr-5 pt-5 col-start-6 md:hidden">
                 <button onTouchStart={()=>setHmopen((prev)=>!prev)}>
@@ -66,7 +68,7 @@ function Header({isOpen}){
                 <LargescreenMenu value={setTiptitle}/>
                 <Tooltip2 value={tiptitle}/>
             </div>
-            <div className="h-full mt-[150px] col-start-1 col-end-7 flex items-center justify-center text-xl md:hidden">
+            <div className="mt-[150px] col-start-1 col-end-7 flex items-center justify-center text-xl md:hidden">
                 <SmallscreenMenu css={`grid grid-rows-4 place-items-center gap-y-[40px]`} icon={hmopen}/>
             </div>
         </div>
