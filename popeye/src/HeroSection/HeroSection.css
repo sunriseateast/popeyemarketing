@@ -1,0 +1,16 @@
+.hero {
+    background-image: radial-gradient(circle 2000px at 10% 210%,#f1f5f9,#06040D 60%);
+}
+
+.crescent {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    box-shadow: inset -12px 5px 0 3px orange;
+    border-radius: 50%;
+  }
+
+  .cut{
+    mask : radial-gradient(circle 1100px at 10% 210%,#0000 calc(100% - 1px),#000)
+  }

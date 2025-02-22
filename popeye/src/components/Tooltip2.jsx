@@ -4,9 +4,8 @@ import Whatsapp from '../svg/Whatsapp';
 import Database from '../svg/Database';
 import User from '../svg/User';
 import Chat from '../svg/Chat';
-import gsap from 'gsap';
+import { gsap } from "gsap";
 import { useGSAP } from '@gsap/react';
-
 
 
 function Tooltip2({value}){
@@ -162,10 +161,10 @@ function Tooltip2({value}){
 
                 <div className='flex flex-col space-y-[10px]'>
                     <div className='flex items-center justify-center'>
-                        <button ref={button} className='text-neutral-800 border border-neutral-400 rounded-xl p-[8px] hover:bg-[#262626] hover:text-white hover:border-none'>Master Login</button>
+                        <button ref={button} className='text-neutral-800 border border-neutral-400 rounded-xl p-[8px] hover:bg-[#262626] hover:text-white hover:border-transparent'>Master Login</button>
                     </div>
                     <div className='flex items-center justify-center'>
-                        <button ref={button} className='text-neutral-800 border border-neutral-400 rounded-xl p-[8px] hover:bg-[#262626] hover:text-white hover:border-none'>Reseller Login</button>
+                        <button ref={button} className='text-neutral-800 border border-neutral-400 rounded-xl p-[8px] hover:bg-[#262626] hover:text-white hover:border-transparent'>Reseller Login</button>
                     </div>
                 </div>
             </div>

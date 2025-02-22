@@ -9,7 +9,7 @@ function App() {
         <div className="relative z-10">
           <Header isOpen={setHmopen}/>
         </div>
-        <div className={`h-full w-full relative z-0 text-white ${hmopen  ? "blur":'transform-gpu transition-all ease-in-out'}`}>  
+        <div className={`h-full w-full relative z-0 text-[#F5F5F4] ${hmopen  ? "blur":'transform-gpu transition-all ease-in-out'}`}>  
           <Herosec/>
         </div>
     </div>  
