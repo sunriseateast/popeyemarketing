@@ -12,5 +12,5 @@
   }
 
   .cut{
-    mask : radial-gradient(circle 1100px at 10% 210%,#0000 calc(100% - 1px),#000)
+    mask : radial-gradient(circle 1230px at 10% 210%,#0000 calc(100% - 20px),#000)
   }

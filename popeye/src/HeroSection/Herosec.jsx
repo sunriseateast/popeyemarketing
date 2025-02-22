@@ -47,20 +47,16 @@ function Herosec(){
 
     return(
         <div className="flex flex-col space-y-[50px] items-center justify-center h-full w-full hero">
-            <div>
+            <div className="z-0">
                 <p className="text-[#78716C]">MORE THAN PLATFORM</p>
                 <p className="text-[24px] md:text-[100px] font-bold z-10">The Hub of Softwares</p>
-                <div className="absolute top-0 right-0 flex space-x-[40px] bg-slate-100 h-[500px] w-full cut">
-                    <div className="border border-sky-500 h-[20px] w-[20px]"></div>
-                    <div className="border border-sky-500 h-[20px] w-[20px]"></div>
-                    <div className="border border-sky-500 h-[20px] w-[20px]"></div>
-                    <div className="border border-sky-500 h-[20px] w-[20px]"></div>
-                    <div className="border border-sky-500 h-[20px] w-[20px]"></div>
-                    <div className="border border-sky-500 h-[20px] w-[20px]"></div>
-                    <div className="border border-sky-500 h-[20px] w-[20px]"></div>
+                <div className="absolute flex flex-wrap justify-end space-x-[10px] space-y-[10px] top-0 right-0 h-full w-full overflow-hidden cut">
+                    {Array(200).fill(null).map(() => (
+                        <div className="border border-[#78716C] h-[55px] w-[55px]"></div>
+                    ))}
                 </div>
             </div>
-            <div className='flex items-center justify-center'>
+            <div className='flex items-center justify-center z-10'>
                 <button ref={button} className='border border-[#F5F5F4] rounded-xl p-[15px] w-[170px] h-[60px]' onMouseEnter={buttonanimationEnter} onMouseLeave={buttonanimationExit}>All Softwares</button>
             </div>
         </div>
