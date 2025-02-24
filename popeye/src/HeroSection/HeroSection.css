@@ -11,6 +11,7 @@
     border-radius: 50%;
   }
 
-  .cut{
+  .mask{
     mask : radial-gradient(circle 1230px at 10% 210%,#0000 calc(100% - 20px),#000)
   }
+
