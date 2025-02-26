@@ -1,0 +1,64 @@
+.hero {
+    background-image: radial-gradient(circle 1880px at 10% 210%,#f1f5f9,#06040D 60%);
+}
+
+.crescent {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    box-shadow: inset -12px 5px 0 3px orange;
+    border-radius: 50%;
+  }
+
+  .mask{
+    mask : radial-gradient(circle 1160px at 10% 210%,#0000 calc(100% - 20px),#000)
+  }
+
+  .button {
+    background-image: linear-gradient(to top left,#FF0000,#FF7300,#FFFB00,#48FF00,#00FFD5,#002BFF,#FF00C8,#FF0000);
+    background-size: 200% 1000%;
+    /* background-position: left;
+    transition: background-position 0.5s ease-in-out; */
+    animation: glowing 3s infinite;
+  }
+  
+  /* .button:hover {
+    background-position: right;
+  } */
+
+  @keyframes glowing{
+    0%{
+      background-position: 0% 50%;
+    }
+    50%{
+      background-position: 100% 50%;
+    }
+    100%{
+      background-position: 0% 50%;
+    }
+  }
+  
+  
+  .btn-grad {background-image: linear-gradient(to right, #5614B0 0%, #DBD65C  51%, #5614B0  100%)}
+  .btn-grad {
+     margin: 10px;
+     padding: 15px 45px;
+     text-align: center;
+     text-transform: uppercase;
+     transition: 0.5s;
+     background-size: 200% auto;
+     color: white;            
+     box-shadow: 0 0 20px #eee;
+     border-radius: 10px;
+     display: block;
+   }
+
+   .btn-grad:hover {
+     background-position: right center; /* change the direction of the change here */
+     color: #fff;
+     text-decoration: none;
+   }
+  
+
+  

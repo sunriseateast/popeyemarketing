@@ -1,0 +1,81 @@
+@keyframes gradient-move {
+  0%{
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes spin{
+  from{
+    --angle:0deg;
+  }
+  to{
+    --angle:360deg;
+  }
+}
+
+  
+.animated-gradient {
+  background: linear-gradient(90deg, #ff0080, #ff8c00, #40e0d0, #007cff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-move 3s infinite;
+}
+
+
+
+@property --angle{
+  syntax:"<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.animated-gradient-border::after,animated-gradient-border::before {
+  content: '';
+  position: absolute;
+  height:100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle),transparent 75%,#ff0080, #ff8c00, #40e0d0, #007cff);
+  top:50%;
+  left:50%;
+  translate: -50% -50%;
+  z-index: -1;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  padding: 3px;
+  border-radius: 5px;
+  animation: 3s spin linear infinite;
+}
+
+.animated-gradient-border::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+.nav{
+  -webkit-mask: linear-gradient(90deg,transparent,white 20%,white 80%,transparent);
+  mask: linear-gradient(90deg,transparent,white 20%,white 80%,transparent);
+  scroll-behavior:initial;
+  scrollbar-width:none;
+  scroll-snap-type: x mandatory;
+}
+
+.nav a {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  text-align: center;
+  min-width: 130px;
+}
+
+  
+
+  
+  
