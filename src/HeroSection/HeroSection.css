@@ -1,6 +1,14 @@
 .hero {
-    background-image: radial-gradient(circle 1880px at 10% 210%,#f1f5f9,#06040D 60%);
+    background-image: radial-gradient(circle 1620px at 10% 210%,#f1f5f9,#06040D 60%);
 }
+
+@media(min-width:1350px){ /* Above 1350px this will happen */
+  .hero{
+    background-image: radial-gradient(circle 1880px at 10% 210%,#f1f5f9,#06040D 60%);
+  }
+}
+
+
 
 .crescent {
     position: relative;

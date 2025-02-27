@@ -69,7 +69,9 @@ function Herosec(){
                         The Hub of Softwares
                     </p>
                     <div className="text-[#78716C] mt-[25px]">
-                        <p>MORE THAN PLATFORM</p>
+                        <div className="flex items-center justify-center rounded-xl bg-slate-100 w-[250px]">
+                            <p>MORE THAN PLATFORM</p>
+                        </div>
                         <p>BEYOND JUST SOFTWARES</p>
                         <p>PLATFORM THAT LISTENS</p>
                     </div>
