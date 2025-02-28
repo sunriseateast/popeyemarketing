@@ -1,10 +1,26 @@
 .hero {
-    background-image: radial-gradient(circle 1620px at 10% 210%,#f1f5f9,#06040D 60%);
+    background-image: radial-gradient(circle 680px at 10% 780px,#f1f5f9,#06040D 60%)
+  }
+
+  @media(min-width: 768px){
+    .hero{
+      background-image: radial-gradient(circle 1880px at 10% 1130px,#f1f5f9,#06040D 60%);
+    }
 }
 
-@media(min-width:1350px){ /* Above 1350px this will happen */
-  .hero{
-    background-image: radial-gradient(circle 1880px at 10% 210%,#f1f5f9,#06040D 60%);
+.card{
+  background-image: linear-gradient(to top left,#06040D,white,#06040D);
+  background-size: 300% 1900%;
+  background-repeat: repeat;
+  animation:glowing 3s linear infinite;
+}
+
+@keyframes glowing {
+  0%{
+    background-position: 0% 0%;
+  }
+  100%{
+    background-position: 100% 100%;
   }
 }
 
@@ -28,24 +44,15 @@
     background-size: 200% 1000%;
     /* background-position: left;
     transition: background-position 0.5s ease-in-out; */
-    animation: glowing 3s infinite;
+    animation: glowing 3s linear infinite;
   }
   
   /* .button:hover {
     background-position: right;
   } */
 
-  @keyframes glowing{
-    0%{
-      background-position: 0% 50%;
-    }
-    50%{
-      background-position: 100% 50%;
-    }
-    100%{
-      background-position: 0% 50%;
-    }
-  }
+
+  
   
   
   .btn-grad {background-image: linear-gradient(to right, #5614B0 0%, #DBD65C  51%, #5614B0  100%)}
