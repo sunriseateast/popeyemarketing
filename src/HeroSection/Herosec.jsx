@@ -1,76 +1,82 @@
-import React,{useRef,useEffect} from "react";
-import { gsap } from "gsap";
-import { useGSAP } from '@gsap/react';
-import "./HeroSection.css"
+import React,{useEffect,useState,useRef} from "react";
+import "./HeroSection.css";
+import "../components/components.css"
 import Dots from "../svg/Dots";
 import Check from "../svg/Check";
+import gsap from 'gsap';
+import TextPlugin from 'gsap/TextPlugin';
+import SplitType from 'split-type'
+
+gsap.registerPlugin(TextPlugin)
+
 
 function Herosec(){
 
-    let button = useRef();
-    let mask=useRef()
-    const { contextSafe } = useGSAP({scope:button})
+    const flipwds=useRef(null)
+    // const [herowds,setHerowds]=useState([
+    //     <p className="transition-all transform-gpu duration-700 ease-in-out">Softwares</p>,
+    //     <p className="transition-all transform-gpu duration-700 ease-in-out ">Solutions</p>,
+    //     <p className="transition-all transform-gpu duration-700 ease-in-out opacity-0 blur">Trust</p>
+    // ])
 
+    // let [herotxt,setHerotxt]=useState(herowds[0])
+    // let counterRef=useRef(0)
+    // const frameRef=useRef(null)
+    // const lastUpdateTime=useRef(0)
 
+    // useEffect(()=>{
 
-    useEffect(()=>{
-        if(mask.current){
-            let children=Array.from(mask.current.children)
-            children.forEach(child => {
-            });
+    //     function fliptext(timestamp){
+    //         if(timestamp - lastUpdateTime.current >= 1500){
+    //             if (counterRef.current==3){
+    //                 counterRef.current=0
+    //             }
+    //             setHerotxt(herowds[counterRef.current])
+    //             setHerotxt(prev=>console.log(prev.props.className))
+    //             lastUpdateTime.current=timestamp
+    //             counterRef.current=counterRef.current + 1
+    //         }
+    //         frameRef.current=requestAnimationFrame(fliptext)
+    //     }
+    //     frameRef.current=requestAnimationFrame(fliptext)
+
+    //     return(()=>{
+    //         cancelAnimationFrame(frameRef.current)
+    //     })
+
+    // },[])
+
+    useEffect(() => {
+
+        if(flipwds.current){
+            gsap.fromTo(flipwds.current,
+                {
+                    opacity:1,
+                    duration:2,
+                    
+                },
+                {
+                    opacity:1,
+                    duration:2,
+                    delay:1,
+                    text:{
+                        value:"Solutions",
+                        newClass:"animated-gradient"
+                    }
+                }
+            )
         }
-
-    },[]) 
-
-        //GSAP animation for softwares
-        const buttonanimationEnter = contextSafe(() => {
-            if (button.current) {
-                gsap.killTweensOf(button.current); // Kill any ongoing animations
-                
-                gsap.fromTo(button.current, 
-                    { 
-                        backgroundImage: 'radial-gradient(circle at 0% 50%, #F5F5F4 0%, transparent 0%)',
-                        color: "#262626",
-                        border: "transparent"
-                    },
-                    { 
-                        backgroundImage: 'radial-gradient(circle at 50% 100%, #F5F5F4 100%, transparent 0%)',
-                        duration: 0.7,
-                        color: "#262626",
-                        border: "transparent",
-                        overwrite: "auto",
-                        ease: "power2.out"
-                    }
-                );
-            }
-        });
-        
-        const buttonanimationExit = contextSafe(() => {
-            if (button.current) {
-                gsap.killTweensOf(button.current); // Kill any ongoing animations
-                
-                gsap.to(button.current, {
-                    backgroundImage: 'radial-gradient(circle at 0% 100%, #F5F5F4 0%, transparent 0%)',
-                    ease: "power2.in",
-                    overwrite: "auto",
-                    onComplete: () => {
-                        if (button.current) {
-                            gsap.set(button.current, { clearProps: "color,backgroundImage,border" });
-                        }
-                    }
-                });
-            }
-        });
+    }, []);
 
     return(
         <div className="fixed grid grid-cols-2 h-full w-full hero bg-fixed">
             <div className="flex items-center justify-center">
                 <div className="flex flex-col items-center justify-center pr-[150px]">
                     <p className="text-[24px] md:text-[70px] font-bold leading-[1.1] text-center">
-                        The Hub of Softwares
+                        The Hub of <span ref={flipwds}>Softwares</span>
                     </p>
                     <div className="flex space-x-[30px] text-[#78716C] mt-[28px]">
-                        <div className="flex items-center justify-center rounded-xl bg-[#06040D] card w-[200px]">
+                        <div className="flex items-center justify-center rounded-xl bg-[#06040D] w-[200px]">
                             <div className="h-[20px] w-[20px] mt-[1px]">
                                 <Check/>
                             </div>
@@ -103,7 +109,7 @@ function Herosec(){
                         {/* <p>BEYOND JUST SOFTWARES</p>
                         <p>PLATFORM THAT LISTENS</p> */}
                     </div>
-                    <button ref={button} className='tracking-wider mt-[45px] border border-[#F5F5F4] rounded-xl p-[15px] w-[170px] h-[60px] hover:bg-[#F5F5F4] hover:text-black'>Free Trial</button>
+                    <button className='tracking-wider mt-[45px] border border-[#F5F5F4] rounded-xl p-[15px] w-[170px] h-[60px] hover:bg-[#F5F5F4] hover:text-black'>Free Trial</button>
                 </div>
             </div>
             <div className="">

@@ -19,7 +19,7 @@ function LargescreenMenu({value}){
             <a href="#" className={`${lgscreen}`} 
             onMouseEnter={()=>{moenter('Support')}}>Support</a>
 
-            <a href="#" className={`${lgscreen}`} 
+            <a href="#" className={`${lgscreen} bg-slate-100 rounded text-black`} 
             onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
         </nav>
     )

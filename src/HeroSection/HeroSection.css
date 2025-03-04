@@ -2,7 +2,7 @@
     background-image: radial-gradient(circle 680px at 10% 780px,#f1f5f9,#06040D 60%)
   }
 
-  @media(min-width: 768px){
+  @media(min-width: 768px){ /* Above 768px this will happened */
     .hero{
       background-image: radial-gradient(circle 1880px at 10% 1130px,#f1f5f9,#06040D 60%);
     }
@@ -10,9 +10,13 @@
 
 .card{
   background-image: linear-gradient(to top left,#06040D,white,#06040D);
-  background-size: 300% 1900%;
+  background-size: 1300% 1900%;
   background-repeat: repeat;
   animation:glowing 3s linear infinite;
+}
+
+.txt{
+  color: #002BFF;
 }
 
 @keyframes glowing {
@@ -23,7 +27,6 @@
     background-position: 100% 100%;
   }
 }
-
 
 
 .crescent {
