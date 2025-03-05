@@ -15,8 +15,10 @@
   animation:glowing 3s linear infinite;
 }
 
-.txt{
-  color: #002BFF;
+.mask{
+  /* mask:radial-gradient(circle at top right,red,transparent 70%); */
+  mask:radial-gradient(circle 2000px at -57% 960px,transparent 45%,white 50%);
+  /* background:radial-gradient(circle 2000px at -57% 960px,red 45% ,blue 50%); */
 }
 
 @keyframes glowing {
@@ -38,9 +40,9 @@
     border-radius: 50%;
   }
 
-  .mask{
+  /* .mask{
     mask : radial-gradient(circle 1160px at 10% 210%,#0000 calc(100% - 20px),#000)
-  }
+  } */
 
   .button {
     background-image: linear-gradient(to top left,#FF0000,#FF7300,#FFFB00,#48FF00,#00FFD5,#002BFF,#FF00C8,#FF0000);
