@@ -1,10 +1,10 @@
 import logo from "/images/AE2.svg"
 import {useState} from "react"
 import React from 'react';
-const Tooltip2 = React.lazy(() => import('./Tooltip2.jsx'));
+const Tooltip = React.lazy(() => import('./Tooltip.jsx'));
 import SmallscreenMenu from "./SmallscreenMenu.jsx";
 import LargescreenMenu from "./LargescreenMenu.jsx";
-import "../HeroSection/HeroSection.css";
+
 
 function Header({isOpen}){
 
@@ -67,7 +67,7 @@ function Header({isOpen}){
             </div>
             <div className="hidden md:grid col-start-2 col-end-6 relative content-center justify-items-center" onMouseLeave={leave}>
                 <LargescreenMenu value={setTiptitle}/>
-                <Tooltip2 value={tiptitle}/>
+                <Tooltip value={tiptitle}/>
             </div>
             <div className="mt-[150px] col-start-1 col-end-7 flex items-center justify-center text-xl md:hidden">
                 <SmallscreenMenu css={`grid grid-rows-4 place-items-center gap-y-[40px]`} icon={hmopen}/>

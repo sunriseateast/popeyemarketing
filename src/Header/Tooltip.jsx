@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import './components.css';
+import './Header.css';
 import Whatsapp from '../svg/Whatsapp';
 import Database from '../svg/Database';
 import User from '../svg/User';
@@ -8,7 +8,7 @@ import { gsap } from "gsap";
 import { useGSAP } from '@gsap/react';
 
 
-function Tooltip2({value}){
+function Tooltip({value}){
 
     let newSize=useRef()
     let prevSize=useRef()
@@ -211,4 +211,4 @@ function Tooltip2({value}){
 
 }
 
-export default Tooltip2
+export default Tooltip

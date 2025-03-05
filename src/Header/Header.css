@@ -10,16 +10,6 @@
   }
 }
 
-@keyframes spin{
-  from{
-    --angle:0deg;
-  }
-  to{
-    --angle:360deg;
-  }
-}
-
-  
 .animated-gradient {
   background: linear-gradient(90deg, #ff0080, #ff8c00, #40e0d0, #007cff);
   background-size: 200% 200%;
@@ -29,12 +19,6 @@
 }
 
 
-
-@property --angle{
-  syntax:"<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
 
 .animated-gradient-border::after,animated-gradient-border::before {
   content: '';
@@ -60,20 +44,6 @@
   opacity: 0.5;
 }
 
-.nav{
-  -webkit-mask: linear-gradient(90deg,transparent,white 20%,white 80%,transparent);
-  mask: linear-gradient(90deg,transparent,white 20%,white 80%,transparent);
-  scroll-behavior:initial;
-  scrollbar-width:none;
-  scroll-snap-type: x mandatory;
-}
-
-.nav a {
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
-  text-align: center;
-  min-width: 130px;
-}
 
   
 

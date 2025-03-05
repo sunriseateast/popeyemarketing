@@ -1,5 +1,4 @@
 import * as React from 'react';
-import '../components/components.css'
 
 const Dots=()=>{
     return(

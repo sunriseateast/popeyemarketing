@@ -1,8 +1,8 @@
 import React,{useEffect,useState,useRef} from "react";
-import "./HeroSection.css";
-import "../components/components.css"
-import Dots from "../svg/Dots";
-import Check from "../svg/Check";
+import "../HeroSection.css";
+import "../../Header/Header.css"
+import Dots from "../../svg/Dots";
+import Check from "../../svg/Check";
 import gsap from 'gsap';
 import TextPlugin from 'gsap/TextPlugin';
 import Testimonials from "./Testimonials";
@@ -10,7 +10,7 @@ import Testimonials from "./Testimonials";
 gsap.registerPlugin(TextPlugin)
 
 
-function Herosec(){
+function Lherosec(){
 
     const flipwds=useRef(null)
 
@@ -74,4 +74,4 @@ function Herosec(){
     )
 }
 
-export default Herosec
+export default Lherosec
