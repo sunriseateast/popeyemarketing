@@ -8,12 +8,6 @@
     }
 }
 
-.card{
-  background-image: linear-gradient(to top left,#06040D,white,#06040D);
-  background-size: 1300% 1900%;
-  background-repeat: repeat;
-  animation:glowing 3s linear infinite;
-}
 
 .mask{
   /* mask:radial-gradient(circle at top right,red,transparent 70%); */
@@ -21,64 +15,30 @@
   /* background:radial-gradient(circle 2000px at -57% 960px,red 45% ,blue 50%); */
 }
 
-@keyframes glowing {
-  0%{
-    background-position: 0% 0%;
-  }
-  100%{
-    background-position: 100% 100%;
+.testcard{
+  background-color: rgb(76, 88, 91,0.2);
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+@keyframes scrolleffect {
+  to{
+    transform: translateY(-100%)
   }
 }
 
+.scroll{
+  animation: scrolleffect 20s linear infinite;
+}
 
-.crescent {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    background-color: transparent;
-    box-shadow: inset -12px 5px 0 3px orange;
-    border-radius: 50%;
-  }
-
-  /* .mask{
-    mask : radial-gradient(circle 1160px at 10% 210%,#0000 calc(100% - 20px),#000)
-  } */
-
-  .button {
-    background-image: linear-gradient(to top left,#FF0000,#FF7300,#FFFB00,#48FF00,#00FFD5,#002BFF,#FF00C8,#FF0000);
-    background-size: 200% 1000%;
-    /* background-position: left;
-    transition: background-position 0.5s ease-in-out; */
-    animation: glowing 3s linear infinite;
-  }
-  
-  /* .button:hover {
-    background-position: right;
-  } */
-
-
-  
-  
-  
-  .btn-grad {background-image: linear-gradient(to right, #5614B0 0%, #DBD65C  51%, #5614B0  100%)}
-  .btn-grad {
-     margin: 10px;
-     padding: 15px 45px;
-     text-align: center;
-     text-transform: uppercase;
-     transition: 0.5s;
-     background-size: 200% auto;
-     color: white;            
-     box-shadow: 0 0 20px #eee;
-     border-radius: 10px;
-     display: block;
-   }
-
-   .btn-grad:hover {
-     background-position: right center; /* change the direction of the change here */
-     color: #fff;
-     text-decoration: none;
-   }
-  
 
   

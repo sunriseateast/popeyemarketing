@@ -1,4 +1,4 @@
-import React,{useEffect,useState,useRef} from "react";
+import React,{useEffect,useRef} from "react";
 import "../HeroSection.css";
 import "../../Header/Header.css"
 import Dots from "../../svg/Dots";
@@ -38,7 +38,7 @@ function Lherosec(){
 
     return(
         <div className="grid grid-cols-2 h-full w-full hero bg-fixed">
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center h-full w-full">
                 <div className="flex flex-col items-center justify-center pr-[150px]">
                     <p className="text-[24px] md:text-[70px] font-bold leading-[1.0] text-center">
                         The Hub of <span ref={flipwds}>Softwares</span>
@@ -67,7 +67,7 @@ function Lherosec(){
                     <button className='tracking-wider mt-[45px] border border-[#F5F5F4] rounded-xl p-[15px] w-[170px] h-[60px] hover:bg-[#F5F5F4] hover:text-black'>Free Trial</button>
                 </div>
             </div>
-            <div className="mask">
+            <div className="mask h-full w-full">
                 <Testimonials/>
             </div>
         </div>

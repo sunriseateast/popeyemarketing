@@ -5,3 +5,8 @@ body {
 
   /* background-color: #070F2B; */
 }
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
