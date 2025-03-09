@@ -6,11 +6,15 @@
     .hero{
       background-image: radial-gradient(circle 1880px at 10% 1130px,#f1f5f9,#06040D 60%);
     }
+  @media(min-width:1367px){ /* Above 1367px this will happened */
+    .hero{
+      background-image:none;
+    }
+  }
 }
 
 
 .mask{
-  /* mask:radial-gradient(circle at top right,red,transparent 70%); */
   mask:radial-gradient(circle 2000px at -57% 960px,transparent 45%,white 50%);
   /* background:radial-gradient(circle 2000px at -57% 960px,red 45% ,blue 50%); */
 }
@@ -37,7 +41,7 @@
 }
 
 .scroll{
-  animation: scrolleffect 20s linear infinite;
+  animation: scrolleffect 10s linear infinite;
 }
 
 

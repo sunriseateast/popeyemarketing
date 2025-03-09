@@ -11,6 +11,8 @@ function SmallscreenMenu({css,icon}){
     let [scrollFlag, setscrollFlag]= useState(false);
     let observerRef=useRef(null)
     const containerRef = useRef(null);
+    const debounceTimeout = useRef(null);
+    const debouncehandle=useRef(null)
 
     let timer = function(fn,delay){
         setTimeout(fn,delay)
@@ -65,7 +67,8 @@ function SmallscreenMenu({css,icon}){
 
 
     const handleScroll = useCallback(() => {
-        timer(()=>{
+        if(debouncehandle.current) clearTimeout(debouncehandle.current)
+        debouncehandle.current=timer(()=>{
             const fragment = document.createDocumentFragment();
             const container = containerRef.current;
 
@@ -78,7 +81,7 @@ function SmallscreenMenu({css,icon}){
                         fragment.append(child.cloneNode(true)); // Use cloneNode to create a deep copy
                     }
                     // Append the fragment to the container in a single operation
-                    container.append(fragment);
+                    container.append(fragment)
 
                     // Observe the newly appended children
                     Array.from(container.children).slice(-container.childNodes.length / 2).forEach((element) => {
@@ -86,13 +89,15 @@ function SmallscreenMenu({css,icon}){
                     });
                 }
 
+                // Check if the user has scrolled to the start
                 const start=container.scrollLeft
-                if(start==0){
+                if(start <= 1){
                     for(let i=container.childNodes.length-1 ; i >=0 ; i--){
                         const child = container.childNodes[i];
                         fragment.prepend(child.cloneNode(true));
                     }
-                    container.prepend(fragment);
+                    // Prepend the fragment to the container in a single operation
+                    container.prepend(fragment)
 
                     // Observe the newly prepended children
                     Array.from(container.children).slice(0, container.childNodes.length / 2).forEach((element) => {
@@ -100,7 +105,7 @@ function SmallscreenMenu({css,icon}){
                     });
                 }
             }
-        },0)
+        },20)
     },[])
 
 
@@ -247,9 +252,8 @@ function SmallscreenMenu({css,icon}){
                             <>
                                 <nav ref={containerRef} 
                                  onScroll={() => {
-                                    let timeout
-                                    if (timeout) clearTimeout(timeout)
-                                    timeout=timer(handleScroll,100)
+                                    if (debounceTimeout.current) clearTimeout(debounceTimeout.current)
+                                    debounceTimeout.current=timer(handleScroll,100)
                                 }}
                                 className="flex flex-row w-[130px] overflow-x-auto gap-x-[30px] nav bg-zinc-900 whitespace-nowrap -translate-y-[45px] py-[10px]">
                                     <a href="#">Softwares</a>
@@ -261,17 +265,13 @@ function SmallscreenMenu({css,icon}){
                             </> :
                             <>
                                 <nav className={`${css}`}>
-                                    <a href="#" className={`${smscreen}`} onTouchStart={()=>{click('Softwares')}}
-                                    onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
+                                    <a href="#" className={`${smscreen}`} onTouchStart={()=>{click('Softwares')}}>Softwares</a>
                                     
-                                    <a href="#" className={`delay-75  ${smscreen}`} onTouchStart={()=>{click('Reseller')}}
-                                    onMouseEnter={()=>{moenter('Reseller')}}>Reseller</a>
+                                    <a href="#" className={`delay-75  ${smscreen}`} onTouchStart={()=>{click('Reseller')}}>Reseller</a>
 
-                                    <a href="#" className={`delay-100 ${smscreen}`} onTouchStart={()=>{click('Support')}}
-                                    onMouseEnter={()=>{moenter('Support')}}>Support</a>
+                                    <a href="#" className={`delay-100 ${smscreen}`} onTouchStart={()=>{click('Support')}}>Support</a>
                         
-                                    <a href="#" className={`delay-150 ${smscreen}`} onTouchStart={()=>{click('Book_a_Demo')}}
-                                    onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
+                                    <a href="#" className={`delay-150 ${smscreen}`} onTouchStart={()=>{click('Book_a_Demo')}}>Book a Demo</a>
                                 </nav>
                             </>
                         }                

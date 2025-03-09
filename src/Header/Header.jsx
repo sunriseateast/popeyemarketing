@@ -1,5 +1,5 @@
 import logo from "/images/AE2.svg"
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import React from 'react';
 const Tooltip = React.lazy(() => import('./Tooltip.jsx'));
 import SmallscreenMenu from "./SmallscreenMenu.jsx";
@@ -29,7 +29,11 @@ function Header({isOpen}){
 
     //Humburger Icon default false '='
     const HumIcon=({icon})=>{
-        isOpen(icon)
+        
+        useEffect(()=>{
+            isOpen(icon)
+        },[])
+
         if(icon){
             return(
                 <>

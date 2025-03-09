@@ -85,20 +85,20 @@ function Testimonials(){
     }
 
     return(
-        <div className="h-screen w-full grid grid-cols-3">
-            <div className="h-full w-full flex justify-center overflow-y-auto scrollbar-none">
-                <div className="w-[180px] flex flex-col space-y-[12px] m-[20px]">
-                   {shuffleArray(elements)}
+        <div className="h-full w-full bg-pink-500">
+            <div className="h-[534px] w-[682px] grid grid-cols-3">
+                <div className="bg-amber-500">
+               
                 </div>
-            </div>
-            <div className="h-full w-full flex justify-center overflow-y-auto scrollbar-none">
-                <div className="w-[180px] flex flex-col space-y-[12px] m-[20px]">
-                   {shuffleArray(elements)}
+                <div className="bg-lime-500">
+                   
                 </div>
-            </div>
-            <div className="h-full w-full flex justify-center overflow-y-auto">
-                <div className="w-[180px] flex flex-col space-y-[12px] m-[20px] scroll">
-                    {shuffleArray(elements)}
+                <div className="bg-blue-500 overflow-auto scrollbar-none">
+                    <div className="flex items-center justify-center">
+                        <div className="flex flex-col space-y-[20px] scroll">
+                            {shuffleArray(elements)}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
