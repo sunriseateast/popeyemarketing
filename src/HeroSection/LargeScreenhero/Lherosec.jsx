@@ -67,7 +67,7 @@ function Lherosec(){
                     <button className='tracking-wider mt-[45px] border border-[#F5F5F4] rounded-xl p-[15px] w-[170px] h-[60px] hover:bg-[#F5F5F4] hover:text-black'>Free Trial</button>
                 </div>
             </div>
-            <div className="mask h-full w-full">
+            <div className="h-full w-full mask">
                 <Testimonials/>
             </div>
         </div>

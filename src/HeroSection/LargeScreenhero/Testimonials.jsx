@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import Testcard from "./Testcard.jsx"
 import "../HeroSection.css"
 import p1 from "./images/p1.jpeg"
 
 function Testimonials(){
     let elements=[]
+    const elementRef=useRef(null)
+
     const testcontent=[
         {
             name:"Roshan Kadam",
@@ -74,7 +76,7 @@ function Testimonials(){
 
     for(let i = 0 ; i < 10 ; i++){
         elements.push(
-            <Testcard 
+            <Testcard
                 key={i} 
                 name={testcontent[i].name} 
                 message={testcontent[i].message} 
@@ -84,19 +86,81 @@ function Testimonials(){
         )
     }
 
+    const col1=shuffleArray(elements)
+    const col2=shuffleArray(elements)
+    const col3=shuffleArray(elements)
+
+    useEffect(()=>{
+        const element=elementRef.current
+        const handlescroll=(event)=>{
+            event.preventDefault()
+        }
+        
+        if(element){
+            element.addEventListener("wheel",handlescroll,{passive : false})
+        }
+
+        return()=>{
+            if(element){
+                element.removeEventListener("wheel",handlescroll)
+            }
+        }
+    },[])
+
     return(
-        <div className="h-full w-full bg-pink-500">
-            <div className="h-[534px] w-[682px] grid grid-cols-3">
-                <div className="bg-amber-500">
-               
+        <div className="h-full w-full">
+            <div ref={elementRef} className="h-[562px] w-[682px] grid grid-cols-3">
+                <div className="overflow-auto scrollbar-none">
+                    <div className="flex flex-col items-center justify-center will-change-transform">
+                        <div className="scroll flex flex-col gap-y-[10px] will-change-transform mt-[10px]">
+                            {
+                                col1.map((value,index)=>(
+                                    <div key={index} className="will-change-transform">{value}</div>
+                                ))
+                            }
+                        </div>
+                        <div className="scroll flex flex-col gap-y-[10px] will-change-transform mt-[10px]">
+                            {
+                                col1.map((value,index)=>(
+                                    <div key={index} className="will-change-transform">{value}</div>
+                                ))
+                            }
+                        </div>
+                    </div>
                 </div>
-                <div className="bg-lime-500">
-                   
+                <div className="overflow-auto scrollbar-none">
+                    <div className="flex flex-col items-center justify-center will-change-transform">
+                        <div className="scroll2 flex flex-col gap-y-[10px] will-change-transform mt-[10px]">
+                            {
+                                col2.map((value,index)=>(
+                                    <div key={index} className="will-change-transform">{value}</div>
+                                ))
+                            }
+                        </div>
+                        <div className="scroll2 flex flex-col gap-y-[10px] will-change-transform mt-[10px]">
+                            {
+                                col2.map((value,index)=>(
+                                    <div key={index} className="will-change-transform">{value}</div>
+                                ))
+                            }
+                        </div>
+                    </div>
                 </div>
-                <div className="bg-blue-500 overflow-auto scrollbar-none">
-                    <div className="flex items-center justify-center">
-                        <div className="flex flex-col space-y-[20px] scroll">
-                            {shuffleArray(elements)}
+                <div className="overflow-auto scrollbar-none">
+                    <div className="flex flex-col items-center justify-center will-change-transform">
+                        <div className="scroll flex flex-col gap-y-[10px] will-change-transform mt-[10px]">
+                            {
+                                col3.map((value,index)=>(
+                                    <div key={index} className="will-change-transform">{value}</div>
+                                ))
+                            }
+                        </div>
+                        <div className="scroll flex flex-col gap-y-[10px] will-change-transform mt-[10px]">
+                            {
+                                col3.map((value,index)=>(
+                                    <div key={index} className="will-change-transform">{value}</div>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>

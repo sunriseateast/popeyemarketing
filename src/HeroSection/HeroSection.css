@@ -35,13 +35,30 @@
 }
 
 @keyframes scrolleffect {
-  to{
-    transform: translateY(-100%)
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(-100% - 10px));
   }
 }
 
 .scroll{
-  animation: scrolleffect 10s linear infinite;
+  animation: scrolleffect 21s linear infinite;
+  user-select: none;
+  touch-action: none;
+}
+
+.scroll2{
+  animation: scrolleffect 25s linear infinite;
+  user-select: none;
+  touch-action: none;
+}
+
+.scroll3{
+  animation: scrolleffect 21s linear infinite;
+  user-select: none;
+  touch-action: none;
 }
 
 
