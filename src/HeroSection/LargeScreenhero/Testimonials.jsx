@@ -108,8 +108,9 @@ function Testimonials(){
     },[])
 
     return(
-        <div className="h-full w-full">
-            <div ref={elementRef} className="h-[562px] w-[682px] grid grid-cols-3">
+        <div className="h-full w-full top overflow-hidden">
+            <div ref={elementRef} className="h-[calc(100vh-80px)] w-full grid grid-cols-3">
+
                 <div className="overflow-auto scrollbar-none">
                     <div className="flex flex-col items-center justify-center will-change-transform">
                         <div className="scroll flex flex-col gap-y-[10px] will-change-transform mt-[10px]">
@@ -128,6 +129,7 @@ function Testimonials(){
                         </div>
                     </div>
                 </div>
+
                 <div className="overflow-auto scrollbar-none">
                     <div className="flex flex-col items-center justify-center will-change-transform">
                         <div className="scroll2 flex flex-col gap-y-[10px] will-change-transform mt-[10px]">
@@ -146,16 +148,17 @@ function Testimonials(){
                         </div>
                     </div>
                 </div>
+
                 <div className="overflow-auto scrollbar-none">
                     <div className="flex flex-col items-center justify-center will-change-transform">
-                        <div className="scroll flex flex-col gap-y-[10px] will-change-transform mt-[10px]">
+                        <div className="scroll3 flex flex-col gap-y-[10px] will-change-transform mt-[10px]">
                             {
                                 col3.map((value,index)=>(
                                     <div key={index} className="will-change-transform">{value}</div>
                                 ))
                             }
                         </div>
-                        <div className="scroll flex flex-col gap-y-[10px] will-change-transform mt-[10px]">
+                        <div className="scroll3 flex flex-col gap-y-[10px] will-change-transform mt-[10px]">
                             {
                                 col3.map((value,index)=>(
                                     <div key={index} className="will-change-transform">{value}</div>

@@ -1,18 +1,24 @@
 .hero {
-    background-image: radial-gradient(circle 680px at 10% 780px,#f1f5f9,#06040D 60%)
+    background-image: radial-gradient(circle 680px at 10% 780px,#f1f5f9,#06040D 60%);
   }
 
   @media(min-width: 768px){ /* Above 768px this will happened */
     .hero{
       background-image: radial-gradient(circle 1880px at 10% 1130px,#f1f5f9,#06040D 60%);
     }
+  }
+
   @media(min-width:1367px){ /* Above 1367px this will happened */
     .hero{
       background-image:none;
     }
   }
-}
 
+
+.top{
+  mask: linear-gradient(transparent 5%,white 10%,white 60%,transparent);
+  /* background: linear-gradient(red,blue); */
+}
 
 .mask{
   mask:radial-gradient(circle 2000px at -57% 960px,transparent 45%,white 50%);
@@ -23,15 +29,8 @@
   background-color: rgb(76, 88, 91,0.2);
 }
 
-.scrollbar-none::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  display: none;
-}
-
 .scrollbar-none {
   scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
 @keyframes scrolleffect {
@@ -60,6 +59,5 @@
   user-select: none;
   touch-action: none;
 }
-
 
   
