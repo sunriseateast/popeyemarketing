@@ -2,7 +2,9 @@ import React from "react"
 import Lherosec from "./LargeScreenhero/Lherosec"
 
 function Herofilter(){
-    if(window.innerWidth >= 768){
+    //from tablet landscape this will happend
+    
+    if(window.innerWidth >= 1024){
         return(
             <div className="h-full w-full">
                 <Lherosec/>

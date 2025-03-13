@@ -1,8 +1,5 @@
-.hero {
-    background-image: radial-gradient(circle 680px at 10% 780px,#f1f5f9,#06040D 60%);
-  }
-
-  @media(min-width: 768px){ /* Above 768px this will happened */
+  /* Hero section gradient */  
+  @media(min-width: 1024px){ /* Above 1024px this will happened */
     .hero{
       background-image: radial-gradient(circle 1880px at 10% 1130px,#f1f5f9,#06040D 60%);
     }
@@ -15,22 +12,19 @@
   }
 
 
-.top{
+
+
+  /* CSS for testimonials*/
+.top{ /* Add faded effect for cards top,bottom*/
   mask: linear-gradient(transparent 5%,white 10%,white 60%,transparent);
-  /* background: linear-gradient(red,blue); */
 }
 
-.mask{
+.mask{ /* Make mask around gradient border*/
   mask:radial-gradient(circle 2000px at -57% 960px,transparent 45%,white 50%);
-  /* background:radial-gradient(circle 2000px at -57% 960px,red 45% ,blue 50%); */
 }
 
 .testcard{
   background-color: rgb(76, 88, 91,0.2);
-}
-
-.scrollbar-none {
-  scrollbar-width: none;
 }
 
 @keyframes scrolleffect {
@@ -59,5 +53,14 @@
   user-select: none;
   touch-action: none;
 }
+
+
+
+/* Set scrollbar width none for testcard only*/
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+
 
   

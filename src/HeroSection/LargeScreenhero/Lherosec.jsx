@@ -16,8 +16,8 @@ function Lherosec(){
 
     const flipwds=useRef(null)
 
+    //flip word using GSAP
     useEffect(() => {
-
         if(flipwds.current){
             gsap.fromTo(flipwds.current,
                 {
@@ -39,7 +39,7 @@ function Lherosec(){
     }, []);
 
     return(
-        <div className="grid grid-cols-2 h-full w-full hero bg-fixed">
+        <div className="grid grid-cols-2 h-full w-full bg-fixed hero">
             
             <div className="flex items-center justify-center h-full w-full">
                 <div className="flex flex-col w-[500px]">
@@ -52,10 +52,11 @@ function Lherosec(){
                     <button className='tracking-wider mt-[40px] border border-[#F5F5F4] rounded-xl p-[15px] w-[170px] h-[60px] hover:bg-[#F5F5F4] hover:text-black'>Free Trial</button>
                 </div>
             </div>
-            <div className="h-full w-full mask">
-                <Testimonials/>
+            <div className="flex items-center justify-center h-full w-full mask">
+                <div>
+                    <Testimonials/>
+                </div>
             </div>
-
         </div>
     )
 }

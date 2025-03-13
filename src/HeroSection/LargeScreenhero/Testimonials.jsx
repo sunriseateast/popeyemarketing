@@ -6,7 +6,8 @@ import p1 from "./images/p1.jpeg"
 function Testimonials(){
     let elements=[]
     const elementRef=useRef(null)
-
+    
+    //Testimonials
     const testcontent=[
         {
             name:"Roshan Kadam",
@@ -70,10 +71,13 @@ function Testimonials(){
         }
     ]
     
+    //function to shuffle testimonials
     const shuffleArray = (array) => {
         return [...array].sort(() => Math.random() - 0.5);
     }      
 
+
+    //create Testcard component 10 times 
     for(let i = 0 ; i < 10 ; i++){
         elements.push(
             <Testcard
@@ -90,6 +94,8 @@ function Testimonials(){
     const col2=shuffleArray(elements)
     const col3=shuffleArray(elements)
 
+
+    //to avoid users scrolling
     useEffect(()=>{
         const element=elementRef.current
         const handlescroll=(event)=>{
@@ -108,8 +114,8 @@ function Testimonials(){
     },[])
 
     return(
-        <div className="h-full w-full top overflow-hidden">
-            <div ref={elementRef} className="h-[calc(100vh-80px)] w-full grid grid-cols-3">
+        <div className="h-full w-full top">
+            <div ref={elementRef} className="h-[552px] w-[682px] grid grid-cols-3">
 
                 <div className="overflow-auto scrollbar-none">
                     <div className="flex flex-col items-center justify-center will-change-transform">
