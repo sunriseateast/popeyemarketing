@@ -19,6 +19,11 @@
   mask: linear-gradient(transparent 5%,white 10%,white 60%,transparent);
 }
 
+.top2{
+  mask:linear-gradient(transparent,white 2%,white 15%,transparent 20% );
+  /* background: linear-gradient(red,white 2%,white 15%,red 20% ) */
+}
+
 .mask{ /* Make mask around gradient border*/
   mask:radial-gradient(circle 2000px at -57% 960px,transparent 45%,white 50%);
 }

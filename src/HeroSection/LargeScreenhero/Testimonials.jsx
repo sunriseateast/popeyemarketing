@@ -2,74 +2,14 @@ import React, { useEffect, useRef } from "react"
 import Testcard from "./Testcard.jsx"
 import "../HeroSection.css"
 import p1 from "./images/p1.jpeg"
+import reviews from "../Reviews.js"
 
 function Testimonials(){
     let elements=[]
     const elementRef=useRef(null)
     
     //Testimonials
-    const testcontent=[
-        {
-            name:"Roshan Kadam",
-            message:"One of the best software I used is Whatsapp Marketing",
-            nostars:3,
-            img:p1
-        },
-        {
-            name:"Arif Khan",
-            message:"I used SMS software easy to use",
-            nostars:4,
-            img:p1
-        },
-        {
-            name:"Sandip Kute",
-            message:"People are trust worty software is also relible",
-            nostars:3,
-            img:p1
-        },
-        {
-            name:"Manish Shah",
-            message:"Whatsapp softwares is so.. reilable",
-            nostars:5,
-            img:p1
-        },
-        {
-            name:"Ritu Agarwal",
-            message:"Support are great from the team looking forwrd to buy another..",
-            nostars:4,
-            img:p1
-        },
-        {
-            name:"Nimesh Kokate",
-            message:"I used softwares from this store from last 1.5 year",
-            nostars:4,
-            img:p1
-        },
-        {
-            name:"Mahesh Sharma",
-            message:"Good Experience meaningfull tools",
-            nostars:3,
-            img:p1
-        },
-        {
-            name:"Bidesh Dinal",
-            message:"Need more improvement in updates",
-            nostars:2,
-            img:p1
-        },
-        {
-            name:"Anump Sharma",
-            message:"Geniune people after payment I recieved activation keys in few minutes",
-            nostars:4,
-            img:p1
-        },
-        {
-            name:"Bijesh Kumar",
-            message:"Reliable tools/Softwares great devlopement",
-            nostars:3,
-            img:p1
-        }
-    ]
+    const testcontent=reviews
     
     //function to shuffle testimonials
     const shuffleArray = (array) => {
@@ -116,7 +56,6 @@ function Testimonials(){
     return(
         <div className="h-full w-full top">
             <div ref={elementRef} className="h-[552px] w-[682px] grid grid-cols-3">
-
                 <div className="overflow-auto scrollbar-none">
                     <div className="flex flex-col items-center justify-center will-change-transform">
                         <div className="scroll flex flex-col gap-y-[10px] will-change-transform mt-[10px]">

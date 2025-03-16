@@ -56,10 +56,14 @@ function Header({isOpen}){
 
     //Main body
     return(
-        <div className="bg-[#06040D] text-slate-100 grid grid-cols-6 h-[80px]">
-            <div className="pl-3 pt-3 col-start-1 md:pt-5 md:pl-24 ">
-                <div className="h-[50px] w-[50px]">
-                   
+        <div className="text-slate-100 grid grid-cols-6 h-[80px]">
+            <div className="col-start-1 flex justify-center items-center">
+                <div className="h-[40px] w-[40px] mt-[7px] lg:mt-[0px] lg:h-[60px] lg:w-[60px]">
+                    <p> 
+                        <a href="https://www.google.com/">
+                            <img className="cursor-pointer" src={logo}/>
+                        </a>
+                    </p>
                 </div>
             </div>
             <div className="justify-self-end pr-6 pt-5 col-start-6 lg:hidden">

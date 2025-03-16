@@ -10,7 +10,7 @@ function App() {
         <div className="relative z-10">
           <Header isOpen={setHmopen}/>
         </div>
-        <div className={`h-[552px] w-full flex justify-center relative z-0 text-[#F5F5F4] ${hmopen  ? "blur":'transform-gpu transition-all ease-in-out'}`}>
+        <div className={`h-[550px] w-full flex justify-center relative z-0 text-[#F5F5F4] ${hmopen  ? "blur":'transform-gpu transition-all ease-in-out'}`}>
           <div className="h-full w-full">  
             <Herofilter/>
           </div>

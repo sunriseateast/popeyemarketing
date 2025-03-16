@@ -15,7 +15,7 @@ function SmallscreenMenu({css,icon}){
     const debouncehandle=useRef(null)
 
     let timer = function(fn,delay){
-        setTimeout(fn,delay)
+        return setTimeout(fn,delay)
     }
 
     useEffect(() => {
