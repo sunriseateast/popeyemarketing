@@ -19,7 +19,7 @@ function Tooltip({value}){
 
     //Div
     let size={
-        Softwares:'h-[230px] w-[600px] -translate-x-[140px] ', 
+        Softwares:'h-[230px] w-[600px] -translate-x-[60px] ', 
         Reseller: 'h-[300px] w-[300px] -translate-x-[50px] ', 
         Support:'h-[180px] w-[310px] -translate-x-[50px]',
     }
@@ -91,7 +91,7 @@ function Tooltip({value}){
     let divs={
         Softwares:
         <div className='flex justify-center rounded-lg h-full'>
-            <div className={`absolute transform-gpu -translate-x-[50px] -translate-y-[5px] w-[15px] h-[15px] bg-slate-100 rotate-45 transform-gpu transition-all ease-in-out`}></div>
+            <div className={`absolute transform-gpu -translate-x-[90px] -translate-y-[5px] w-[15px] h-[15px] bg-slate-100 rotate-45 transform-gpu transition-all ease-in-out`}></div>
             <div className='overflow-hidden w-full rounded-lg m-[10px]'>
                 <div className='group border border-slate-200 hover:cursor-pointer hover:bg-slate-200 rounded-lg m-[10px] mt-[25px] p-[13px]'>
                     <div className='shrink-0 flex space-x-[10px] transition-all transform-gpu ease-in-out'>

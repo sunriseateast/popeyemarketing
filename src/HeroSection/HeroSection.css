@@ -24,9 +24,19 @@
   /* background: linear-gradient(red,white 2%,white 15%,red 20% ) */
 }
 
-.mask{ /* Make mask around gradient border*/
-  mask:radial-gradient(circle 2000px at -57% 960px,transparent 45%,white 50%);
+/* Make mask around gradient border*/
+@media(min-width: 1024px){
+  .mask{
+    mask:radial-gradient(circle 2000px at -57% 960px,transparent 45%,white 50%);
+  }
 }
+@media(min-width: 1367px){
+  .mask{
+    mask:none;
+  }
+}
+
+
 
 .testcard{
   background-color: rgb(76, 88, 91,0.2);

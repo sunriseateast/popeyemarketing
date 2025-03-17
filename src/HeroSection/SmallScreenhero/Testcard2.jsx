@@ -1,4 +1,5 @@
-import Rating from "../../svg/Rating";
+import React from "react";
+import Rating from "../../svg/Rating.jsx";
 import "../HeroSection.css"
 
 function Testcard2({imgpath,stars,message,name}){

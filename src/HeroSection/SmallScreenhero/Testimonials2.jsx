@@ -1,5 +1,6 @@
+import React from "react";
 import reviews from "../Reviews";
-import Testcard2 from "./Testcard2";
+import Testcard2 from "./Testcard2.jsx";
 
 function Testimonials2(){
     let elements=[]

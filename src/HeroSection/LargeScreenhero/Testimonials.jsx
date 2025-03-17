@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import Testcard from "./Testcard.jsx"
 import "../HeroSection.css"
-import p1 from "./images/p1.jpeg"
 import reviews from "../Reviews.js"
 
 function Testimonials(){
@@ -55,7 +54,7 @@ function Testimonials(){
 
     return(
         <div className="h-full w-full top">
-            <div ref={elementRef} className="h-[552px] w-[682px] grid grid-cols-3">
+            <div ref={elementRef} className="h-[550px] w-[660px] grid grid-cols-3">
                 <div className="overflow-auto scrollbar-none">
                     <div className="flex flex-col items-center justify-center will-change-transform">
                         <div className="scroll flex flex-col gap-y-[10px] will-change-transform mt-[10px]">

@@ -58,7 +58,7 @@ function Header({isOpen}){
     return(
         <div className="text-slate-100 grid grid-cols-6 h-[80px]">
             <div className="col-start-1 flex justify-center items-center">
-                <div className="h-[40px] w-[40px] mt-[7px] lg:mt-[0px] lg:h-[60px] lg:w-[60px]">
+                <div className="h-[40px] w-[40px] mt-[7px] md:mt-[0px] md:h-[60px] md:w-[60px]">
                     <p> 
                         <a href="https://www.google.com/">
                             <img className="cursor-pointer" src={logo}/>
@@ -66,18 +66,18 @@ function Header({isOpen}){
                     </p>
                 </div>
             </div>
-            <div className="justify-self-end pr-6 pt-5 col-start-6 lg:hidden">
+            <div className="justify-self-end pr-6 pt-5 col-start-6 md:hidden">
                 <button onTouchStart={()=>setHmopen((prev)=>!prev)}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 cursor-pointer transition duration-150 ease-in-out" fill="none" viewBox="0 0 24 24" id="hamburger">
                         <HumIcon icon={hmopen}/>
                     </svg>
                 </button>
             </div>
-            <div className="hidden lg:grid col-start-2 col-end-6 relative content-center justify-items-center" onMouseLeave={leave}>
+            <div className="hidden md:grid col-start-2 col-end-6 relative content-center justify-items-center" onMouseLeave={leave}>
                 <LargescreenMenu value={setTiptitle}/>
                 <Tooltip value={tiptitle}/>
             </div>
-            <div className="mt-[150px] col-start-1 col-end-7 flex items-center justify-center text-xl lg:hidden">
+            <div className="mt-[150px] col-start-1 col-end-7 flex items-center justify-center text-xl md:hidden">
                 <SmallscreenMenu css={`grid grid-rows-4 place-items-center gap-y-[40px]`} icon={hmopen}/>
             </div>
         </div>

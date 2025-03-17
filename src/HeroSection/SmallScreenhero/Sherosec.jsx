@@ -1,7 +1,7 @@
 import React,{useRef,useEffect} from "react";
 import gsap from 'gsap';
-import Testimonials2 from "./Testimonials2";
-import Arrow from "../../svg/Arrow";
+import Testimonials2 from "./Testimonials2.jsx";
+import Arrow from "../../svg/Arrow.jsx";
 
 function Sherosec(){
     const flipwds=useRef(null)
@@ -46,8 +46,8 @@ function Sherosec(){
 
 
     return(
-        <div className="h-full w-full">
-            <div className="h-full w-full mt-[20px] p-[5px]">
+        <div className="h-[770px] w-full p-[20px] bg-amber-500">
+            <div className="h-full w-full mt-[20px]">
                 <div>
                     <p className="text-[50px] leading-[1.0]">The Hub of
                         <span ref={flipwds}> Solutions</span>
@@ -76,7 +76,7 @@ function Sherosec(){
                         <Testimonials2/>
                     </div>
                 </div>
-                <div className="h-[353px] -translate-y-[350px] opacity-0"></div> 
+                <div className="h-[340px] -translate-y-[350px] opacity-0"></div> 
             </div>
         </div>
     )

@@ -3,22 +3,16 @@ import Lherosec from "./LargeScreenhero/Lherosec"
 import Sherosec from "./SmallScreenhero/Sherosec"
 
 function Herofilter(){
-    //from tablet landscape this will happend
-    
-    if(window.innerWidth >= 1024){
-        return(
-            <div className="h-full w-full">
-                <Lherosec/>
-            </div>
-        )
-    }
-    else{
-        return(
-            <div className="h-full w-full">
+    return(
+        <div className="h-full w-full">
+            <div className="md:hidden h-full w-full">
                 <Sherosec/>
             </div>
-        )
-    }
+            <div className="hidden md:grid h-full w-full">
+                <Lherosec/>
+            </div>
+        </div>
+    )
 }
 
 export default Herofilter
