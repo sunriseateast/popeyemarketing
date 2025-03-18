@@ -46,7 +46,7 @@ function Sherosec(){
 
 
     return(
-        <div className="h-[770px] w-full p-[20px] bg-amber-500">
+        <div className="h-[770px] w-full p-[20px]">
             <div className="h-full w-full mt-[20px]">
                 <div>
                     <p className="text-[50px] leading-[1.0]">The Hub of

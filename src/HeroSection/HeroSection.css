@@ -2,6 +2,8 @@
   @media(min-width: 1024px){ /* Above 1024px this will happened */
     .hero{
       background-image: radial-gradient(circle 1880px at 10% 1130px,#f1f5f9,#06040D 60%);
+      mask:linear-gradient(white 85%,transparent)
+      /* background:radial-gradient(circle 350px at 22%,blue 80%,red 90%) */
     }
   }
 
@@ -19,10 +21,11 @@
   mask: linear-gradient(transparent 5%,white 10%,white 60%,transparent);
 }
 
-.top2{
+.top2{/* Add faded effect for small screen cards top,bottom*/
   mask:linear-gradient(transparent,white 2%,white 15%,transparent 20% );
   /* background: linear-gradient(red,white 2%,white 15%,red 20% ) */
 }
+
 
 /* Make mask around gradient border*/
 @media(min-width: 1024px){
@@ -77,5 +80,7 @@
 }
 
 
-
+.button-sh{
+  box-shadow: 25px -10px 30px -25px #06040D, -25px 12px 30px -25px white;
+}
   

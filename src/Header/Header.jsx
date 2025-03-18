@@ -59,7 +59,7 @@ function Header({isOpen}){
         <div className="text-slate-100 grid grid-cols-6 h-[80px]">
             <div className="col-start-1 flex justify-center items-center">
                 <div className="h-[40px] w-[40px] mt-[7px] md:mt-[0px] md:h-[60px] md:w-[60px]">
-                    <p> 
+                    <p>
                         <a href="https://www.google.com/">
                             <img className="cursor-pointer" src={logo}/>
                         </a>

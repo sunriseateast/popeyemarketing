@@ -63,7 +63,7 @@ function Lherosec(){
                     many cases where users not getting proper <span className="text-white">SUPPORT/BUGGY</span> softwares provide by vendors.In
                     this store you will find your specific solutions.</p>
                     <button
-                    onMouseEnter={bounce} className='tracking-wider mt-[40px] border border-[#F5F5F4] rounded-xl p-[15px] w-[170px] h-[60px] hover:bg-[#F5F5F4] hover:text-black'>
+                    onMouseEnter={bounce} className='button-sh tracking-wider mt-[40px] rounded-xl p-[15px] w-[170px] h-[60px] bg-[#F5F5F4] text-black'>
                        <div className="flex">
                             <div className="ml-[20px]">
                                 Free Trial

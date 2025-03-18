@@ -1,4 +1,3 @@
-import React from "react"
 import Lherosec from "./LargeScreenhero/Lherosec"
 import Sherosec from "./SmallScreenhero/Sherosec"
 
