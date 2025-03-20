@@ -1,0 +1,12 @@
+.card{
+    box-shadow:0px 7px 10px -10px #373A40 inset;
+}
+
+.innercard{
+    box-shadow:0px 1px 2px #373A40 inset
+}
+
+.filler{
+    /* box-shadow:0px 0px 0px 1px */
+    outline: white solid 2px
+}

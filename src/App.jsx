@@ -2,7 +2,7 @@ import Header from "./Header/Header.jsx";
 import Herofilter from "./HeroSection/Herofilter.jsx";
 import { useState } from "react";
 import Midsecfilter from "./Midsec/Midsecfilter.jsx";
-
+import "./HeroSection/HeroSection.css"
 
 function App() {
   let [hmopen,setHmopen]=useState(false)
@@ -11,12 +11,16 @@ function App() {
         <div className="relative z-10 ">
           <Header isOpen={setHmopen}/>
         </div>
-        <div className={`flex flex-col items-center relative z-0 text-[#F5F5F4] ${hmopen  ? "blur":'transform-gpu transition-all ease-in-out'}`}>
-          <div>  
-            <Herofilter/>
+        <div className={`relative z-0 text-[#F5F5F4] ${hmopen  ? "blur":'transform-gpu transition-all ease-in-out'}`}>
+          <div className="h-full w-full grid content-center justify-center hero">
+            <div className="mx-[20px]">
+              <Herofilter/>
+            </div>
           </div>
-          <div className="text-slate-100">
-            <Midsecfilter/>
+          <div className="h-full w-full grid content-center justify-center">
+            <div>
+              <Midsecfilter/>
+            </div>
           </div>
         </div> 
     </div>  

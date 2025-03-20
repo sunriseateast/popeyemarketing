@@ -52,8 +52,7 @@ function Lherosec(){
     }
 
     return(
-        <div className="grid grid-cols-2 h-full w-full bg-fixed p-[20px] hero">
-            
+        <div className="grid grid-cols-2 content-center justify-items-center h-full w-full bg-fixed">
             <div className="flex items-center justify-center h-full w-full">
                 <div className="flex flex-col w-[500px]">
                     <p className="text-[70px] font-bold leading-[1.0]">
@@ -82,7 +81,7 @@ function Lherosec(){
                     <Testimonials/>
                 </div>
             </div>
-            <div className="absolute h-[550px] w-[660px] opacity-0 translate-x-[660px]"></div>
+            <div className="absolute h-[550px] w-[660px] opacity-0 translate-x-[320px]"></div>
         </div>
     )
 }
