@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 import gsap from 'gsap';
 import Bug from "../../svg/Bug"
 import Down from "../../svg/Down"
@@ -7,45 +7,51 @@ import "../Midsec.css"
 
 function Lmidsec(){
     const card2text=useRef(null)
+    const filler1=useRef(null)
+    const filler2=useRef(null)
+    const filler3=useRef(null)
+    const filler4=useRef(null)
+    const timerId=useRef(null)
+    const fillertimeerId=useRef(null)
+    const values=["Install","Open","Start","Download"]    
 
     function animation(){
-        const values=["Download","Install","Open","Start"]
         let t1=gsap.timeline()
+        let t2=gsap.timeline()
+        let t3=gsap.timeline()
+        let t4=gsap.timeline()
 
         if(card2text.current){
-            values.map((value)=>{
-                t1.to(card2text.current,
-                    {
-                        onStart:()=>{
-                            card2text.current=value
-                        },
-                        y:-50
-                    },
-                ).to(card2text.current,
-                    {
-                        y:0,
-                        delay:0.5
-                    }
-                )
+            t1.fromTo(filler1.current,
+                {
+                    x:-50,
+                },
+                {
+                    x:0,
+                    duration:2,
+                }
+            ).to(card2text.current,{
+                filter:"blur(5px)",
+                y:-50,
+                duration:0.5,
+            }).to(card2text.current,{
+                onStart:()=>{
+                    card2text.current.innerHTML="Install"
+                },
+                ease: "power2.out",
+                filter:"blur(0px)",
+                duration:0.5,
+                y:0
             })
 
-
-            // values.map((value)=>{
-            //     card2text.current.innerHTML=value
-            //     gsap.fromTo(card2text.current,
-            //         {
-            //             y : -50,
-            //             filter:'blur(8px)',
-            //         },
-            //         {
-            //             y:0,
-            //             filter:'blur(0px)',
-            //             ease: "power4.out",
-            //         }
-            //     )
-            // })
+            if(fillertimeerId.current) clearTimeout(fillertimeerId.current)
+                fillertimeerId.current=
+                setTimeout(()=>{
+                    t1.timeScale(2)
+                },500)
         }
     }
+
 
     return(
     <div className="h-full w-full grid content-center justify-items-center px-[50px]">
@@ -68,7 +74,11 @@ function Lmidsec(){
                </div>   
             </div>
 
-            <div className="p-[40px] border-[#1D1616] hover:border-[#3C3D37] rounded-xl border-l border-b" onMouseEnter={animation}>
+            <div className="p-[40px] border-[#1D1616] hover:border-[#3C3D37] rounded-xl border-l border-b" 
+            onMouseEnter={()=>{
+                if (timerId.current) clearTimeout(timerId.current)
+                timerId.current=setTimeout(()=>{animation()},300)
+            }}>
                <div className="bg-[#4c585b33] m-[10px] p-[14px] rounded-xl card">
                     <div className="flex items-center-justify-center">
                         <div className="bg-[#4c585b33] h-[40px] w-[40px] rounded-[10px] innercard grid content-center justify-items-center">
@@ -81,18 +91,18 @@ function Lmidsec(){
                         </div>
                     </div>
                     <div className="mt-[10px] flex gap-x-[8px]">
-                        <div className="h-[7px] w-[45px] border border-[#4c585b33] rounded-xl filler">
-
+                        <div className="overflow-hidden h-[7px] w-[45px] border border-[#4c585b33] rounded-xl filler">
+                            <div ref={filler1} className="h-[5px] w-[46px] bg-blue-500"></div>
                         </div>
-                        <div className="h-[7px] w-[45px] border border-[#4c585b33] rounded-xl filler">
-
+                        <div className="overflow-hidden h-[7px] w-[45px] border border-[#4c585b33] rounded-xl filler">
+                            <div ref={filler2} className="h-[5px] w-[46px] bg-amber-500"></div>
                         </div>
-                        <div className="h-[7px] w-[45px] border border-[#4c585b33] rounded-xl filler">
-
+                        <div className="overflow-hidden h-[7px] w-[45px] border border-[#4c585b33] rounded-xl filler">
+                            <div ref={filler3} className="h-[5px] w-[46px] bg-pink-500"></div>
                         </div>
-                        <div className="h-[7px] w-[45px] border border-[#4c585b33] rounded-xl filler">
-
-                        </div>
+                        <div className="overflow-hidden h-[7px] w-[45px] border border-[#4c585b33] rounded-xl filler">
+                            <div ref={filler4} className="h-[5px] w-[46px] bg-lime-500"></div>
+                        </div>      
                     </div>
                </div>   
             </div>
