@@ -6,7 +6,25 @@
     box-shadow:0px 1px 2px #373A40 inset
 }
 
-.filler{
-    /* box-shadow:0px 0px 0px 1px */
-    outline: white solid 2px
+
+.fillerCard1{
+    box-shadow: 0px 0px 5px blue;
 }
+
+.fillerCard2{
+    box-shadow: 0px 0px 5px orange;
+}
+
+.fillerCard3{
+    box-shadow: 0px 0px 5px #FF007F;
+}
+
+.fillerCard4{
+    box-shadow: 0px 0px 5px lime;
+}
+
+/* Set scrollbar width none for testcard only*/
+.scrollbar-none {
+    scrollbar-width: none;
+}
+  

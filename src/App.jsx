@@ -12,13 +12,13 @@ function App() {
           <Header isOpen={setHmopen}/>
         </div>
         <div className={`relative z-0 text-[#F5F5F4] ${hmopen  ? "blur":'transform-gpu transition-all ease-in-out'}`}>
-          <div className="h-full w-full grid content-center justify-center hero">
+          <div className="h-full w-full md:grid content-center justify-center hero">
             <div className="mx-[20px]">
               <Herofilter/>
             </div>
           </div>
-          <div className="h-full w-full grid content-center justify-center">
-            <div>
+          <div className="h-full w-full md:grid content-center justify-center">
+            <div className="mx-[20px]">
               <Midsecfilter/>
             </div>
           </div>
