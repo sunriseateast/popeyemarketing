@@ -49,7 +49,7 @@ function Sherosec(){
         <div className="h-[770px] w-full">
             <div className="h-full w-full mt-[20px]">
                 <div>
-                    <p className="text-[50px] leading-[1.0]">The Hub of
+                    <p className="break-all text-[50px] leading-[1.0]">The Hub of<br/>
                         <span ref={flipwds}> Solutions</span>
                     </p>
                 </div>

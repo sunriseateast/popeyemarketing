@@ -74,24 +74,24 @@ function Lmidsec(){
                         </div>
                     </div>
                     <div className="mt-[10px] flex gap-x-[8px]">
-                        <div className="flex items-center justify-center p-[10px] overflow-x-hidden h-[7px] w-[45px] rounded-xl scrollbar-none">
-                            <div className="h-[7px] w-[40px] border border-[#4c585b33] rounded-xl ">
-                                <div ref={filler1} className="h-[5px] w-[40px] bg-blue-500 fillerCard1 rounded-xl"></div>
+                        <div className="flex items-center justify-center p-[10px] overflow-hidden h-[7px] w-[45px] rounded-xl scrollbar-none">
+                            <div className="h-[7px] w-[40px] border border-[#4c585b33] rounded-xl mr-[5px]">
+                                <div ref={filler1} className="h-[5px] w-[39px] bg-blue-500 fillerCard1 rounded-xl"></div>
                             </div>
                         </div>
-                        <div className="flex items-center justify-center p-[10px] overflow-x-hidden h-[7px] w-[45px] rounded-xl scrollbar-none">
-                            <div className="h-[7px] w-[40px] border border-[#4c585b33] rounded-xl">
-                                <div ref={filler2} className="h-[5px] w-[40px] bg-amber-500 fillerCard2 rounded-xl"></div>
+                        <div className="flex items-center justify-center p-[10px] overflow-hidden h-[7px] w-[45px] rounded-xl scrollbar-none">
+                            <div className="h-[7px] w-[40px] border border-[#4c585b33] rounded-xl mr-[5px]">
+                                <div ref={filler2} className="h-[5px] w-[39px] bg-amber-500 fillerCard2 rounded-xl"></div>
                             </div>
                         </div>
-                        <div className="flex items-center justify-center p-[10px] overflow-x-hidden h-[7px] w-[45px] rounded-xl scrollbar-none">
-                            <div className="h-[7px] w-[40px] border border-[#4c585b33] rounded-xl">
-                                <div ref={filler3} className="h-[5px] w-[40px] bg-[#FF007F] fillerCard3 rounded-xl"></div>
+                        <div className="flex items-center justify-center p-[10px] overflow-hidden h-[7px] w-[45px] rounded-xl scrollbar-none">
+                            <div className="h-[7px] w-[40px] border border-[#4c585b33] rounded-xl mr-[5px]">
+                                <div ref={filler3} className="h-[5px] w-[39px] bg-[#FF007F] fillerCard3 rounded-xl"></div>
                             </div>
                         </div>
-                        <div className="flex items-center justify-center p-[10px] overflow-x-hidden h-[7px] w-[45px] rounded-xl scrollbar-none">
-                            <div className="h-[7px] w-[40px] border border-[#4c585b33] rounded-xl">
-                                <div ref={filler4} className="h-[5px] w-[40px] bg-lime-500 fillerCard4 rounded-xl"></div>
+                        <div className="flex items-center justify-center p-[10px] overflow-hidden h-[7px] w-[45px] rounded-xl scrollbar-none">
+                            <div className="h-[7px] w-[40px] border border-[#4c585b33] rounded-xl mr-[5px]">
+                                <div ref={filler4} className="h-[5px] w-[39px] bg-lime-500 fillerCard4 rounded-xl"></div>
                             </div>
                         </div>     
                     </div>
