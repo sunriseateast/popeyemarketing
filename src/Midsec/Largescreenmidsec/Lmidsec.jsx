@@ -10,12 +10,16 @@ import Card2 from "./Card2";
 
 function Lmidsec(){
     const card2text=useRef(null)
+
+    //Progress bar Ref's
     const filler1=useRef(null)
     const filler2=useRef(null)
     const filler3=useRef(null)
     const filler4=useRef(null)
     const timerId=useRef(null)   
 
+
+    //GSAP animation for progress bar
     function animation(){
         let t1=gsap.timeline()
         let fillerref=[filler1,filler2,filler3,filler4]

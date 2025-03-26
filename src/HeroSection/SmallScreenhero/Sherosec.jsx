@@ -46,7 +46,7 @@ function Sherosec(){
 
 
     return(
-        <div className="h-[770px] w-full">
+        <div className="w-full relative">
             <div className="h-full w-full mt-[20px]">
                 <div>
                     <p className="break-all text-[50px] leading-[1.0]">The Hub of<br/>
@@ -65,18 +65,18 @@ function Sherosec(){
                             <div>
                                 <p>Free Trial</p>
                             </div>
-                            <div className="h-[12px] w-[12px]">
+                            <div className="max-h-[12px] max-w-[12px]">
                                 <Arrow/>
                             </div>
                         </div>
                     </button>
                 </div>
-                <div ref={elementRef} className="h-[350px] mt-[25px] overflow-auto scrollbar-none">
+                <div ref={elementRef} className="max-h-[350px] mt-[25px] overflow-hidden scrollbar-none">
                     <div>
                         <Testimonials2/>
                     </div>
                 </div>
-                <div className="h-[340px] -translate-y-[350px] opacity-0"></div> 
+                <div className="h-[350px] w-full opacity-0 bg-lime-500 absolute -translate-y-[350px]"></div> 
             </div>
         </div>
     )

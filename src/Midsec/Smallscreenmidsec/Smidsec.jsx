@@ -1,24 +1,32 @@
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 import Card2s from "./Card2s.jsx"
 import Wavy from "../../svg/Wavy.jsx"
 import Unlock from "../../svg/Unlock.jsx"
 import Down from "../../svg/Down.jsx"
 import Bug from "../../svg/Bug.jsx"
 import gsap from 'gsap';
+gsap.registerPlugin(ScrollTrigger) 
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "../Midsec.css"
 
 function Smidsec(){
     const card2text=useRef(null)
+
+    //progress bar Ref's
     const filler1=useRef(null)
     const filler2=useRef(null)
     const filler3=useRef(null)
     const filler4=useRef(null)
-    const timerId=useRef(null) 
+
+    const timerId=useRef(null)
+
+    //cards Ref's for GSAP
     const card1=useRef(null)
     const card2=useRef(null)
     const card3=useRef(null)
     const card4=useRef(null)
 
+    //Function for progress bar card
     function animation(){
         let t1=gsap.timeline()
         let fillerref=[filler1,filler2,filler3,filler4]
@@ -54,27 +62,45 @@ function Smidsec(){
         }
     }
 
-    function group1(){
+
+    useEffect(()=>{
+
+        //Cards reposition animation for specific viewport
         if(card1.current){
             gsap.to([card1.current,card3.current],{
-                x:-30
+                scrollTrigger:{
+                    trigger:[card1.current,card3.current],
+                    start:"top center",
+                    once:true
+                },
+                x:"-5vw",
+            })
+
+            gsap.to([card2.current,card4.current],{
+                scrollTrigger:{
+                    trigger:[card1.current,card3.current],
+                    start:"top center",
+                    once:true
+                },
+                x:"5vw",
             })
         }
-    }
+    },[])
+
 
     return(
-        <div className="flex flex-col h-full w-full bg-lime-500 h-full w-full">
+        <div className="h-full w-full mt-[100px] select-none">
            
-                <div onTouchStart={group1} className="bg-amber-500">
-                    <div className="bg-pink-500 mx-[20px] flex items-center justify-center">
+                <div className="overflow-hidden">
+                    <div className="mx-[20px] flex items-center justify-center">
                         <div  ref={card1}>
                             <Card2s innerText={"Reliable Softwares"} svgPath={<Wavy/>}/>
                         </div>
                     </div>
                 </div>
 
-                <div>
-                    <div className="bg-pink-500 mx-[20px] flex items-center justify-center">
+                <div className="overflow-hidden">
+                    <div className="mx-[20px] flex items-center justify-center">
                         <div ref={card2}>
                             <div className="p-[2px]" 
                                 onTouchStart={()=>{
@@ -120,16 +146,16 @@ function Smidsec(){
                     </div>
                 </div>
 
-                <div className="bg-pink-500">
-                    <div className="bg-amber-500 mx-[20px] flex items-center justify-center">
+                <div className="overflow-hidden">
+                    <div className="mx-[20px] flex items-center justify-center">
                         <div ref={card3}>
                             <Card2s innerText={"Clean UI"} svgPath={<Down/>}/>
                         </div>
                     </div>
                 </div>
 
-                <div>
-                    <div className="bg-amber-500 mx-[20px] flex items-center justify-center">
+                <div className="overflow-hidden">
+                    <div className="mx-[20px] flex items-center justify-center">
                         <div ref={card4}>
                             <Card2s innerText={"No Cheating"} svgPath={<Bug/>}/>
                         </div>
