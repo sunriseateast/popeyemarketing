@@ -33,6 +33,16 @@
   min-width: 130px;
 }
 
+@media(min-width:1024px){
+  .header{ /* Above 1024px this will happened */
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+  }
+}
+
+.header{
+  background: rgba(6, 4, 13,0.5);
+}
   
 
   

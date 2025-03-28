@@ -11,7 +11,6 @@ function Header({isOpen}){
     let [hmopen,setHmopen]=useState(false)
     let [tiptitle,setTiptitle]=useState(false)
 
-
     //Function listening on resize of window
     function resizewindow(){
         if(window.innerWidth>=768){
@@ -53,15 +52,14 @@ function Header({isOpen}){
         }
     }
 
-
     //Main body
     return(
-        <div className="text-slate-100 grid grid-cols-6 h-[80px]">
-            <div className="col-start-1 flex justify-center items-center">
+        <div className={`text-slate-100 grid grid-cols-6 h-[80px] md:w-[1300px] ${hmopen===false && 'header'} rounded-xl`}>
+            <div className="col-start-1 flex justify-center items-center no-sticky">
                 <div className="h-[40px] w-[40px] mt-[7px] md:mt-[0px] md:h-[60px] md:w-[60px]">
                     <p>
                         <a href="https://www.google.com/">
-                            <img className="cursor-pointer" src={logo}/>
+                            <img className="cursor-pointer" src={logo} loading="lazy"/>
                         </a>
                     </p>
                 </div>

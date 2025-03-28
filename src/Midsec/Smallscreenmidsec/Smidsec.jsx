@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef} from "react"
 import Card2s from "./Card2s.jsx"
 import Wavy from "../../svg/Wavy.jsx"
 import Unlock from "../../svg/Unlock.jsx"
@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger)
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "../Midsec.css"
 
-function Smidsec(){
+function Smidsec({open}){
     const card2text=useRef(null)
 
     //progress bar Ref's
@@ -64,7 +64,6 @@ function Smidsec(){
 
 
     useEffect(()=>{
-
         //Cards reposition animation for specific viewport
         if(card1.current){
             gsap.to([card1.current,card3.current],{
@@ -87,7 +86,6 @@ function Smidsec(){
         }
     },[])
 
-
     return(
         <div className="h-full w-full mt-[100px] select-none">
            
@@ -104,8 +102,10 @@ function Smidsec(){
                         <div ref={card2}>
                             <div className="p-[2px]" 
                                 onTouchStart={()=>{
-                                    if (timerId.current) clearTimeout(timerId.current)
-                                    timerId.current=setTimeout(()=>{animation()},300)
+                                    if(open===false){
+                                        if (timerId.current) clearTimeout(timerId.current)
+                                            timerId.current=setTimeout(()=>{animation()},300)
+                                    }
                                 }}>
                                 <div className="bg-[#4c585b33] m-[10px] p-[7px] rounded-xl card w-[250px]">
                                     <div className="flex items-center-justify-center">
