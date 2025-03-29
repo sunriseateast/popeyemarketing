@@ -3,6 +3,7 @@ import Herofilter from "./HeroSection/Herofilter.jsx";
 import { useState,useEffect } from "react";
 import Midsecfilter from "./Midsec/Midsecfilter.jsx";
 import "./HeroSection/HeroSection.css"
+import "./Midsec2/Midsec2.css"
 import Midsec2filter from "./Midsec2/Midsec2filter.jsx";
 
 function App() {
@@ -40,16 +41,16 @@ function App() {
               <Midsecfilter open={hmopen}/>
             </div>
           </div>
-          <div className="h-full w-full md:grid content-center justify-center">
+          <div className="h-full w-full md:grid content-center justify-center bg-[#1A1A1D]">
             <div className="mx-[20px]">
               <Midsec2filter/>
             </div>
           </div>
-          <div className="h-full w-full md:grid content-center justify-center">
+          {/* <div className="h-full w-full md:grid content-center justify-center bg-pink-500">
             <div className="mx-[20px]">
               <Midsec2filter/>
             </div>
-          </div>
+          </div> */}
         </div> 
     </div>  
   )

@@ -58,7 +58,7 @@ function Lmidsec(){
 
     return(
     <div className="h-full w-full grid content-center justify-items-center px-[50px]">
-        <div className="grid grid-cols-2 mt-[100px]">
+        <div className="grid grid-cols-2 my-[150px]">
             <Card2 svgPath={<Wavy/>} innerText={'Reilable Softwares'} borderCss={"border-r border-b"}/>
 
             <div className="p-[40px] border-[#1D1616] hover:border-[#3C3D37] rounded-xl border-l border-b" 

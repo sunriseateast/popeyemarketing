@@ -1,0 +1,19 @@
+.waicon{
+    background: rgba(110, 194, 7,0.1);
+}
+
+.wabox{
+    box-shadow: 0px 0px 20px rgba(48, 255, 0,0.2);
+}
+
+.contactex{
+    box-shadow: 0px 0px 20px rgba(0, 0, 0,0.2)
+}
+
+.button{
+    box-shadow: 0px 0px 100px rgba(0, 0, 0,0.2);
+}
+
+.live{
+    box-shadow:0px 0px 10px rgba(0, 0, 0,0.7)
+}
