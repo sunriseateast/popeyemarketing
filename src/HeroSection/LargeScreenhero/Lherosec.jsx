@@ -1,4 +1,4 @@
-import React,{useEffect,useRef} from "react";
+import React,{useCallback, useEffect,useRef} from "react";
 import "../HeroSection.css";
 import "../../Header/Header.css"
 import gsap from 'gsap';
@@ -37,7 +37,7 @@ function Lherosec(){
 
     }, []);
 
-    function bounce(){
+    const bounce=useCallback(()=>{
         if(arrbounce.current){
             gsap.killTweensOf(arrbounce.current)
             gsap.fromTo(arrbounce.current,        
@@ -47,9 +47,8 @@ function Lherosec(){
                 {
                     x:10,
                 }
-        )
-        }
-    }
+        )}
+    },[])
 
     return(
         <div className="grid grid-cols-2 content-center justify-items-center h-full w-full bg-fixed">

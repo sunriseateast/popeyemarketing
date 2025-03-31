@@ -87,7 +87,7 @@ function Smidsec({open}){
     },[])
 
     return(
-        <div className="h-full w-full mt-[100px] select-none">
+        <div className="h-full w-full my-[100px] select-none">
            
                 <div className="overflow-hidden">
                     <div className="mx-[20px] flex items-center justify-center">
