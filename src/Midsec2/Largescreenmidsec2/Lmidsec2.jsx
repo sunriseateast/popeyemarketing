@@ -10,6 +10,8 @@ function Lmidsec2(){
         const upCard2=useRef(null)
 
         useEffect(() => {
+
+            // Animation For live dot
             if(liveDot.current){
                 gsap.to(liveDot.current, {
                     opacity: 0.2,   
@@ -21,6 +23,8 @@ function Lmidsec2(){
             }
         }, [])
 
+         
+        // Animation for moving card upward and downward
         const upcard=useCallback((card)=>{
             if(card){
                 gsap.killTweensOf(card)

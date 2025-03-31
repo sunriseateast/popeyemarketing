@@ -1,0 +1,12 @@
+
+.div1{
+    background:#1A1A1D;
+    box-shadow: -20px 10px 50px black inset
+}
+
+.div2{
+    background:rgba(26, 26, 29,0.9)
+    /* background: transparent;
+    backdrop-filter: blur(10px); */
+}
+

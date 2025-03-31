@@ -5,6 +5,7 @@ import Midsecfilter from "./Midsec/Midsecfilter.jsx";
 import "./HeroSection/HeroSection.css"
 import "./Midsec2/Midsec2.css"
 import Midsec2filter from "./Midsec2/Midsec2filter.jsx";
+import Lightweightfilter from "./Lightweight/Lightweightfilter.jsx";
 
 function App() {
   let [hmopen,setHmopen]=useState(false)
@@ -46,11 +47,11 @@ function App() {
               <Midsec2filter/>
             </div>
           </div>
-          {/* <div className="h-full w-full md:grid content-center justify-center bg-pink-500">
+          <div className="h-full w-full md:grid content-center justify-center">
             <div className="mx-[20px]">
-              <Midsec2filter/>
+              <Lightweightfilter/>
             </div>
-          </div> */}
+          </div>
         </div> 
     </div>  
   )

@@ -1,19 +1,24 @@
+/* css for icon background(glass) */
 .waicon{
     background: rgba(110, 194, 7,0.1);
 }
 
+/* css for whatsapp icon glow */
 .wabox{
     box-shadow: 0px 0px 20px rgba(48, 255, 0,0.2);
 }
 
+/* css for contact extractor icon glow */
 .contactex{
     box-shadow: 0px 0px 20px rgba(0, 0, 0,0.2)
 }
 
+/* css for button shadow */
 .button{
     box-shadow: 0px 0px 100px rgba(0, 0, 0,0.2);
 }
 
+/* css for live dot */
 .live{
     box-shadow:0px 0px 10px rgba(0, 0, 0,0.7)
 }

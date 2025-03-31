@@ -11,6 +11,8 @@ function Smidsec2(){
     const upCard2=useRef(null)
 
     useEffect(() => {
+
+        // Anmination for live dot
         if(liveDot.current){
             gsap.to(liveDot.current, {
                 opacity: 0.2,   
@@ -22,6 +24,8 @@ function Smidsec2(){
         }
     }, [])
 
+
+    // Animation for moving card upward and downward
     const upcard=useCallback((card)=>{
         if(card){
             gsap.killTweensOf(card)
@@ -64,7 +68,7 @@ return(
                             </div>
                         </div>
                         <div className="flex flex-col gap-y-[2px] text-zinc-500 rounded-xl mx-[10px] mt-[10px]">
-                            <p>
+                            <p className="text-[15px]">
                                 Whastapp marketing helps you to send bulk messages and create chatbot 
                                 with all advanced features.
                             </p>
@@ -95,7 +99,7 @@ return(
                             </div>
                         </div>
                         <div className="flex flex-col gap-y-[2px] text-zinc-500 rounded-xl mx-[10px] mt-[10px]">
-                            <p>
+                            <p className="text-[15px]">
                                 Export contacts from your phone and 
                                 <span className="text-[#6EC207] font-semibold">&nbsp;Whatsapp</span>,
                                 get
@@ -114,15 +118,13 @@ return(
                </div>
             </div>
             <div className="flex items-center justify-center overflow-hidden">
-               <div className="">
-                    <a href="https://www.google.com/">
-                        <div className="flex items-center justify-center h-[60px] w-[60px] rounded-[100px] bg-zinc-500">
-                            <div className="max-h-[20px] max-w-[20px]">
-                                <Rarrow/>
-                            </div>
+                <a href="https://www.google.com/">
+                    <div className="flex items-center justify-center max-h-[60px] max-w-[60px] rounded-[100px] bg-zinc-500">
+                        <div className="max-h-[20px] max-w-[20px] m-[20px]">
+                            <Rarrow/>
                         </div>
-                    </a>
-               </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
