@@ -10,3 +10,7 @@
     backdrop-filter: blur(10px); */
 }
 
+.flash{
+    color:#9CFF2E;
+    filter: drop-shadow(5px 0px 40px rgba(156, 255, 46,0.8));
+}
