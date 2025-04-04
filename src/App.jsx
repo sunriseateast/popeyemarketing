@@ -2,10 +2,12 @@ import Header from "./Header/Header.jsx";
 import Herofilter from "./HeroSection/Herofilter.jsx";
 import { useState,useEffect } from "react";
 import Midsecfilter from "./Midsec/Midsecfilter.jsx";
-import "./HeroSection/HeroSection.css"
-import "./Midsec2/Midsec2.css"
+import "./HeroSection/HeroSection.css";
+import "./Midsec/Midsec.css"
+import "./Midsec2/Midsec2.css";
 import Midsec2filter from "./Midsec2/Midsec2filter.jsx";
 import Lightweightfilter from "./Lightweight/Lightweightfilter.jsx";
+import Hustlefilter from "./Hustle/Hustlefilter.jsx";
 
 function App() {
   let [hmopen,setHmopen]=useState(false)
@@ -42,7 +44,7 @@ function App() {
               <Midsecfilter open={hmopen}/>
             </div>
           </div>
-          <div className="h-full w-full md:grid content-center justify-center bg-[#1A1A1D]">
+          <div className="h-full w-full md:grid content-center justify-center bg-[#1A1A1D] gradient">
             <div className="mx-[20px]">
               <Midsec2filter/>
             </div>
@@ -50,6 +52,11 @@ function App() {
           <div className="h-full w-full md:grid content-center justify-center">
             <div className="mx-[20px]">
               <Lightweightfilter/>
+            </div>
+          </div>
+          <div className="h-full w-full md:grid content-center justify-center">
+            <div className="mx-[20px]">
+              <Hustlefilter/>
             </div>
           </div>
         </div> 

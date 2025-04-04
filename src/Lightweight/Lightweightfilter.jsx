@@ -1,4 +1,5 @@
 import Llightweight from "./Largescreenlightweight/Llightweight";
+import Slightweight from "./Smallscreenlightweight/Slightweight";
 
 function Lightweightfilter(){
     return(
@@ -6,8 +7,8 @@ function Lightweightfilter(){
             <div className="hidden md:grid">
                 <Llightweight/>
             </div>
-            <div>
-
+            <div className="md:hidden">
+                <Slightweight/>
             </div>
         </div>
     )
