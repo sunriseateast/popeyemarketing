@@ -1,32 +1,25 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.62 32.92">
   <defs>
     <style>
       .cls-1 {
-        fill: none;
-      }
-
-      .cls-2 {
         fill: #fff;
       }
 
-      .cls-2, .cls-3 {
+      .cls-1, .cls-2 {
         stroke: #fff;
         stroke-linecap: round;
         stroke-miterlimit: 10;
         stroke-width: 1.5px;
       }
 
-      .cls-3 {
+      .cls-2 {
         fill: none;
       }
     </style>
   </defs>
   <title>logo</title>
-  <g>
-    <rect class="cls-1" x="0.5" y="0.5" width="49" height="49"/>
-  </g>
-  <line class="cls-2" x1="24.5" y1="8.5" x2="24.5" y2="31.5"/>
-  <line class="cls-3" x1="24.5" y1="31.5" x2="11" y2="22"/>
-  <line class="cls-3" x1="11" y1="22" x2="37" y2="22"/>
-  <line class="cls-3" x1="37.12" y1="22.08" x2="24.88" y2="39.92"/>
+  <line class="cls-1" x1="14.25" y1="0.75" x2="14.25" y2="23.75"/>
+  <line class="cls-2" x1="14.25" y1="23.75" x2="0.75" y2="14.25"/>
+  <line class="cls-2" x1="0.75" y1="14.25" x2="26.75" y2="14.25"/>
+  <line class="cls-2" x1="26.87" y1="14.33" x2="14.63" y2="32.17"/>
 </svg>

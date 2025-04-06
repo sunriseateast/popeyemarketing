@@ -1,4 +1,4 @@
-import logo from "/images/logo.svg"
+import logo from "/images/logo.png"
 import {useEffect, useState} from "react"
 import React from 'react';
 const Tooltip = React.lazy(() => import('./Tooltip.jsx'));
@@ -56,10 +56,10 @@ function Header({isOpen}){
     return(
         <div className={`text-slate-100 grid grid-cols-6 h-[80px] md:w-[1300px] ${hmopen===false && 'header'} rounded-xl`}>
             <div className="col-start-1 flex justify-center items-center no-sticky">
-                <div className="h-[40px] w-[40px] mt-[7px] md:mt-[0px] md:h-[60px] md:w-[60px]">
+                <div className="h-[40px] w-[40px] mt-[7px] md:mt-[0px] md:h-full md:w-full flex justify-center items-center">
                     <p>
                         <a href="https://www.google.com/">
-                            <img className="cursor-pointer" src={logo} loading="lazy"/>
+                            <img className="cursor-pointer h-[50px] w-[100px]" src={logo} loading="lazy"/>
                         </a>
                     </p>
                 </div>
