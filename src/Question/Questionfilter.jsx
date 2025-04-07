@@ -7,7 +7,7 @@ function Questionfilter(){
             <div className="hidden md:grid">
                 <Lquestion/>
             </div>
-            <div className="hidden">
+            <div className="md:hidden">
                 <Squestion/>
             </div>
         </div>

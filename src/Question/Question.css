@@ -1,0 +1,26 @@
+
+.popeye-card{
+    background: linear-gradient(
+        125deg,
+        hsl(0deg 0% 0%) 0%,
+        hsl(344deg 0% 26%) 3%,
+        hsl(344deg 0% 53%) 6%,
+        hsl(0deg 0% 83%) 11%,
+        hsl(344deg 0% 66%) 16%,
+        hsl(344deg 0% 51%) 23%,
+        hsl(0deg 0% 37%) 32%,
+        hsl(344deg 0% 28%) 42%,
+        hsl(344deg 0% 20%) 54%,
+        hsl(0deg 0% 13%) 67%,
+        hsl(344deg 0% 15%) 78%,
+        hsl(344deg 0% 17%) 90%,
+        hsl(0deg 0% 19%) 100%
+      );
+      box-shadow: 1px 1px 60px rgba(0, 0, 0,0.4) inset
+}
+
+
+.check{
+  color: #5CB338;
+  filter: drop-shadow(1px 1px 10px rgba(255, 255, 255,0.3));
+}
