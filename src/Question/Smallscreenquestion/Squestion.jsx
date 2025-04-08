@@ -1,16 +1,19 @@
-
 import Arrow from "../../svg/Arrow"
 import Check from "../../svg/Check"
 import Windows from "../../svg/Winodws";
 import Apple from "../../svg/Apple";
 import "../Question.css"
 import logo from "/images/logo.png"
-import { useCallback, useState } from "react";
+import { useRef, useState ,useCallback} from "react";
+import gsap from "gsap";
+import Add from "../../svg/Add";
+import Rightarr from "../../svg/Rightarr";
 
 function Squestion(){
     let [clickp,setClickp]=useState(true)
     let [clicko,setClicko]=useState(false)
 
+    // Function for 'difference' animation
     const diff=useCallback((value)=>{
         if(value==='popeye'){
             setClicko(false)
@@ -23,9 +26,66 @@ function Squestion(){
         }
     },[])
 
+
+    // For 1st card
+    const div1Ref=useRef(null)
+    const plus1Ref=useRef(null)
+    let [open1,setOpen1]=useState(false)
+   
+    // For 2nd card
+    const div2Ref=useRef(null)
+    const plus2Ref=useRef(null)
+    let [open2,setOpen2]=useState(false)
+
+    // For 3rd card
+    const div3Ref=useRef(null)
+    const plus3Ref=useRef(null)
+    let [open3,setOpen3]=useState(false)
+
+    // For 4th card
+    const div4Ref=useRef(null)
+    const plus4Ref=useRef(null)
+    let [open4,setOpen4]=useState(false)
+
+
+    // Function for animating card
+     function animation(newState,container,plus){
+        if(newState){
+            if(container){
+                gsap.to(container,{
+                    height:'230px',
+                    ease: "power1.out",
+                })
+            }
+    
+            if(plus){
+                gsap.to(plus,{
+                    rotate:'-45deg',
+                    ease: "power3.out",
+                })
+            }
+        }
+        else{
+            if(container){
+                gsap.to(container,{
+                    height:'65px',
+                    ease: "power1.out",
+                })
+            }
+    
+            if(plus){
+                gsap.to(plus,{
+                    rotate:'0deg',
+                    ease: "power3.out",
+                })
+            }
+        }
+        
+     }
+
     return(
         <div className="my-[100px]">
-            <p className="text-[20px] font-bold my-[10px]">Why to select our softwares</p>
+            <p className="text-[30px] font-bold my-[10px]">Why to select our softwares</p>
             <div className="grid grid-cols-2 mx-[25px] mt-[50px]">
                 <div onTouchStart={()=>diff('popeye')} className={`${clickp ? 'bg-[#1A1A1D]' : 'bg-zinc-800'} flex items-center justify-center rounded-l border-r border-zinc-900`}>
                     <div className="">
@@ -130,6 +190,130 @@ function Squestion(){
                     }
                 })()
             }
+
+
+            <div className="mt-[200px]">
+                <p className="text-[30px] font-bold leading-[1.2]">
+                    Got Questions ?<br/>
+                    We've Got Answers
+                </p>
+                <div>
+                    <p className="font-semibold leading-[1.2] my-[20px]">
+                        If you have more questions<br/>
+                        feel free to contact us.
+                    </p>
+                    <div className="my-[10px]">
+                        <div className="border border-zinc-700 flex items-center justify-center max-w-[100px] rounded-[200px] bg-zinc-900 text-black p-[8px]">
+                            <p className="text-center text-[10px] text-slate-100 select-none">Contact Us</p>
+                            <div className="max-h-[20px] max-w-[20px] text-slate-100">
+                                <Rightarr/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="flex flex-col gap-y-[30px] my-[60px]">
+
+                <div onTouchStart={()=>{
+                    setOpen1(prev=>{
+                        animation(!prev,div1Ref.current,plus1Ref.current)
+                        return !prev
+                    })
+                    
+                }} ref={div1Ref} className={`${open1 && 'faq-card'} select-none cursor-pointer bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
+                    <div>
+                        <div className="grid grid-cols-2">
+                            <p className="text-black">Is it kind of fraud ?</p>
+                            <div className="flex justify-end items-center">
+                                <div ref={plus1Ref} className="h-[15px] w-[15px] will-change-transform transform-gpu">
+                                    <Add/>
+                                </div>
+                            </div>
+                        </div>
+                        <p className="text-zinc-500 my-[16px]">
+                            <span className="text-black font-semibold select-none">Ans:- </span>
+                            Absolutely not. We are a genuine software store committed to providing real value to our customers.
+                            You’ll receive exactly what is promised,no hidden charges, no tricks. 
+                            We also offer support to help you with installation or any questions. 
+                        </p>
+                    </div>
+                </div>
+
+                <div onTouchStart={()=>{
+                    setOpen2(prev=>{
+                        animation(!prev,div2Ref.current,plus2Ref.current)
+                        return !prev
+                    })
+                    
+                }} ref={div2Ref} className={`${open2 && 'faq-card'} select-none bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
+                    <div>
+                        <div className="grid grid-cols-2">
+                            <p className="text-black">Can I get support ?</p>
+                            <div className="flex justify-end items-center">
+                                <div ref={plus2Ref} className="h-[15px] w-[15px] will-change-transform transform-gpu">
+                                    <Add/>
+                                </div>
+                            </div>
+                        </div>
+                        <p className="text-zinc-500 my-[16px]">
+                            <span className="text-black font-semibold select-none">Ans:- </span>
+                            Yes, definitely! We provide full support even after your subscription starts.
+                            Whether you need help with installation, usage, or have any questions our team is here to assist you.
+                            Your success with our software is our priority.
+                        </p>
+                    </div>
+                </div>
+
+                <div onTouchStart={()=>{
+                    setOpen3(prev=>{
+                        animation(!prev,div3Ref.current,plus3Ref.current)
+                        return !prev
+                    })
+                    
+                }} ref={div3Ref} className={`${open3 && 'faq-card'} select-none bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
+                    <div>
+                        <div className="grid grid-cols-2">
+                            <p className="text-black">Is my data secured ?</p>
+                            <div className="flex justify-end items-center">
+                                <div ref={plus3Ref} className="h-[15px] w-[15px] will-change-transform transform-gpu">
+                                    <Add/>
+                                </div>
+                            </div>
+                        </div>
+                        <p className="text-zinc-500 my-[16px]">
+                            <span className="text-black font-semibold select-none">Ans:- </span>
+                            Yes, absolutely. We take your data security very seriously.
+                            All your information is encrypted and handled with strict privacy measures.
+                            We do not share your data with third parties,we use secure protocols to protect your account and activity.
+                        </p>
+                    </div>
+                </div>
+
+                <div onTouchStart={()=>{
+                    setOpen4(prev=>{
+                        animation(!prev,div4Ref.current,plus4Ref.current)
+                        return !prev
+                    })
+                    
+                }} ref={div4Ref} className={`${open4 && 'faq-card'} select-none bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
+                    <div>
+                        <div className="grid grid-cols-2">
+                            <p className="text-black ">How to get started ?</p>
+                            <div className="flex justify-end items-center">
+                                <div ref={plus4Ref} className="h-[15px] w-[15px] will-change-transform transform-gpu">
+                                    <Add/>
+                                </div>
+                            </div>
+                        </div>
+                        <p className="text-zinc-500 my-[16px]">
+                            <span className="text-black font-semibold select-none">Ans:- </span>
+                            1.Choose a plan that fits your needs.
+                            2.Create your account with a few quick details.<br/>
+                            3.Access your dashboard and start using the software right away.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

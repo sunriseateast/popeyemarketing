@@ -4,7 +4,7 @@ function Shustle(){
     return(
         <div className="flex items-center justify-center my-[90px] overflow-hidden">
             <div>
-                <p className="text-[20px] font-bold my-[10px] break-all">Hustle free Installiation and<br/>
+                <p className="text-[30px] font-bold my-[10px] break-all leading-[1.2]">Hustle free Installiation<br/> and
                     Activation
                 </p>
                 <div className="border border-zinc-700 flex items-center justify-center max-w-[100px] rounded-[200px] bg-zinc-900 text-black p-[5px]">

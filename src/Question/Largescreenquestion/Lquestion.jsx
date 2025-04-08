@@ -4,25 +4,73 @@ import Windows from "../../svg/Winodws";
 import Apple from "../../svg/Apple";
 import "../Question.css"
 import logo from "/images/logo.png"
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
+import Add from "../../svg/Add";
+import Rightarr from "../../svg/Rightarr";
 
 function Lquestion(){
-    const div1Ref=useRef(null)
 
-     function animation(){
-        if(div1Ref.current){
-            gsap.to(div1Ref.current,{
-                height:'100px',
-                ease: "power1.out",
-            })
+    // For 1st card
+    const div1Ref=useRef(null)
+    const plus1Ref=useRef(null)
+    let [open1,setOpen1]=useState(false)
+   
+    // For 2nd card
+    const div2Ref=useRef(null)
+    const plus2Ref=useRef(null)
+    let [open2,setOpen2]=useState(false)
+
+    // For 3rd card
+    const div3Ref=useRef(null)
+    const plus3Ref=useRef(null)
+    let [open3,setOpen3]=useState(false)
+
+    // For 4th card
+    const div4Ref=useRef(null)
+    const plus4Ref=useRef(null)
+    let [open4,setOpen4]=useState(false)
+
+
+     // Function for animating card
+     function animation(newState,container,plus){
+        if(newState){
+            if(container){
+                gsap.to(container,{
+                    height:'152px',
+                    ease: "power1.out",
+                })
+            }
+    
+            if(plus){
+                gsap.to(plus,{
+                    rotate:'-45deg',
+                    ease: "power3.out",
+                })
+            }
         }
+        else{
+            if(container){
+                gsap.to(container,{
+                    height:'65px',
+                    ease: "power1.out",
+                })
+            }
+    
+            if(plus){
+                gsap.to(plus,{
+                    rotate:'0deg',
+                    ease: "power3.out",
+                })
+            }
+        }
+        
      }
 
     return(
         <div className="my-[100px]">
             <p className="text-[40px] font-bold my-[10px]">Why to select our Softwares ?</p>
-            <div className="flex overflow-hidden gap-x-[100px] my-[50px]">
+            <div className="grid grid-cols-3 overflow-hidden gap-x-[100px] my-[50px]">
                 <div className="justify-self-center overflow-hidden">
                    <div className="h-[390px] w-[300px] border my-[20px] rounded-[20px]">
                         <div className="flex flex-col m-[20px] space-y-[20px]">
@@ -140,32 +188,127 @@ function Lquestion(){
                 </div>
             </div>
             
-            <div className="flex flex-col my-[100px] gap-y-[30px]">
+            <div className="grid grid-cols-2 mt-[200px]">
+                <p className="text-[40px] font-bold leading-[1.2]">
+                    Got Questions ?<br/>
+                    We've Got Answers
+                </p>
+                <div className="grid justify-items-end">
+                    <p className="text-[20px] font-semibold leading-[1.2] my-[10px]">
+                        If you have more questions<br/>
+                        feel free to contact us.
+                    </p>
+                    <div className="mx-[130px] my-[10px]">
+                        <div className="cursor-pointer border border-zinc-700 flex items-center justify-center max-w-[120px] rounded-[200px] bg-zinc-900 text-black p-[8px]">
+                            <p className="text-center text-[15px] text-slate-100">Contact Us</p>
+                            <div className="max-h-[20px] max-w-[20px] text-slate-100">
+                                <Rightarr/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="flex flex-col gap-y-[30px] my-[60px]">
 
-                <div onClick={animation} ref={div1Ref} className="bg-slate-100 rounded-xl p-[20px]">
+                <div onClick={()=>{
+                    setOpen1(prev=>{
+                        animation(!prev,div1Ref.current,plus1Ref.current)
+                        return !prev
+                    })
+                    
+                }} ref={div1Ref} className={`${open1 && 'faq-card'} cursor-pointer bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
                     <div>
-                        <p className="text-black text-[20px]">Is it kind of fraud ?</p>
+                        <div className="grid grid-cols-2">
+                            <p className="text-black text-[20px]">Is it kind of fraud ?</p>
+                            <div className="flex justify-end items-center">
+                                <div ref={plus1Ref} className="h-[20px] w-[20px] will-change-transform transform-gpu">
+                                    <Add/>
+                                </div>
+                            </div>
+                        </div>
+                        <p className="text-zinc-500 my-[10px]">
+                            <span className="text-black font-semibold">Ans:- </span>
+                            Absolutely not. We are a genuine software store committed to providing real value to our customers.<br/>
+                            You’ll receive exactly what is promised,no hidden charges, no tricks. 
+                            We also offer support to help <br/>you with installation or any questions. 
+                        </p>
                     </div>
                 </div>
 
-                <div className="bg-slate-100 rounded-xl p-[20px]">
+                <div onClick={()=>{
+                    setOpen2(prev=>{
+                        animation(!prev,div2Ref.current,plus2Ref.current)
+                        return !prev
+                    })
+                    
+                }} ref={div2Ref} className={`${open2 && 'faq-card'} cursor-pointer bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
                     <div>
-                        <p className="text-black text-[20px]">Is it kind of fraud ?</p>
+                        <div className="grid grid-cols-2">
+                            <p className="text-black text-[20px]">Can I get support ?</p>
+                            <div className="flex justify-end items-center">
+                                <div ref={plus2Ref} className="h-[20px] w-[20px] will-change-transform transform-gpu">
+                                    <Add/>
+                                </div>
+                            </div>
+                        </div>
+                        <p className="text-zinc-500 my-[10px]">
+                            <span className="text-black font-semibold">Ans:- </span>
+                            Yes, definitely! We provide full support even after your subscription starts.<br/>
+                            Whether you need help with installation, usage, or have any questions our team is here to assist you.<br/>
+                            Your success with our software is our priority.
+                        </p>
                     </div>
                 </div>
 
-                <div className="bg-slate-100 rounded-xl p-[20px]">
+                <div onClick={()=>{
+                    setOpen3(prev=>{
+                        animation(!prev,div3Ref.current,plus3Ref.current)
+                        return !prev
+                    })
+                    
+                }} ref={div3Ref} className={`${open3 && 'faq-card'} cursor-pointer bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
                     <div>
-                        <p className="text-black text-[20px]">Is it kind of fraud ?</p>
+                        <div className="grid grid-cols-2">
+                            <p className="text-black text-[20px]">Is my data secured ?</p>
+                            <div className="flex justify-end items-center">
+                                <div ref={plus3Ref} className="h-[20px] w-[20px] will-change-transform transform-gpu">
+                                    <Add/>
+                                </div>
+                            </div>
+                        </div>
+                        <p className="text-zinc-500 my-[10px]">
+                            <span className="text-black font-semibold">Ans:- </span>
+                            Yes, absolutely. We take your data security very seriously.
+                            All your information is <br/> encrypted and handled with strict privacy measures.
+                            We do not share your data with third parties,<br/>we use secure protocols to protect your account and activity.
+                        </p>
                     </div>
                 </div>
 
-                <div className="bg-slate-100 rounded-xl p-[20px]">
+                <div onClick={()=>{
+                    setOpen4(prev=>{
+                        animation(!prev,div4Ref.current,plus4Ref.current)
+                        return !prev
+                    })
+                    
+                }} ref={div4Ref} className={`${open4 && 'faq-card'} cursor-pointer bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
                     <div>
-                        <p className="text-black text-[20px]">Is it kind of fraud ?</p>
+                        <div className="grid grid-cols-2">
+                            <p className="text-black text-[20px]">How to get started ?</p>
+                            <div className="flex justify-end items-center">
+                                <div ref={plus4Ref} className="h-[20px] w-[20px] will-change-transform transform-gpu">
+                                    <Add/>
+                                </div>
+                            </div>
+                        </div>
+                        <p className="text-zinc-500 my-[10px]">
+                            <span className="text-black font-semibold">Ans:- </span>
+                            1.Choose a plan that fits your needs.<br/>
+                            2.Create your account with a few quick details.<br/>
+                            3.Access your dashboard and start using the software right away.
+                        </p>
                     </div>
                 </div>
-
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 
-.popeye-card{
+.popeye-card{ /* For 'difference' card*/
     background: linear-gradient(
         125deg,
         hsl(0deg 0% 0%) 0%,
@@ -20,7 +20,11 @@
 }
 
 
-.check{
+.check{ /* Check svg */
   color: #5CB338;
   filter: drop-shadow(1px 1px 10px rgba(255, 255, 255,0.3));
+}
+
+.faq-card{ /* FAQ card background */
+  box-shadow: 1px 1px 10px rgba(255, 255, 255,0.5);
 }

@@ -89,7 +89,7 @@ function Smidsec({open}){
     return(
         <div className="h-full w-full my-[150px] select-none">
             <div className="grid space-y-[30px] content-cenetr justify-items-center mb-[100px]">
-                <p className="text-center text-[20px]">
+                <p className="text-center text-[30px]">
                     What we offer to <span className="bg-slate-100 rounded text-black p-[10px]">Businesses</span> ?
                 </p>
                 <div className="grid content-cenetr justify-items-center">

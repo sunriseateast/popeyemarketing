@@ -58,7 +58,7 @@ return(
                 </div>
                 <p className="text-center text-[10px] break-all">Book a Demo</p>
             </div>
-            <p className="text-[20px] font-bold my-[10px] break-all">Types of Softwares we provide</p>
+            <p className="text-[30px] font-bold my-[10px] break-all leading-[1.2]">Types of Softwares<br/>we provide</p>
             <div className="grid grid-rows-2 gap-y-[100px] mt-[50px]">
                 <div ref={upCard} className="overflow-hidden transform-gpu" onTouchStart={()=>upcard(upCard.current)} onTouchEnd={()=>downcard(upCard.current)}>
                 <div className="flex max-h-[310px] max-w-[300px] bg-[#F5F7F8] rounded-xl border border-white border-[2px]">

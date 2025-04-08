@@ -10,6 +10,7 @@ import Lightweightfilter from "./Lightweight/Lightweightfilter.jsx";
 import Hustlefilter from "./Hustle/Hustlefilter.jsx";
 import Ideafilter from "./Idea/Ideafilter.jsx";
 import Questionfilter from "./Question/Questionfilter.jsx";
+import Footerfilter from "./Footer/Footerfilter.jsx";
 
 function App() {
   let [hmopen,setHmopen]=useState(false)
@@ -69,6 +70,11 @@ function App() {
           <div className="h-full w-full md:grid content-center justify-center">
             <div className="mx-[20px]">
               <Questionfilter/>
+            </div>
+          </div>
+          <div className="h-full w-full md:grid content-center justify-center bg-[#1A1A1D]">
+            <div className="mx-[20px]">
+              <Footerfilter/>
             </div>
           </div>
         </div> 

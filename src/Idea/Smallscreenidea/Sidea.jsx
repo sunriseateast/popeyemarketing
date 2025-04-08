@@ -55,7 +55,7 @@ function Sidea(){
                     <Bulb/>
                 </div>
             </div>
-            <p className="text-[20px] font-bold my-[10px]">
+            <p className="text-[30px] font-bold my-[10px]">
                 You should aware about        
             </p>
             <div className="overflow-hidden mt-[50px]">
