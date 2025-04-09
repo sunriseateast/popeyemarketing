@@ -59,17 +59,36 @@ function Sherosec(){
                         this store you will find your specific solutions.
                     </p>
                 </div>
-                <div>
-                    <button className="bg-slate-100 text-black rounded-lg p-[10px] tracking-wider mt-[40px]">
-                        <div className="flex items-center gap-x-[7px]">
-                            <div>
-                                <p>Free Trial</p>
+                <div className="grid grid-cols-2 my-[40px]">
+                    <div className="">
+                        <button className="bg-slate-100 text-black rounded-lg p-[10px] tracking-wider">
+                            <div className="flex items-center gap-x-[7px]">
+                                <div>
+                                    <p>Free Trial</p>
+                                </div>
+                                <div className="max-h-[12px] max-w-[12px]">
+                                    <Arrow/>
+                                </div>
                             </div>
-                            <div className="max-h-[12px] max-w-[12px]">
-                                <Arrow/>
-                            </div>
+                        </button>
+                    </div>
+                    <div className="grid grid-cols-3">
+                        <div className="leading-[0.9]">
+                            <span className="font-bold">120K</span><br/>
+                            <span className="font-semibold">users</span><br/>
+                            <span className="text-[10px]">target</span>
                         </div>
-                    </button>
+                        <div className="leading-[0.9]">
+                            <span>✔️</span><br/>
+                            <span className="font-bold">120+</span><br/>
+                            <span className="font-semibold">users</span>
+                        </div>
+                        <div className="leading-[0.9]">
+                            <span className="font-bold">select</span><br/>
+                            <span className="font-semibold">your</span><br/>
+                            <span className="text-[10px]">software</span>
+                        </div>
+                        </div>
                 </div>
                 <div ref={elementRef} className="max-h-[350px] mt-[25px] overflow-hidden scrollbar-none">
                     <div>

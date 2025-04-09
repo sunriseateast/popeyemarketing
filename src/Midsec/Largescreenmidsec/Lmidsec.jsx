@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react"
+gsap.registerPlugin(ScrollTrigger) 
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from 'gsap';
 import Bug from "../../svg/Bug"
 import Down from "../../svg/Down"
@@ -64,20 +66,32 @@ function Lmidsec(){
                 repeat:-1,
                 duration:0.8,
             })
-        }   
+        }  
+        
+        const fades=gsap.utils.toArray('.animation')
+        fades.forEach(fade=>{
+            gsap.to(fade,{
+                scrollTrigger:{
+                    trigger:fade,
+                    start:"start +=400",
+                },
+                opacity:1,
+                y:0,
+            })
+        })
     },[])
     
 
     return(
-    <div className="h-full w-full grid content-center justify-items-center px-[50px] my-[100px]">
+    <div className="h-full w-full grid content-center justify-items-center px-[50px] my-[80px]">
         <div>
-            <div className="grid space-y-[30px] content-center justify-items-center mb-[100px]">
+            <div className="animation translate-y-[40px] opacity-0 grid space-y-[30px] content-center justify-items-center mb-[100px]">
                 <div ref={lightRef} className="light absolute p-[20px] -translate-x-[320px] translate-y-[15px] h-[100px] w-[100px]"></div>
                 <p className="text-center text-[40px]">
                     What we offer to <span className="bg-slate-100 rounded text-black p-[10px]">Businesses</span> ?
                 </p>
                 <div ref={lightref2} className="light absolute p-[20px] -rotate-[180deg] -translate-y-[15px] translate-x-[310px] h-[100px] w-[100px]"></div>
-                <div className="grid content-cenetr justify-items-center px-[">
+                <div className="grid content-cenetr justify-items-center">
                     <p className="text-center text-[17px]">
                         We offer softwares which are 
                         reliable with less
@@ -95,7 +109,8 @@ function Lmidsec(){
                     </p>
                 </div>
             </div>
-            <div className="grid grid-cols-2 mb-[150px]">
+
+            <div className="animation translate-y-[40px] opacity-0 grid grid-cols-2 mb-[150px]">
                 <Card2 svgPath={<Wavy/>} innerText={'Reilable Softwares'} borderCss={"border-r border-b"}/>
                 <div className="p-[40px] border-[#1D1616] hover:border-[#3C3D37] rounded-xl border-l border-b" 
                 onMouseEnter={()=>{

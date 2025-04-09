@@ -1,63 +1,63 @@
 const reviews=[
     {
         name:"Roshan Kadam",
-        message:"One of the best software I used is Whatsapp Marketing",
+        message:"One of the best software I used is Chat Automation",
         nostars:3,
-        img:''
+        img:'/images/1.png'
     },
     {
         name:"Arif Khan",
-        message:"I used SMS software easy to use",
+        message:"I used software from this store,its easy to use",
         nostars:4,
-        img:''
+        img:'/images/2.png'
     },
     {
         name:"Sandip Kute",
         message:"People are trust worthy software is also relible",
         nostars:3,
-        img:''
+        img:'/images/3.png'
     },
     {
         name:"Manish Shah",
-        message:"Whatsapp softwares is so.. reilable",
+        message:"Chat automation software is so.. reilable",
         nostars:5,
-        img:''
+        img:'/images/4.png'
     },
     {
-        name:"Ritu Agarwal",
+        name:"Riyaz Agarwal",
         message:"Support are great from the team looking forwrd to buy another..",
         nostars:4,
-        img:''
+        img:'/images/5.png'
     },
     {
         name:"Nimesh Kokate",
         message:"I used softwares from this store from last 1.5 year",
         nostars:4,
-        img:''
+        img:'/images/6.png'
     },
     {
         name:"Mahesh Sharma",
-        message:"Good Experience meaningful tools",
+        message:"Good Experience meaningful softwares",
         nostars:3,
-        img:''
+        img:'/images/7.png'
     },
     {
-        name:"Bidesh Dinal",
-        message:"Need more improvement in updates",
+        name:"Ritu Dinal",
+        message:"Need more improvement overall great softwares",
         nostars:2,
-        img:''
+        img:'/images/8.png'
     },
     {
-        name:"Anump Sharma",
+        name:"Anumpa Sharma",
         message:"Geniune people after payment I recieved activation keys in few minutes",
         nostars:4,
-        img:''
+        img:'/images/9.png'
     },
     {
-        name:"Bijesh Kumar",
-        message:"Reliable tools/Softwares great devlopement",
+        name:"Navya Kumar",
+        message:"I used Number Extractor it saves my time",
         nostars:3,
-        img:''
+        img:'/images/10.png'
     }
 ]
 

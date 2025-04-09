@@ -1,7 +1,25 @@
+gsap.registerPlugin(ScrollTrigger) 
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from 'gsap';
 import Rocket from "../../svg/Rocket"
 import "../Hustle.css"
 import Rightarr from "../../svg/Rightarr";
+import { useEffect } from "react";
 function Lhustel(){
+
+    useEffect(()=>{
+        const cards=gsap.utils.toArray('.hustle_cards')
+        cards.forEach(card=>{
+            gsap.to(card,{
+                scrollTrigger:{
+                    trigger:card,
+                    start:"start +=500",
+                },
+                opacity:1,
+                y:0,
+            })
+        })
+    },[])
 
     return(
         <div className="flex items-center justify-center my-[90px] overflow-hidden">
@@ -17,7 +35,7 @@ function Lhustel(){
                 </div>
                 <div className="grid grid-cols-2 space-x-[100px]">
                     <div className="">
-                        <div className="flex flex-col my-[40px] space-y-[10px] border border-zinc-700 rounded-xl p-[20px]">
+                        <div className="hustle_cards translate-y-[40px] opacity-0 flex flex-col my-[40px] space-y-[10px] border border-zinc-700 rounded-xl p-[20px]">
                             <p className="text-[20px] font-bold underline">Download</p>
                             <p>
                                 Start your journey with a single download.<br/>
@@ -25,7 +43,7 @@ function Lhustel(){
                             </p>
                         </div>
 
-                        <div className="flex flex-col my-[40px] space-y-[10px] border border-zinc-700 rounded-xl p-[20px]">
+                        <div className="hustle_cards translate-y-[40px] opacity-0 flex flex-col my-[40px] space-y-[10px] border border-zinc-700 rounded-xl p-[20px]">
                             <p className="text-[20px] font-bold underline">Install</p>
                             <p>
                                 Our installer takes care of everything for you.<br/>
@@ -33,7 +51,7 @@ function Lhustel(){
                             </p>
                         </div>
 
-                        <div className="flex flex-col my-[40px] space-y-[10px] border border-zinc-700 rounded-xl p-[20px]">
+                        <div className="hustle_cards translate-y-[40px] opacity-0 flex flex-col my-[40px] space-y-[10px] border border-zinc-700 rounded-xl p-[20px]">
                             <p className="text-[20px] font-bold underline">Simple & Friendly</p>
                             <p>You’re all set! Open the app and explore everything it has to offer.<br/>
                             From first launch to full use, the experience is designed to be effortless.</p>

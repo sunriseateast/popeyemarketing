@@ -18,7 +18,8 @@ function Lidea(){
         let t1=gsap.timeline({
             scrollTrigger:{
                 trigger:[circleRef.current,rectangleRef.current],
-                start:"start +=400px"
+                start:"start +=400px",
+                markers:true
             },
         })
         if(circleRef.current){
@@ -46,6 +47,8 @@ function Lidea(){
                 ease: "power1.inOut",
             })
         }
+
+
     },[])
 
     return(
@@ -65,7 +68,7 @@ function Lidea(){
                         <div className="max-h-[350px] max-w-[400px] border border-zinc-700 rounded-[30px] overflow-hidden">
                             <div className="flex flex-col justify-center">
                                 <div className="max-h-[200px] max-w-[400px] p-[100px] rounded-[30px] border-b border-zinc-700 overflow-hidden">
-                                    <div ref={circleRef}>
+                                    <div  className="idea_content" ref={circleRef}>
                                         <div className="h-[350px] w-[350px] -translate-x-[80px] text-zinc-800 outer-circle">
                                             <Circle/>
                                         </div>
@@ -105,7 +108,7 @@ function Lidea(){
                         <div className="max-h-[350px] max-w-[400px] border border-zinc-700 rounded-[30px] overflow-hidden">
                             <div className="flex flex-col justify-center">
                                 <div className="max-h-[200px] max-w-[400px] p-[100px] rounded-[30px] border-b border-zinc-700 overflow-hidden">
-                                    <div ref={rectangleRef}>
+                                    <div  className="" ref={rectangleRef}>
                                         <div className="h-[330px] w-[330px] -translate-x-[60px] -translate-y-[100px] text-zinc-800 outer-rectangle">
                                             <Rectangle/>
                                         </div>

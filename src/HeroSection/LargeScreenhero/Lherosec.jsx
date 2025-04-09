@@ -13,6 +13,7 @@ function Lherosec(){
 
     const flipwds=useRef(null)
     const arrbounce=useRef(null)
+    const animationRef=useRef([])
 
     //flip word using GSAP
     useEffect(() => {
@@ -35,6 +36,21 @@ function Lherosec(){
             )
         }
 
+        // Animation for moving button and para upside
+        if(animationRef.current[0]){
+            let t1=gsap.timeline()
+            t1.to(animationRef.current[0],
+                {
+                    y:0
+                }
+            ).to(animationRef.current[1],
+                {
+                    y:0,
+                    ease: "power2.out",
+                }
+            )
+        }
+        
     }, []);
 
     const bounce=useCallback(()=>{
@@ -57,22 +73,44 @@ function Lherosec(){
                     <p className="text-[70px] font-bold leading-[1.0]">
                         The Hub of <span ref={flipwds}>Solutions</span>
                     </p>
-                    <p className="mt-[10px] font-medium text-[17px] text-pretty text-[#DDDDDD]">As we are in this field from last 3 years we noticed that there are
+                    <p ref={el => animationRef.current[0] = el} className="translate-y-[15px] mt-[10px] font-medium text-[17px] text-pretty text-[#DDDDDD]">As we are in this field from last 3 years we noticed that there are
                     many cases where users not getting proper <span className="text-white">SUPPORT/BUGGY</span> softwares provide by vendors.In
                     this store you will find your specific solutions.</p>
-                    <button
-                    onMouseEnter={bounce} className='button-sh tracking-wider mt-[40px] rounded-xl p-[15px] w-[170px] h-[60px] bg-[#F5F5F4] text-black'>
-                       <div className="flex">
-                            <div className="ml-[20px]">
-                                Free Trial
-                            </div>
-                            <div className="flex items-center w-[40px] overflow-hidden">
-                                <div ref={arrbounce} className="h-[20] w-[20px] translate-x-[15px]">
-                                    <Arrow/>
+                    <div className="grid grid-cols-2 my-[50px]">
+                        <div>
+                            <button
+                                ref={el => animationRef.current[1] = el}
+                                onMouseEnter={bounce} className='translate-y-[15px] button-sh tracking-wider rounded-xl p-[15px] w-[170px] h-[60px] bg-[#F5F5F4] text-black'>
+                                <div className="flex">
+                                        <div className="ml-[20px]">
+                                            Free Trial
+                                        </div>
+                                        <div className="flex items-center w-[40px] overflow-hidden">
+                                            <div ref={arrbounce} className="h-[20] w-[20px] translate-x-[15px]">
+                                                <Arrow/>
+                                            </div>
+                                        </div>
                                 </div>
+                            </button>
+                        </div>
+                        <div className="flex space-x-[20px] justify-center">
+                            <div className="leading-[0.9]">
+                                <span className="text-[20px] font-bold">120K</span><br/>
+                                <span className="font-semibold">users</span><br/>
+                                <span>target</span>
                             </div>
-                       </div>
-                    </button>
+                            <div className="leading-[0.9]">
+                                <span>✔️</span><br/>
+                                <span className="text-[20px] font-bold">120+</span><br/>
+                                <span className="font-semibold">users</span>
+                            </div>
+                            <div className="leading-[0.9]">
+                                <span className="text-[20px] font-bold">select</span><br/>
+                                <span className="font-semibold">your</span><br/>
+                                <span>software</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="flex items-center justify-center h-full w-full mask">

@@ -22,7 +22,6 @@ function Llightweight(){
                 scrollTrigger:{
                     trigger:[div2Ref.current,div3Ref.current,flashRef.current],
                     start:'center +=500',
-                    
                 }
             })
 
@@ -39,6 +38,19 @@ function Llightweight(){
                 repeat:-1
             })
         }
+
+        let t2=gsap.timeline({
+            scrollTrigger:{
+                trigger:['.all_softwares','.companies'],
+            }
+        })
+
+        t2.to(".all_softwares",{
+            y:0
+        }).to(".companies",{
+            y:0
+        })
+        
     },[])
         
     return(
@@ -58,8 +70,8 @@ function Llightweight(){
                     </div>
                     <div className="p-[50px] bg-zinc-900 rounded-xl drop-shadow">
                         <p className="text-[50px]">Effortless, Lightweight <br/>Elegantly minimal</p>
-                        <button className="my-[10px] bg-slate-100 text-black px-[28px] py-[9px] rounded text-lg">All Softwares</button>
-                        <div className="flex space-x-[10px] my-[5px]">
+                        <button className="all_softwares translate-y-[40px] my-[10px] bg-slate-100 text-black px-[28px] py-[9px] rounded text-lg">All Softwares</button>
+                        <div className="companies translate-y-[40px] flex space-x-[10px] my-[5px]">
                             <div className="max-h-[20px] max-w-[20px]">
                                 <Windows/>
                             </div>

@@ -9,7 +9,7 @@ function Testcard2({imgpath,stars,message,name}){
                 <div className="grid grid rows-2 gap-y-[5px] items-center justify-center">
                     <div>
                         <div className="flex items-center justify-center rounded-lg border border-[#3C3D37] h-[50px] w-[50px]">
-                            <img src={''} alt='people pic' className="max-h-[20px] max-w-[20px] rounded"/>
+                            <img src={imgpath} alt='people pic' className="max-h-[35px] max-w-[35px] rounded"/>
                         </div>
                     </div>
                     <div className="text-[#3C3D37]">
@@ -18,7 +18,7 @@ function Testcard2({imgpath,stars,message,name}){
                 </div>
                 <div className="grid grid rows-2 gap-y-[5px]">
                     <div>
-                        <p className="text-[15px] break-all">{message}</p>
+                        <p className="text-[15px]">{message}</p>
                     </div>
                     <div>
                         <p className="text-[10px] break-all">- {name}</p>

@@ -13,6 +13,12 @@ function Squestion(){
     let [clickp,setClickp]=useState(true)
     let [clicko,setClicko]=useState(false)
 
+
+    const [open,setOpen]=useState([false,false,false,false])
+    const divRef=useRef([])
+    const plusRef=useRef([])
+
+
     // Function for 'difference' animation
     const diff=useCallback((value)=>{
         if(value==='popeye'){
@@ -25,27 +31,6 @@ function Squestion(){
             setClickp(false)
         }
     },[])
-
-
-    // For 1st card
-    const div1Ref=useRef(null)
-    const plus1Ref=useRef(null)
-    let [open1,setOpen1]=useState(false)
-   
-    // For 2nd card
-    const div2Ref=useRef(null)
-    const plus2Ref=useRef(null)
-    let [open2,setOpen2]=useState(false)
-
-    // For 3rd card
-    const div3Ref=useRef(null)
-    const plus3Ref=useRef(null)
-    let [open3,setOpen3]=useState(false)
-
-    // For 4th card
-    const div4Ref=useRef(null)
-    const plus4Ref=useRef(null)
-    let [open4,setOpen4]=useState(false)
 
 
     // Function for animating card
@@ -215,17 +200,19 @@ function Squestion(){
             <div className="flex flex-col gap-y-[30px] my-[60px]">
 
                 <div onTouchStart={()=>{
-                    setOpen1(prev=>{
-                        animation(!prev,div1Ref.current,plus1Ref.current)
-                        return !prev
+                   setOpen(prev=>{
+                        const updated=[...prev]
+                        animation(!updated[0],divRef.current[0],plusRef.current[0])
+                        updated[0]=!updated[0]
+                        return updated
                     })
                     
-                }} ref={div1Ref} className={`${open1 && 'faq-card'} select-none cursor-pointer bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
+                }} ref={el => divRef.current[0] = el} className={`${open[0] && 'faq-card'} select-none cursor-pointer bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
                     <div>
                         <div className="grid grid-cols-2">
                             <p className="text-black">Is it kind of fraud ?</p>
                             <div className="flex justify-end items-center">
-                                <div ref={plus1Ref} className="h-[15px] w-[15px] will-change-transform transform-gpu">
+                                <div ref={el => plusRef.current[0] = el} className="h-[15px] w-[15px] will-change-transform transform-gpu">
                                     <Add/>
                                 </div>
                             </div>
@@ -240,17 +227,19 @@ function Squestion(){
                 </div>
 
                 <div onTouchStart={()=>{
-                    setOpen2(prev=>{
-                        animation(!prev,div2Ref.current,plus2Ref.current)
-                        return !prev
+                    setOpen(prev=>{
+                        const updated=[...prev]
+                        animation(!updated[1],divRef.current[1],plusRef.current[1])
+                        updated[1]=!updated[1]
+                        return updated
                     })
                     
-                }} ref={div2Ref} className={`${open2 && 'faq-card'} select-none bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
+                }} ref={el => divRef.current[1] = el} className={`${open[1] && 'faq-card'} select-none bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
                     <div>
                         <div className="grid grid-cols-2">
                             <p className="text-black">Can I get support ?</p>
                             <div className="flex justify-end items-center">
-                                <div ref={plus2Ref} className="h-[15px] w-[15px] will-change-transform transform-gpu">
+                                <div ref={el => plusRef.current[1] = el} className="h-[15px] w-[15px] will-change-transform transform-gpu">
                                     <Add/>
                                 </div>
                             </div>
@@ -265,17 +254,19 @@ function Squestion(){
                 </div>
 
                 <div onTouchStart={()=>{
-                    setOpen3(prev=>{
-                        animation(!prev,div3Ref.current,plus3Ref.current)
-                        return !prev
+                    setOpen(prev=>{
+                        const updated=[...prev]
+                        animation(!updated[2],divRef.current[2],plusRef.current[2])
+                        updated[2]=!updated[2]
+                        return updated
                     })
                     
-                }} ref={div3Ref} className={`${open3 && 'faq-card'} select-none bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
+                }} ref={el => divRef.current[2] = el} className={`${open[2] && 'faq-card'} select-none bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
                     <div>
                         <div className="grid grid-cols-2">
                             <p className="text-black">Is my data secured ?</p>
                             <div className="flex justify-end items-center">
-                                <div ref={plus3Ref} className="h-[15px] w-[15px] will-change-transform transform-gpu">
+                                <div ref={el => plusRef.current[2] = el} className="h-[15px] w-[15px] will-change-transform transform-gpu">
                                     <Add/>
                                 </div>
                             </div>
@@ -290,17 +281,19 @@ function Squestion(){
                 </div>
 
                 <div onTouchStart={()=>{
-                    setOpen4(prev=>{
-                        animation(!prev,div4Ref.current,plus4Ref.current)
-                        return !prev
-                    })
+                   setOpen(prev=>{
+                    const updated=[...prev]
+                    animation(!updated[3],divRef.current[3],plusRef.current[3])
+                    updated[3]=!updated[3]
+                    return updated
+                })
                     
-                }} ref={div4Ref} className={`${open4 && 'faq-card'} select-none bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
+                }} ref={el => divRef.current[3] = el} className={`${open[3] && 'faq-card'} select-none bg-slate-100 rounded-xl overflow-hidden p-[20px] h-[65px]`}>
                     <div>
                         <div className="grid grid-cols-2">
                             <p className="text-black ">How to get started ?</p>
                             <div className="flex justify-end items-center">
-                                <div ref={plus4Ref} className="h-[15px] w-[15px] will-change-transform transform-gpu">
+                                <div ref={el => plusRef.current[3] = el} className="h-[15px] w-[15px] will-change-transform transform-gpu">
                                     <Add/>
                                 </div>
                             </div>
