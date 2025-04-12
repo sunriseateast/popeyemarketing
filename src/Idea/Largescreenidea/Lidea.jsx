@@ -19,7 +19,6 @@ function Lidea(){
             scrollTrigger:{
                 trigger:[circleRef.current,rectangleRef.current],
                 start:"start +=400px",
-                markers:true
             },
         })
         if(circleRef.current){

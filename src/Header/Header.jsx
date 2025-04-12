@@ -1,39 +1,31 @@
 import logo from "/images/logo.png"
 import {useEffect, useState} from "react"
 import React from 'react';
-const Tooltip = React.lazy(() => import('./Tooltip.jsx'));
 import SmallscreenMenu from "./SmallscreenMenu.jsx";
 import LargescreenMenu from "./LargescreenMenu.jsx";
-
+import {Link} from 'react-router-dom';
+import {useLocation} from "react-router-dom";
 
 function Header({isOpen}){
-
+    const location=useLocation()
     let [hmopen,setHmopen]=useState(false)
-    let [tiptitle,setTiptitle]=useState(false)
 
-    //Function listening on resize of window
-    function resizewindow(){
-        if(window.innerWidth>=768){
+    useEffect(()=>{
+        isOpen(hmopen)
+    },[hmopen])
+
+    useEffect(()=>{
+        const pathsToMatch=['/softwares','/reseller','/support','/book_a_demo']
+        const currentPath = location.pathname.toLowerCase();
+        if(pathsToMatch.includes(currentPath)){
             setHmopen(false)
-            setTiptitle(false)
-        }  
-    }
-    window.addEventListener("resize",resizewindow)
-    
+        }
 
-    //Function for disable tooltip when mouse leave from top of div
-    function leave(){
-        setTiptitle(false) 
-    }
+    },[location.pathname])
 
     //Humburger Icon default false '='
     const HumIcon=({icon})=>{
-        
-        useEffect(()=>{
-            isOpen(icon)
-        },[])
-
-        if(icon){
+         if(icon){
             return(
                 <>
                     <line x1="6" y1="6" x2="18" y2="18" strokeWidth="2.2" stroke="white" strokeLinecap="round" className=""></line>
@@ -56,9 +48,9 @@ function Header({isOpen}){
     return(
         <div className={`text-slate-100 grid grid-cols-6 h-[80px] md:w-[1300px] ${hmopen===false && 'header'} rounded-xl`}>
             <div className="flex items-center justify-center col-start-1">
-                <a href="https://www.google.com/">
+                <Link to="/">
                     <img className="my-[10px] mx-[10px] md:my-[0px] md:mx-[0px] cursor-pointer h-[40px] w-[70px] md:h-[50px] md:w-[100px]" src={logo} loading="lazy"/>
-                </a>
+                </Link>
             </div>
             <div className="justify-self-end pr-6 pt-5 col-start-6 md:hidden">
                 <button onTouchStart={()=>setHmopen((prev)=>!prev)}>
@@ -67,9 +59,8 @@ function Header({isOpen}){
                     </svg>
                 </button>
             </div>
-            <div className="hidden md:grid col-start-2 col-end-6 relative content-center justify-items-center" onMouseLeave={leave}>
-                <LargescreenMenu value={setTiptitle}/>
-                <Tooltip value={tiptitle}/>
+            <div className="hidden md:grid col-start-2 col-end-6 relative content-center justify-items-center">
+                <LargescreenMenu/>
             </div>
             <div className="mt-[150px] col-start-1 col-end-7 flex items-center justify-center text-xl md:hidden">
                 <SmallscreenMenu css={`grid grid-rows-4 place-items-center gap-y-[40px]`} icon={hmopen}/>

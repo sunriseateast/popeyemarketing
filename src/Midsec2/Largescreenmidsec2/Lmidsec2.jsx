@@ -70,7 +70,7 @@ function Lmidsec2(){
                                     </div>
                                 </div>
                                 <div className="mx-[10px] mt-[10px] flex gap-x-[8px]">
-                                    <p className="text-black text-[20px] font-semibold">Whatsapp Marketing</p>
+                                    <p className="text-black text-[20px] font-semibold">Chat Automation</p>
                                     <div className="mt-[7px] rounded-xl h-[20px] w-[20px] bg-white drop-shadow-sm flex items-center justify-center">
                                         <div className="max-h-[10px] max-w-[10px] text-black">
                                             <Arrow/>
@@ -79,7 +79,7 @@ function Lmidsec2(){
                                 </div>
                                 <div className="flex flex-col gap-y-[2px] text-zinc-500 rounded-xl mx-[10px] mt-[10px]">
                                     <p>
-                                        Whastapp marketing helps you to send bulk messages and create chatbot 
+                                        Chat Automation also helps you to send messages and create chatbot 
                                         with all advanced features.
                                     </p>
                                 </div>

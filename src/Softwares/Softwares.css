@@ -1,0 +1,9 @@
+
+.outer-card{
+    box-shadow:1px -5px 1px rgba(0, 0, 0,0.1) inset;
+}
+
+.inner-card{
+    background: rgba(6, 4, 13,0.9);
+    box-shadow: 9px 6px 2px red
+}

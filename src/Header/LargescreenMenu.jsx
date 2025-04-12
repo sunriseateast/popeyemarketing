@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 function LargescreenMenu({value}){
 
     //Function to pass value for lg screen
@@ -10,17 +11,10 @@ function LargescreenMenu({value}){
     const lgscreen=`md:opacity-100 md:z-10 md:p-[10px] md:m-[10px] md:text-base md:border-none`
     return(
         <nav>
-            <a href="#" className={`${lgscreen}`} 
-            onMouseEnter={()=>{moenter('Softwares')}}>Softwares</a>
-            
-            <a href="#" className={`${lgscreen}`} 
-            onMouseEnter={()=>{moenter('Reseller')}}>Reseller</a>
-
-            <a href="#" className={`${lgscreen}`} 
-            onMouseEnter={()=>{moenter('Support')}}>Support</a>
-
-            <a href="#" className={`${lgscreen} bg-slate-100 rounded text-black`} 
-            onMouseEnter={()=>{moenter('Book_a_Demo')}}>Book a Demo</a>
+            <Link to="/softwares" className={`${lgscreen}`}>Softwares</Link>
+            <Link to="/reseller" className={`${lgscreen}`}>Reseller</Link>
+            <Link to="/support" className={`${lgscreen}`}>Support</Link>
+            <Link to="/book_a_demo" className={`${lgscreen} bg-slate-100 rounded text-black`}>Book a Demo</Link>
         </nav>
     )
 }

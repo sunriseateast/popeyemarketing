@@ -4,7 +4,9 @@ import Windows from "../../svg/Winodws";
 import Apple from "../../svg/Apple";
 import "../Question.css"
 import logo from "/images/logo.png"
-import { useRef, useState } from "react";
+gsap.registerPlugin(ScrollTrigger) 
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Add from "../../svg/Add";
 import Rightarr from "../../svg/Rightarr";
@@ -49,13 +51,35 @@ function Lquestion(){
         }
         
      }
+    useEffect(()=>{
+        gsap.to(".popeye-card",{
+            scrollTrigger:{
+                trigger:".popeye-card",
+                start:"start +=400",
+            },
+            y:0,
+            opacity:1
+        })
+
+        const othercards=gsap.utils.toArray('.others-cards')
+        othercards.forEach(card =>{
+            gsap.to(card,{
+                scrollTrigger:{
+                    trigger:card,
+                    start:"start +=300"
+                },
+                y:0,
+                opacity:1
+            })
+        })
+    },[])
 
     return(
         <div className="my-[100px]">
             <p className="text-[40px] font-bold my-[10px]">Why to select our Softwares ?</p>
             <div className="grid grid-cols-3 overflow-hidden gap-x-[100px] my-[50px]">
                 <div className="justify-self-center overflow-hidden">
-                   <div className="h-[390px] w-[300px] border my-[20px] rounded-[20px]">
+                   <div className="others-cards translate-y-[40px] opacity-0 h-[390px] w-[300px] border my-[20px] rounded-[20px]">
                         <div className="flex flex-col m-[20px] space-y-[20px]">
                             <div className="">
                                 <p className="font-bold my-[10px] text-[20px] break-all">Observations</p>
@@ -89,7 +113,7 @@ function Lquestion(){
                 </div>
 
                 <div className="justify-self-center overflow-hidden">
-                    <div className="h-[430px] w-[300px] border border-zinc-700 rounded-[20px] popeye-card">
+                    <div className="popeye-card translate-y-[40px] opacity-0 h-[430px] w-[300px] border border-zinc-700 rounded-[20px] popeye-card">
                         <div className="flex flex-col m-[20px] space-y-[20px]">
                             <div className="flex">
                                 <img className="cursor-pointer h-[40px] w-[70px] my-[10px]" src={logo} loading="lazy"/>
@@ -144,7 +168,7 @@ function Lquestion(){
                 </div>
                 
                 <div className="justify-self-center overflow-hidden">
-                   <div className="h-[390px] w-[300px] border rounded-[20px] my-[20px] ">
+                   <div className="others-cards translate-y-[40px] opacity-0 h-[390px] w-[300px] border rounded-[20px] my-[20px] ">
                         <div className="flex flex-col m-[20px] space-y-[20px]">
                             <div className="">
                                 <p className="font-bold my-[10px] text-[20px] break-all">Other Platforms</p>

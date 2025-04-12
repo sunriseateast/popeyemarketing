@@ -1,20 +1,16 @@
 import Header from "./Header/Header.jsx";
-import Herofilter from "./HeroSection/Herofilter.jsx";
 import { useState,useEffect } from "react";
-import Midsecfilter from "./Midsec/Midsecfilter.jsx";
 import "./HeroSection/HeroSection.css";
 import "./Midsec/Midsec.css"
 import "./Midsec2/Midsec2.css";
-import Midsec2filter from "./Midsec2/Midsec2filter.jsx";
-import Lightweightfilter from "./Lightweight/Lightweightfilter.jsx";
-import Hustlefilter from "./Hustle/Hustlefilter.jsx";
-import Ideafilter from "./Idea/Ideafilter.jsx";
-import Questionfilter from "./Question/Questionfilter.jsx";
+import { Outlet,useLocation} from "react-router-dom";
 import Footerfilter from "./Footer/Footerfilter.jsx";
+
 
 function App() {
   let [hmopen,setHmopen]=useState(false)
- 
+  const location=useLocation()
+
   // Disable Scrolling when hmopen is true
   useEffect(() => {
     if (hmopen) {
@@ -26,58 +22,40 @@ function App() {
     return () => {
       document.body.classList.remove("overflow-hidden");
     };
-  }, [hmopen]);
+  },[hmopen]);
 
-  console
+  useEffect(()=>{
+    const pathsToMatch=['/softwares','/reseller','/support','/book_a_demo']
+    const currentPath = location.pathname.toLowerCase();
+
+    if(pathsToMatch.includes(currentPath)){
+      setHmopen(false)
+    }
+
+  },[location.pathname])
+  
+  //function get hmopen value from header to blurout background
+  const handleData=(value)=>{
+    setHmopen(value)
+  }
+
   return (
     <div className="bg-[#06040D] font-archivo min-h-screen w-full">
         <div className="sticky top-0 left-0 w-full z-10 h-[80px] md:grid content-center justify-center">
           <div className="">
-            <Header isOpen={setHmopen}/>
+            <Header isOpen={handleData}/>
           </div>
         </div>
         <div className={`relative text-[#F5F5F4] ${hmopen  ? "blur":'transform-gpu transition-all ease-in-out'}`}>
-          <div className="h-full w-full md:grid content-center justify-center hero">
-            <div className="mx-[20px]">
-              <Herofilter/>
-            </div>
-          </div>
-          <div className="h-full w-full md:grid content-center justify-center">
-            <div className="mx-[20px]">
-              <Midsecfilter open={hmopen}/>
-            </div>
-          </div>
-          <div className="h-full w-full md:grid content-center justify-center bg-[#1A1A1D] gradient">
-            <div className="mx-[20px]">
-              <Midsec2filter/>
-            </div>
-          </div>
-          <div className="h-full w-full md:grid content-center justify-center">
-            <div className="mx-[20px]">
-              <Lightweightfilter/>
-            </div>
-          </div>
-          <div className="h-full w-full md:grid content-center justify-center">
-            <div className="mx-[20px]">
-              <Hustlefilter/>
-            </div>
-          </div>
-          <div className="h-full w-full md:grid content-center justify-center bg-[#1A1A1D]">
-            <div className="mx-[20px]">
-              <Ideafilter/>
-            </div>
-          </div>
-          <div className="h-full w-full md:grid content-center justify-center">
-            <div className="mx-[20px]">
-              <Questionfilter/>
-            </div>
-          </div>
+          
+          <Outlet context={hmopen}/>
+
           <div className="h-full w-full md:grid content-center justify-center bg-[#1A1A1D]">
             <div className="mx-[20px]">
               <Footerfilter/>
             </div>
           </div>
-        </div> 
+        </div>
     </div>  
   )
 }

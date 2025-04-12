@@ -1,4 +1,5 @@
 import logo from "/images/logo.png"
+import { Link } from "react-router-dom"
 function Lfooter(){
     return(
         <div className="my-[50px]">
@@ -6,9 +7,9 @@ function Lfooter(){
 
                 <div className="grid grid-rows-2">
                     <p>
-                        <a href="https://www.google.com/">
+                        <Link to="/">
                             <img className="cursor-pointer h-[50px] w-[100px]" src={logo} loading="lazy"/>
-                        </a>
+                        </Link>
                     </p>
                     <div className="flex self-end">
                         <p className="text-zinc-600">
