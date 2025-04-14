@@ -8,7 +8,7 @@ import "../../HeroSection/HeroSection.css";
 import Windows from "../../svg/Winodws";
 import Apple from "../../svg/Apple";
 import Arrow from "../../svg/Arrow";
-
+import { Link } from "react-router-dom";
 
 function Llightweight(){
     let div2Ref=useRef(null)
@@ -70,7 +70,9 @@ function Llightweight(){
                     </div>
                     <div className="p-[50px] bg-zinc-900 rounded-xl drop-shadow">
                         <p className="text-[50px]">Effortless, Lightweight <br/>Elegantly minimal</p>
-                        <button className="all_softwares translate-y-[40px] my-[10px] bg-slate-100 text-black px-[28px] py-[9px] rounded text-lg">All Softwares</button>
+                        <Link to="/softwares">
+                            <button className="all_softwares translate-y-[40px] my-[10px] bg-slate-100 text-black px-[28px] py-[9px] rounded text-lg">All Softwares</button>
+                        </Link>
                         <div className="companies translate-y-[40px] flex space-x-[10px] my-[5px]">
                             <div className="max-h-[20px] max-w-[20px]">
                                 <Windows/>

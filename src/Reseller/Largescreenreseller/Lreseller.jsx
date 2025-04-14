@@ -1,8 +1,10 @@
 
 function Lreseller(){
     return(
-        <div>
-            Lreseller
+        <div className="my-[100px]">
+            <div>
+                
+            </div>
         </div>
     )
 }

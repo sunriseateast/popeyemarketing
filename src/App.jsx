@@ -24,15 +24,17 @@ function App() {
     };
   },[hmopen]);
 
-  // useEffect(()=>{
-  //   const pathsToMatch=['/softwares','/reseller','/support','/book_a_demo']
-  //   const currentPath = location.pathname.toLowerCase();
 
-  //   if(pathsToMatch.includes(currentPath)){
-  //     setHmopen(false)
-  //   }
 
-  // },[location.pathname])
+  useEffect(()=>{
+    const pathsToMatch=['/','/softwares','/reseller','/support','/book_a_demo']
+    const currentPath = location.pathname.toLowerCase();
+
+    if(pathsToMatch.includes(currentPath)){
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    }
+
+  },[location.pathname])
   
   //function get hmopen value from header to blurout background
   const handleData=(value)=>{

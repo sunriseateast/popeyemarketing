@@ -4,12 +4,13 @@ import Play from "../../svg/Play"
 import "../Midsec2.css";
 import gsap from 'gsap';
 import Rarrow from "../../svg/Rarrow";
-
+import { useNavigate,Link } from "react-router-dom";
 
 function Smidsec2(){
     const liveDot=useRef(null)
     const upCard=useRef(null)
     const upCard2=useRef(null)
+    const navigate=useNavigate()
 
     useEffect(() => {
 
@@ -47,7 +48,11 @@ function Smidsec2(){
         }
     },[])
 
-return(
+    const handleClick=(cardName)=>{
+        navigate('/softwares',{state:{scrollTo:cardName}})
+    }
+
+    return(
     <div className="flex items-center justify-center my-[100px]">
         <div>
             <div className="p-[5px] flex items-center justify-center space-x-[10px] max-w-[100px] rounded-[200px] bg-slate-100 text-black">
@@ -85,7 +90,7 @@ return(
                                 </p>
                             </div>
                             <div className="mx-[10px] my-[50px] flex gap-x-[20px]">
-                                <button className="h-12 w-24 rounded-md bg-[#06040D]">Buy Now</button>
+                                <button className="h-12 w-24 rounded-md bg-[#06040D]" onClick={()=>handleClick('popeye-master')}>Buy Now</button>
                                 <button className="h-12 w-24 rounded-md bg-[#06040D] button">Download</button>
                             </div>
                         </div>
@@ -97,7 +102,7 @@ return(
                             <div className="mt-[10px]">
                                 <div className="text-black max-h-[60px] max-w-[60px] mx-[10px] bg-white rounded-xl flex items-center justify-center contactex">
                                     <div className="max-h-[50px] max-w-[50px] rounded-xl waicon flex items-center justify-center my-[10px]">
-                                        <img src="/images/Extractor.png" alt="Contacts Export" className="h-12 w-12 object-contain" loading="lazy"/>
+                                        <img src="/images/Extractor3.png" alt="Contacts Export" className="h-12 w-12 object-contain" loading="lazy"/>
                                     </div>  
                                 </div>
                             </div>
@@ -122,20 +127,20 @@ return(
                                 </p>
                             </div>
                             <div className="mx-[10px] my-[50px] flex gap-x-[20px]">
-                                <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D]">Buy Now</button>
-                                <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D] button">Download</button>
+                                <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D]" onClick={()=>handleClick('contact-exporter')}>Buy Now</button>
+                                <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D] button" onClick={()=>handleClick('contact-exporter')}>Download</button>
                             </div>
                         </div>
                 </div>
                 </div>
                 <div className="flex items-center justify-center overflow-hidden">
-                    <a href="https://www.google.com/">
+                    <Link to="/softwares">
                         <div className="flex items-center justify-center max-h-[60px] max-w-[60px] rounded-[100px] bg-zinc-500">
                             <div className="max-h-[20px] max-w-[20px] m-[20px]">
                                 <Rarrow/>
                             </div>
                         </div>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

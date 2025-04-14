@@ -1,4 +1,3 @@
-
 import "../Lightweight.css"
 import gsap from 'gsap';
 gsap.registerPlugin(ScrollTrigger) 
@@ -9,6 +8,7 @@ import "../../HeroSection/HeroSection.css";
 import Windows from "../../svg/Winodws";
 import Apple from "../../svg/Apple";
 import Arrow from "../../svg/Arrow";
+import { Link } from "react-router-dom";
 
 function Slightweight(){
         let div2Ref=useRef(null)
@@ -57,7 +57,10 @@ function Slightweight(){
                     </div>
                     <div className="flex flex-col items-center">
                         <p className="text-[20px] text-center">Effortless, Lightweight <br/>Elegantly minimal</p>
-                        <button className="my-[10px] bg-slate-100 text-black px-[15px] py-[5px] rounded text-lg text-[10px]">All Softwares</button>
+                        <Link to="/softwares">
+                            <button className="my-[10px] bg-slate-100 text-black px-[15px] py-[5px] rounded text-lg text-[10px]">All Softwares</button>
+                        </Link>
+                    
                         <div className="flex space-x-[10px] my-[5px]">
                             <div className="max-h-[20px] max-w-[20px]">
                                 <Windows/>

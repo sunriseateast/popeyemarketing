@@ -88,7 +88,7 @@ function Lidea(){
                     </div>
                     <div className="overflow-hidden">
                         <div className="my-[20px]">
-                            <p className="font-semibold">✅ Security You Can Trust</p>
+                            <p className="font-semibold text-[20px]">✅ Security You Can Trust</p>
                             <p className="my-[10px]">
                                 At our store, your safety is our top priority.
                                 Every software we<br/>offer goes through rigorous checks
@@ -128,7 +128,7 @@ function Lidea(){
                     </div>
                     <div className="overflow-hidden mt-[100px]">
                         <div className="my-[20px]">
-                            <p className="font-semibold">⚠️ Important Disclaimer</p>
+                            <p className="font-semibold text-[20px]">⚠️ Important Disclaimer</p>
                             <p className="my-[10px]">
                                 Each software product we offer is built for a specific purpose, <br/>audience, or platform.
                                 Features, functionality, and compatibility may vary.<br/>

@@ -2,6 +2,7 @@ import React,{useRef,useEffect} from "react";
 import gsap from 'gsap';
 import Testimonials2 from "./Testimonials2.jsx";
 import Arrow from "../../svg/Arrow.jsx";
+import { Link } from "react-router-dom";
 
 function Sherosec(){
     const flipwds=useRef(null)
@@ -61,16 +62,18 @@ function Sherosec(){
                 </div>
                 <div className="grid grid-cols-2 my-[40px]">
                     <div className="">
-                        <button className="bg-slate-100 text-black rounded-lg p-[10px] tracking-wider">
-                            <div className="flex items-center gap-x-[7px]">
-                                <div>
-                                    <p>Free Trial</p>
+                        <Link to="/softwares">
+                            <button className="bg-slate-100 text-black rounded-lg p-[10px] tracking-wider">
+                                <div className="flex items-center gap-x-[7px]">
+                                    <div>
+                                        <p>Free Trial</p>
+                                    </div>
+                                    <div className="max-h-[12px] max-w-[12px]">
+                                        <Arrow/>
+                                    </div>
                                 </div>
-                                <div className="max-h-[12px] max-w-[12px]">
-                                    <Arrow/>
-                                </div>
-                            </div>
-                        </button>
+                            </button>
+                        </Link>
                     </div>
                     <div className="grid grid-cols-3">
                         <div className="leading-[0.9]">

@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import TextPlugin from 'gsap/TextPlugin';
 import Testimonials from "./Testimonials";
 import Arrow from "../../svg/Arrow";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(TextPlugin)
 
@@ -78,20 +79,22 @@ function Lherosec(){
                     this store you will find your specific solutions.</p>
                     <div className="grid grid-cols-2 my-[50px]">
                         <div>
-                            <button
-                                ref={el => animationRef.current[1] = el}
-                                onMouseEnter={bounce} className='translate-y-[15px] button-sh tracking-wider rounded-xl p-[15px] w-[170px] h-[60px] bg-[#F5F5F4] text-black'>
-                                <div className="flex">
-                                        <div className="ml-[20px]">
-                                            Free Trial
-                                        </div>
-                                        <div className="flex items-center w-[40px] overflow-hidden">
-                                            <div ref={arrbounce} className="h-[20] w-[20px] translate-x-[15px]">
-                                                <Arrow/>
+                            <Link to="/softwares">
+                                <button
+                                    ref={el => animationRef.current[1] = el}
+                                    onMouseEnter={bounce} className='translate-y-[15px] button-sh tracking-wider rounded-xl p-[15px] w-[170px] h-[60px] bg-[#F5F5F4] text-black'>
+                                    <div className="flex">
+                                            <div className="ml-[20px]">
+                                                Free Trial
                                             </div>
-                                        </div>
-                                </div>
-                            </button>
+                                            <div className="flex items-center w-[40px] overflow-hidden">
+                                                <div ref={arrbounce} className="h-[20] w-[20px] translate-x-[15px]">
+                                                    <Arrow/>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </button>
+                            </Link>
                         </div>
                         <div className="flex space-x-[20px] justify-center">
                             <div className="leading-[0.9]">

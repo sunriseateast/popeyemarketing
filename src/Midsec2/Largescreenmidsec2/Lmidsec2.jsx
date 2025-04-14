@@ -4,11 +4,13 @@ import "../Midsec2.css";
 import gsap from 'gsap';
 import Rarrow from "../../svg/Rarrow";
 import Play from "../../svg/Play";
+import {Link,useNavigate} from "react-router-dom"
 
 function Lmidsec2(){
         const liveDot=useRef(null)
         const upCard=useRef(null)
         const upCard2=useRef(null)
+        const navigate=useNavigate()
 
         useEffect(() => {
 
@@ -45,6 +47,10 @@ function Lmidsec2(){
                 })
             }
         },[])
+
+        const handleClick=(cardName)=>{
+            navigate('/softwares',{state:{scrollTo:cardName}})
+        }
 
     return(
         <div className="flex items-center justify-center my-[100px]">
@@ -84,7 +90,7 @@ function Lmidsec2(){
                                     </p>
                                 </div>
                                 <div className="mx-[10px] my-[50px] flex gap-x-[20px]">
-                                    <button className="h-12 w-24 rounded-md bg-[#06040D]">Buy Now</button>
+                                    <button className="h-12 w-24 rounded-md bg-[#06040D]" onClick={()=>handleClick('popeye-master')}>Buy Now</button>
                                     <button className="h-12 w-24 rounded-md bg-[#06040D] button">Download</button>
                                 </div>
                             </div>
@@ -96,7 +102,7 @@ function Lmidsec2(){
                                 <div className="mt-[10px]">
                                     <div className="text-black h-[60px] w-[60px] mx-[10px] bg-white rounded-xl flex items-center justify-center contactex">
                                         <div className="h-[50px] w-[50px] rounded-xl waicon flex items-center justify-center">
-                                            <img src="/images/Extractor.png" alt="Contacts Export" className="max-h-12 max-w-12" loading="lazy"/>
+                                            <img src="/images/Extractor3.png" alt="Contacts Export" className="max-h-12 max-w-12" loading="lazy"/>
                                         </div>  
                                     </div>
                                 </div>
@@ -121,21 +127,21 @@ function Lmidsec2(){
                                     </p>
                                 </div>
                                 <div className="mx-[10px] my-[50px] flex gap-x-[20px]">
-                                    <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D]">Buy Now</button>
-                                    <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D] button">Download</button>
+                                    <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D]" onClick={()=>handleClick('contact-exporter')}>Buy Now</button>
+                                    <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D] button" onClick={()=>handleClick('contact-exporter')}>Download</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="flex items-center justify-center overflow-hidden">
                         <div className="">
-                            <a href="https://www.google.com/">
+                            <Link to="/softwares">
                                 <div className="flex items-center justify-center h-[60px] w-[60px] rounded-[100px] bg-slate-100">
                                     <div className="max-h-[20px] max-w-[20px]">
                                         <Rarrow/>
                                     </div>
                                 </div>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
