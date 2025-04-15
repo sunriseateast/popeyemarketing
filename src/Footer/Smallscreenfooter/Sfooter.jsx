@@ -13,9 +13,21 @@ function Sfooter(){
                     </div>
                     <div className="flex flex-col space-y-[10px]">
                         <p>About Us</p>
-                        <p>Support</p>
-                        <p>Reseller</p>
-                        <p>Book a Demo</p>
+                        <Link to='/softwares'>
+                            <p>Softwares</p>
+                        </Link>
+                        
+                        <Link to='/support'>
+                            <p>Support</p>
+                        </Link>
+
+                        <Link to='/reseller'>
+                            <p>Reseller</p>
+                        </Link>
+
+                        <Link to='/book_a_demo'>
+                            <p>Book a Demo</p>
+                        </Link>
                     </div>
                 </div>
                 <div className="grid grid-rows-2 my-[20px]">

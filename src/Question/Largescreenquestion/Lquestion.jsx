@@ -10,6 +10,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Add from "../../svg/Add";
 import Rightarr from "../../svg/Rightarr";
+import { Link } from "react-router-dom";
 
 function Lquestion(){
 
@@ -206,12 +207,14 @@ function Lquestion(){
                         feel free to contact us.
                     </p>
                     <div className="mx-[130px] my-[10px]">
-                        <div className="cursor-pointer border border-zinc-700 flex items-center justify-center max-w-[120px] rounded-[200px] bg-zinc-900 text-black p-[8px]">
-                            <p className="text-center text-[15px] text-slate-100">Contact Us</p>
-                            <div className="max-h-[20px] max-w-[20px] text-slate-100">
-                                <Rightarr/>
+                        <Link to='/support'>
+                            <div className="border border-zinc-700 flex items-center justify-center max-w-[120px] rounded-[200px] bg-zinc-900 text-black p-[8px]">
+                                <p className="text-center text-[15px] text-slate-100">Contact Us</p>
+                                <div className="max-h-[20px] max-w-[20px] text-slate-100">
+                                    <Rightarr/>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                 </div>
             </div>

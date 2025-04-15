@@ -338,7 +338,7 @@ function Lsoftwares(){
                                     </div>
                                 </div>
                                 <div className="flex items-center space-x-[30px]">
-                                        <button disabled className="cursor-not-allowed p-[9px] bg-slate-100 text-black rounded drop-shadow">Buy Now</button>
+                                        <button disabled className="cursor-not-allowed p-[9px] bg-slate-100 text-black rounded drop-shadow">Free Trial</button>
                                         <p className="underline ">Rs.1999/Year</p>
                                 </div>
                             </div>

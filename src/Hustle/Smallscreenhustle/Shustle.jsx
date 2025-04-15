@@ -1,5 +1,7 @@
 import "../Hustle.css"
 import Rightarr from "../../svg/Rightarr";
+import { Link } from "react-router-dom";
+
 function Shustle(){
     return(
         <div className="flex items-center justify-center my-[90px] overflow-hidden">
@@ -49,7 +51,9 @@ function Shustle(){
                                 key features, and understand the flow all in real-time.
                                 </p>
                                 <div className="flex my-[20px]">
-                                    <button className="bg-slate-100 text-black rounded p-[10px]">Book a Demo</button>
+                                    <Link to='/book_a_demo'>
+                                        <button className="bg-slate-100 text-black rounded p-[10px]">Book a Demo</button>
+                                    </Link>
                                 </div>
                             </div>
                        </div>
@@ -63,8 +67,10 @@ function Shustle(){
                                 See exactly how the platform works, explore 
                                 key features, and understand the flow all in real-time.
                                 </p>
-                                <div className="flex my-[20px] ">
-                                    <button className="bg-slate-100 text-black rounded p-[10px]">Get a Support</button>
+                                <div className="flex my-[20px]">
+                                    <Link to='/support'>
+                                        <button className="bg-slate-100 text-black rounded p-[10px]">Get a Support</button>
+                                    </Link>
                                 </div>
                             </div>
                        </div>

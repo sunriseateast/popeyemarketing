@@ -55,14 +55,16 @@ function Lmidsec2(){
     return(
         <div className="flex items-center justify-center my-[100px]">
             <div>
-                <div className="flex items-center justify-center space-x-[10px] max-w-[140px] rounded-[200px] bg-slate-100 text-black p-[5px]">
-                    <div className="flex items-center justify-center bg-white drop-shadow rounded-[200px] h-[20px] w-[20px]">
-                        <div className="max-h-[8px] max-w-[8px]">
-                            <Play/>
+                <Link to='/book_a_demo'>
+                    <div className="flex items-center justify-center space-x-[10px] max-w-[140px] rounded-[200px] bg-slate-100 text-black p-[5px]">
+                        <div className="flex items-center justify-center bg-white drop-shadow rounded-[200px] h-[20px] w-[20px]">
+                            <div className="max-h-[8px] max-w-[8px]">
+                                <Play/>
+                            </div>
                         </div>
+                        <p className="text-center text-[15px]">Book a Demo</p>
                     </div>
-                    <p className="text-center text-[15px]">Book a Demo</p>
-                </div>
+                </Link>
                 <p className="text-[40px] font-bold my-[10px]">Types of Softwares we provide</p>
                 <div className="grid grid-cols-3 gap-x-[100px] mt-[50px]">
                     <div ref={upCard} className="overflow-hidden transform-gpu" onMouseEnter={()=>upcard(upCard.current)} onMouseLeave={()=>downcard(upCard.current)}>
@@ -127,7 +129,7 @@ function Lmidsec2(){
                                     </p>
                                 </div>
                                 <div className="mx-[10px] my-[50px] flex gap-x-[20px]">
-                                    <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D]" onClick={()=>handleClick('contact-exporter')}>Buy Now</button>
+                                    <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D]" onClick={()=>handleClick('contact-exporter')}>Know More</button>
                                     <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D] button" onClick={()=>handleClick('contact-exporter')}>Download</button>
                                 </div>
                             </div>

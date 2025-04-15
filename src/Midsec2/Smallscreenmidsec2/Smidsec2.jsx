@@ -55,14 +55,16 @@ function Smidsec2(){
     return(
     <div className="flex items-center justify-center my-[100px]">
         <div>
-            <div className="p-[5px] flex items-center justify-center space-x-[10px] max-w-[100px] rounded-[200px] bg-slate-100 text-black">
-                <div className="p-[5px] flex items-center justify-center bg-white drop-shadow rounded-[200px] max-h-[20px] max-w-[20px]">
-                    <div className="max-h-[8px] max-w-[8px]">
-                        <Play/>
+            <Link to='/book_a_demo'>
+                <div className="p-[5px] flex items-center justify-center space-x-[10px] max-w-[100px] rounded-[200px] bg-slate-100 text-black">
+                    <div className="p-[5px] flex items-center justify-center bg-white drop-shadow rounded-[200px] max-h-[20px] max-w-[20px]">
+                        <div className="max-h-[8px] max-w-[8px]">
+                            <Play/>
+                        </div>
                     </div>
+                    <p className="text-center text-[10px] break-all">Book a Demo</p>
                 </div>
-                <p className="text-center text-[10px] break-all">Book a Demo</p>
-            </div>
+            </Link>
             <p className="text-[30px] font-bold my-[10px] break-all leading-[1.2]">Types of Softwares<br/>we provide</p>
             <div className="grid grid-rows-2 gap-y-[100px] mt-[50px]">
                 <div ref={upCard} className="overflow-hidden transform-gpu" onTouchStart={()=>upcard(upCard.current)} onTouchEnd={()=>downcard(upCard.current)}>
@@ -127,7 +129,7 @@ function Smidsec2(){
                                 </p>
                             </div>
                             <div className="mx-[10px] my-[50px] flex gap-x-[20px]">
-                                <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D]" onClick={()=>handleClick('contact-exporter')}>Buy Now</button>
+                                <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D]" onClick={()=>handleClick('contact-exporter')}>Know More</button>
                                 <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D] button" onClick={()=>handleClick('contact-exporter')}>Download</button>
                             </div>
                         </div>

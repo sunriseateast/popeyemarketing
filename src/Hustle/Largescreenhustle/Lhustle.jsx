@@ -5,6 +5,7 @@ import Rocket from "../../svg/Rocket"
 import "../Hustle.css"
 import Rightarr from "../../svg/Rightarr";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 function Lhustel(){
 
     useEffect(()=>{
@@ -88,8 +89,10 @@ function Lhustel(){
                                 key features, and understand the flow all in real-time.
                                 </p>
                                 <div className="flex my-[20px]">
-                                    <button className="bg-slate-100 text-black rounded p-[10px]">Book a Demo</button>
-                                </div>
+                                    <Link to='/book_a_demo'>
+                                        <button className="bg-slate-100 text-black rounded p-[10px]">Book a Demo</button>
+                                    </Link>
+                                 </div>
                             </div>
                        </div>
                     </div>
@@ -104,7 +107,9 @@ function Lhustel(){
                                 we’ve got your back just reach out anytime.
                                 </p>
                                 <div className="flex my-[20px] ">
-                                    <button className="bg-slate-100 text-black rounded p-[10px]">Get a Support</button>
+                                    <Link to='/support'>
+                                        <button className="bg-slate-100 text-black rounded p-[10px]">Get a Support</button>
+                                    </Link>
                                 </div>
                             </div>
                        </div>
