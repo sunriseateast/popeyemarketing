@@ -1,0 +1,7 @@
+.outer-circle{
+    filter:drop-shadow(1px 1px 30px rgba(92, 179, 56,0.6))
+}
+
+.outer-rectangle{
+    filter:drop-shadow(1px 1px 30px rgba(255, 255, 0,0.6))
+}

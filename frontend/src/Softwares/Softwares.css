@@ -1,0 +1,19 @@
+
+.softwares-outer-card{
+    box-shadow:1px -5px 1px rgba(0, 0, 0,0.1) inset;
+}
+
+.softwares-inner-card{
+    /* background:black; */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0,0.2),
+                1px 1px 10px rgba(0, 0, 0,0.1) inset
+}
+
+.popeye-dashboard{
+    filter: drop-shadow(1px 1px 20px rgba(0, 0, 0,0.3))
+}
+
+.download-button{
+    box-shadow: 1px 1px 1px white inset;
+}
+

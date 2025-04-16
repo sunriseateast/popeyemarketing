@@ -1,0 +1,85 @@
+  /* Hero section gradient */  
+  @media(min-width: 1024px){ /* Above 1024px this will happened */
+    .hero{
+      background-image: radial-gradient(circle 1880px at 10% 1130px,#f1f5f9,#06040D 60%);
+      mask:linear-gradient(white 85%,transparent)
+    }
+  }
+
+  @media(min-width:1367px){ /* Above 1367px this will happened */
+    .hero{
+      background-image:none;
+    }
+  }
+
+
+
+
+  /* CSS for testimonials*/
+.top{ /* Add faded effect for cards top,bottom*/
+  mask: linear-gradient(transparent 5%,white 10%,white 60%,transparent);
+}
+
+.top2{/* Add faded effect for small screen cards top,bottom*/
+  mask:linear-gradient(transparent,white 2%,white 15%,transparent 20% );
+  /* background: linear-gradient(red,white 2%,white 15%,red 20% ) */
+}
+
+
+/* Make mask around gradient border*/
+@media(min-width: 1024px){
+  .mask{
+    mask:radial-gradient(circle 2000px at -57% 960px,transparent 45%,white 50%);
+  }
+}
+@media(min-width: 1367px){
+  .mask{
+    mask:none;
+  }
+}
+
+
+
+.testcard{
+  background-color: rgb(76, 88, 91,0.2);
+}
+
+@keyframes scrolleffect {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(-100% - 10px));
+  }
+}
+
+.scroll{
+  animation: scrolleffect 21s linear infinite;
+  user-select: none;
+  touch-action: none;
+}
+
+.scroll2{
+  animation: scrolleffect 25s linear infinite;
+  user-select: none;
+  touch-action: none;
+}
+
+.scroll3{
+  animation: scrolleffect 21s linear infinite;
+  user-select: none;
+  touch-action: none;
+}
+
+
+
+/* Set scrollbar width none for testcard only*/
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+
+.button-sh{
+  box-shadow: 25px -10px 30px -25px #06040D, -25px 12px 30px -25px white;
+}
+  

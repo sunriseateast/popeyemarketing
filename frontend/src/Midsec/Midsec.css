@@ -1,0 +1,59 @@
+.card{
+    box-shadow:0px 7px 10px -10px #373A40 inset;
+}
+
+.innercard{
+    box-shadow:0px 1px 2px #373A40 inset
+}
+
+
+.fillerCard1{
+    box-shadow: 0px 0px 5px blue;
+}
+
+.fillerCard2{
+    box-shadow: 0px 0px 5px orange;
+}
+
+.fillerCard3{
+    box-shadow: 0px 0px 5px #FF007F;
+}
+
+.fillerCard4{
+    box-shadow: 0px 0px 5px lime;
+}
+
+/* Set scrollbar width none for testcard only*/
+.scrollbar-none {
+    scrollbar-width: none;
+}
+  
+@keyframes gradient-move {
+    0%{
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100%{
+      background-position: 0% 50%;
+    }
+  }
+
+@media(min-width:1024px){ /* From 1024 px background will apply to outer div in app.jsx*/
+    .gradient{
+        background: linear-gradient(90deg, #ff0080, #40e0d0, #007cff,white);
+        animation: gradient-move 8s infinite;
+        background-size: 200% 200%;
+    }
+}
+
+.light{
+    background: radial-gradient(ellipse 150% 50% at 10px, rgba(255, 255, 255,0.9) 10%, transparent);
+    mask: linear-gradient(140deg ,transparent 30%, rgba(255, 255, 255,0.7) 40%),
+    linear-gradient(-330deg,transparent 30%,rgba(255, 255, 255,0.9) 40%),
+    radial-gradient(ellipse 50px 120px at 100px,transparent 40%, rgba(255, 255, 255,0.8) 50%);
+    mask-composite: intersect;
+    /* background: radial-gradient(ellipse 50px 120px at 100px,red 40%, blue 50%); */
+    
+}
