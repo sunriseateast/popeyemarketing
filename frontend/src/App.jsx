@@ -30,6 +30,7 @@ function App() {
     const pathsToMatch=['/','/softwares','/reseller','/support','/book_a_demo']
     const currentPath = location.pathname.toLowerCase();
 
+
     if(pathsToMatch.includes(currentPath)){
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     }
