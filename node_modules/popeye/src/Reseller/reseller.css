@@ -1,0 +1,10 @@
+
+.reseller-circle{
+    box-shadow: 1px 1px 20px rgba(0, 0, 0,0.1) inset,
+                9px 10px 20px rgba(0, 0, 0,0.2)
+}
+
+.reseller-upper-card{
+    background-color:transparent;
+    backdrop-filter: blur(10px);
+}
