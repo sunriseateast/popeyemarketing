@@ -3,6 +3,7 @@ import Phone from "../../svg/Phone"
 import { useEffect, useState } from "react"
 import useDebounce from "../../useDebounce"
 import { mySchmea } from "../../../../shared-schemas/userSchema"
+import axios from 'axios'
 
 function Ldemo(){
 
@@ -10,22 +11,9 @@ function Ldemo(){
     let [phoneNumber,setPhoneNumber]=useState('')
     let [inputError,setInputError]=useState([])
 
-
     const debounce=useDebounce()
-
-    //Validations for Both Input Boxes
-    //For FirstName
-    const rmFirstnamex=firstName.trim().replace(/\s+/g, ' ') //Remove side spaces and middle extra spaces
-
-    // const letterCount = removeMulmidspaces.replace(/[^a-zA-Z]/g, "").length;   //Accept char and replace space,gives actual length of string
-    // const hasNumbers=/\d/.test(removeMulmidspaces);    //Return true only if number is there
-    // const hasSpecial=/^[a-zA-Z ]+$/.test(removeMulmidspaces); //Return true only if character is present
-    
-    //For PhoneNumber
+    const rmFirstnamex=firstName.trim().replace(/\s+/g, ' ')    //Remove side spaces and middle extra spaces
     const rmPhonenumberx=phoneNumber.trim().replace(/\s+/g, '');   //Remove side spaces and middle extra spaces completely
-    // const isFirstDigitValid = /^[1-9]/.test(removeMulmidspaces2);    //Return true if first digit between 1 to  9
-    // const numbercount=removeMulmidspaces2.length    //Calculate length of phone numbers
-    // const onlyNumbers=/^\d+$/.test(removeMulmidspaces2);
 
     //To update the error
     const updateError=(error,index)=>{
@@ -38,12 +26,6 @@ function Ldemo(){
 
 
     useEffect(()=>{
-        
-    },[firstName,phoneNumber])
-
-    const formSubmit=(event)=>{
-
-        event.preventDefault()
         const result=mySchmea.safeParse({name:rmFirstnamex,number:rmPhonenumberx})
         if(result.success===false){  
             let error=result.error.format()
@@ -62,11 +44,26 @@ function Ldemo(){
             else{
                 updateError('',1)
             }
-           
         }
         else{
             updateError('',0)
             updateError('',1)
+        }
+    },[firstName,phoneNumber])
+
+
+    const formSubmit=async (event)=>{
+        event.preventDefault()
+        if(inputError[0]==='' && inputError[1]===''){
+            console.log("I just got call")
+
+            //Send data to api
+            try{
+                await axios.post('http://localhost:5000/api/users/submit',{firstName,phoneNumber})
+            }
+            catch(error){
+                console.log("Error while sending data",error)
+            }
         }
     }
     
@@ -75,7 +72,7 @@ function Ldemo(){
         <div className="my-[100px]">
             <div className="grid grid-cols-2">
 
-                <div>
+                <div className="bg-lime-500">
 
                 </div>
 
