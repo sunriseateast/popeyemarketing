@@ -4,12 +4,18 @@ import { useEffect, useState } from "react"
 import useDebounce from "../../useDebounce"
 import { mySchmea } from "../../../../shared-schemas/userSchema"
 import axios from 'axios'
+import "../Demo.css"
+import {MoonLoader} from 'react-spinners'
+import Check from "../../svg/Check"
 
 function Ldemo(){
 
     let [firstName,setFirstName]=useState('')
     let [phoneNumber,setPhoneNumber]=useState('')
     let [inputError,setInputError]=useState([])
+    let [onSuberror,setonSubError]=useState(false)
+    let [loading,setLoading]=useState(false)
+    let [apiData,setApiData]=useState(false)
 
     const debounce=useDebounce()
     const rmFirstnamex=firstName.trim().replace(/\s+/g, ' ')    //Remove side spaces and middle extra spaces
@@ -59,20 +65,25 @@ function Ldemo(){
 
             //Send data to api
             try{
-                await axios.post('http://localhost:5000/api/users/submit',{firstName,phoneNumber})
+                setLoading(true)
+                setonSubError(false)
+                const result=await axios.post('http://localhost:5000/api/users/submit',{firstName,phoneNumber})
+                setApiData(result.data.data)
+                setLoading(false)
             }
             catch(error){
-                console.log("Error while sending data",error)
+                setonSubError(true)
+                setLoading(false)
+                setApiData(false)
             }
         }
     }
     
-    
     return(
         <div className="my-[100px]">
             <div className="grid grid-cols-2">
-
-                <div className="bg-lime-500">
+                
+                <div className="">
 
                 </div>
 
@@ -97,7 +108,35 @@ function Ldemo(){
                             </div>
                                 
                             <div className="p-[10px]">
-                                <button type="submit" className={`bg-slate-100 text-black p-[10px] rounded`}>Book Now</button>
+                                {
+                                    loading ?
+                                    (
+                                        <div className="flex items-start">
+                                            <div className="flex space-x-[8px] items-center border border-lime-600 rounded px-[5px] loading">
+                                                <MoonLoader size={15}  color="#ffffff" speedMultiplier={1.2}/>
+                                                <p className="text-center">Loading...</p>
+                                            </div>
+                                        </div>
+                                    )
+                                    :
+                                    onSuberror ?
+                                    (<div className="flex items-start">
+                                        <p className="border border-[#F72C5B] rounded px-[5px] text-center submit-error">Someting went wrong...</p>
+                                    </div>)
+                                    :
+                                    apiData ?
+                                    (
+                                        <div className="flex items-start">
+                                            <div className="flex space-x-[8px] items-center border border-lime-600 rounded px-[5px] loading">
+                                                <div className="h-[20px] w-[20px] text-black">
+                                                    <Check/>
+                                                </div>
+                                                <p className="text-center">Submitted</p>
+                                            </div>
+                                        </div>
+                                    ):
+                                    <button type="submit" className={`bg-slate-100 text-black p-[10px] rounded`}>Book Now</button>
+                                }
                             </div>
                         </form>
                         <div className="absolute left-9 grid grid-cols-2 gap-x-[20px]">

@@ -3,4 +3,4 @@ import { submitUserdata } from '../controllers/userController.js'
 
 export const userRouter=express.Router()
 
-router.post('/submit',submitUserdata)
+userRouter.post('/submit',submitUserdata)
