@@ -1,21 +1,24 @@
 import Mail from "../../svg/Mail"
 import Phone from "../../svg/Phone"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import useDebounce from "../../useDebounce"
 import { mySchmea } from "../../../../shared-schemas/userSchema"
 import axios from 'axios'
 import "../Demo.css"
 import {MoonLoader} from 'react-spinners'
 import Check from "../../svg/Check"
+import Close from "../../svg/Close"
+import ReCAPTCHA from "react-google-recaptcha";
 
 function Ldemo(){
 
     let [firstName,setFirstName]=useState('')
     let [phoneNumber,setPhoneNumber]=useState('')
-    let [inputError,setInputError]=useState([])
+    let [inputError,setInputError]=useState(['',''])
     let [onSuberror,setonSubError]=useState(false)
     let [loading,setLoading]=useState(false)
     let [apiData,setApiData]=useState(false)
+    let {captchaRef}=useRef()
 
     const debounce=useDebounce()
     const rmFirstnamex=firstName.trim().replace(/\s+/g, ' ')    //Remove side spaces and middle extra spaces
@@ -62,7 +65,7 @@ function Ldemo(){
         event.preventDefault()
         if(inputError[0]==='' && inputError[1]===''){
             console.log("I just got call")
-
+            
             //Send data to api
             try{
                 setLoading(true)
@@ -121,7 +124,12 @@ function Ldemo(){
                                     :
                                     onSuberror ?
                                     (<div className="flex items-start">
-                                        <p className="border border-[#F72C5B] rounded px-[5px] text-center submit-error">Someting went wrong...</p>
+                                        <div className="flex items-center justify-center space-x-[8px] border border-[#F72C5B] rounded px-[5px] submit-error">
+                                            <div className="h-[10px] w-[10px] text-[#F72C5B]">
+                                                <Close/>
+                                            </div>
+                                            <p className="text-center">Something went wrong...</p>
+                                        </div>
                                     </div>)
                                     :
                                     apiData ?
@@ -135,7 +143,10 @@ function Ldemo(){
                                             </div>
                                         </div>
                                     ):
-                                    <button type="submit" className={`bg-slate-100 text-black p-[10px] rounded`}>Book Now</button>
+                                    <>
+                                        <button type="submit" className={`bg-slate-100 text-black p-[10px] rounded`}>Book Now</button>
+                                        <ReCAPTCHA sitekey="6LfDjSYrAAAAAO55yeL-G5TfMJcxTi47AVxgtbpB" size="invisible" ref={captchaRef} />
+                                    </>
                                 }
                             </div>
                         </form>

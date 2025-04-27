@@ -20,6 +20,7 @@ function Lfooter(){
                     </div>
                 </div>
 
+                
                 <div className="grid grid-cols-2 space-x-[60px]">
                     <div className="flex flex-col space-y-[10px]">
                         <p>Terms & Conditions</p>
