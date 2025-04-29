@@ -150,7 +150,7 @@ function Ldemo(){
                                     </>
                                 }
                             </div>
-                            <ReCAPTCHA sitekey="6Le8bycrAAAAAAEuB5rTPX667UXFok1kuza1te3N" size="invisible" ref={captchaRef}/>
+                            <ReCAPTCHA sitekey={import.meta.env.VITE_REACT_APP_GOOGLE_SITE_KEY} size="invisible" ref={captchaRef}/>
                         </form>
                         <div className="absolute left-9 grid grid-cols-2 gap-x-[20px]">
                             <div>
