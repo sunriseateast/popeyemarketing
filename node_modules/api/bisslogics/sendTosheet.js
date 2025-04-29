@@ -21,7 +21,6 @@ export const SendTosheet=async(userName,phoneNumber)=>{
         await sheet.addRow({name:userName,email:phoneNumber,date:new Date().toLocaleString("en-us")})
     }
     catch(error){
-        console.log(error)
         return true
     }
 }
