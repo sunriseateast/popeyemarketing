@@ -11,14 +11,13 @@ import Close from "../../svg/Close"
 import ReCAPTCHA from "react-google-recaptcha";
 
 function Ldemo(){
-
     let [firstName,setFirstName]=useState('')
     let [phoneNumber,setPhoneNumber]=useState('')
     let [inputError,setInputError]=useState(['',''])
     let [onSuberror,setonSubError]=useState(false)
     let [loading,setLoading]=useState(false)
     let [apiData,setApiData]=useState(false)
-    let {captchaRef}=useRef()
+    let captchaRef=useRef(null)
 
     const debounce=useDebounce()
     const rmFirstnamex=firstName.trim().replace(/\s+/g, ' ')    //Remove side spaces and middle extra spaces
@@ -63,14 +62,16 @@ function Ldemo(){
 
     const formSubmit=async (event)=>{
         event.preventDefault()
+        const token=await captchaRef.current.executeAsync()
+        await captchaRef.current.reset()
+
         if(inputError[0]==='' && inputError[1]===''){
-            console.log("I just got call")
-            
+
             //Send data to api
             try{
                 setLoading(true)
                 setonSubError(false)
-                const result=await axios.post('http://localhost:5000/api/users/submit',{firstName,phoneNumber})
+                const result=await axios.post('http://localhost:5000/api/users/submit',{firstName,phoneNumber,token})
                 setApiData(result.data.data)
                 setLoading(false)
             }
@@ -123,15 +124,16 @@ function Ldemo(){
                                     )
                                     :
                                     onSuberror ?
-                                    (<div className="flex items-start">
+                                    (
+                                    <div className="flex items-start">
                                         <div className="flex items-center justify-center space-x-[8px] border border-[#F72C5B] rounded px-[5px] submit-error">
                                             <div className="h-[10px] w-[10px] text-[#F72C5B]">
                                                 <Close/>
                                             </div>
                                             <p className="text-center">Something went wrong...</p>
                                         </div>
-                                    </div>)
-                                    :
+                                    </div>
+                                    ):
                                     apiData ?
                                     (
                                         <div className="flex items-start">
@@ -145,10 +147,10 @@ function Ldemo(){
                                     ):
                                     <>
                                         <button type="submit" className={`bg-slate-100 text-black p-[10px] rounded`}>Book Now</button>
-                                        <ReCAPTCHA sitekey="6LfDjSYrAAAAAO55yeL-G5TfMJcxTi47AVxgtbpB" size="invisible" ref={captchaRef} />
                                     </>
                                 }
                             </div>
+                            <ReCAPTCHA sitekey="6Le8bycrAAAAAAEuB5rTPX667UXFok1kuza1te3N" size="invisible" ref={captchaRef}/>
                         </form>
                         <div className="absolute left-9 grid grid-cols-2 gap-x-[20px]">
                             <div>
