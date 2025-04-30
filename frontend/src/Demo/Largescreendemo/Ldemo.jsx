@@ -9,6 +9,7 @@ import {MoonLoader} from 'react-spinners'
 import Check from "../../svg/Check"
 import Close from "../../svg/Close"
 import ReCAPTCHA from "react-google-recaptcha";
+import Plant from "../../svg/plant"
 
 function Ldemo(){
     let [firstName,setFirstName]=useState('')
@@ -62,13 +63,13 @@ function Ldemo(){
 
     const formSubmit=async (event)=>{
         event.preventDefault()
-        const token=await captchaRef.current.executeAsync()
-        await captchaRef.current.reset()
-
+    
         if(inputError[0]==='' && inputError[1]===''){
-
-            //Send data to api
+           
             try{
+                const token=await captchaRef.current.executeAsync()
+                await captchaRef.current.reset()
+
                 setLoading(true)
                 setonSubError(false)
                 const result=await axios.post('http://localhost:5000/api/users/submit',{firstName,phoneNumber,token})
@@ -84,11 +85,23 @@ function Ldemo(){
     }
     
     return(
-        <div className="my-[100px]">
-            <div className="grid grid-cols-2">
+        <div className="my-[50px]">
+            <div className="flex gap-x-[190px]">
                 
                 <div className="">
-
+                    <p className="text-[40px] my-[10px]">Book a Demo</p>
+                    <p>
+                        Experience It Live,<br/>
+                        Book Your Demo Today<br/>
+                        Want to see how our software can simplify your workflow and boost your productivity?<br/> 
+                        Book a personalized demo and let our experts walk you through the features,
+                        answer <br/>your questions, and show you exactly how it can benefit your business. 
+                        No pressure,<br/>just value.Reserve your free session now and get started with 
+                        confidence.
+                    </p>
+                    <div className="h-[35px] w-[35px] mt-[120px] mx-[10px]">
+                        <Plant/>
+                    </div>
                 </div>
 
                 <div>

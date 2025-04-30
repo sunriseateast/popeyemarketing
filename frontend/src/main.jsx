@@ -8,6 +8,7 @@ import Home from './Home.jsx'
 import Resellerfilter from './Reseller/Resellerfilter.jsx'
 import Supportfilter from './Support/Supportfilter.jsx'
 import Demofilter from './Demo/Demofilter.jsx'
+import Conditions from './Conditions.jsx'
 
 
 const router=createBrowserRouter([
@@ -34,6 +35,10 @@ const router=createBrowserRouter([
       {
         path:"book_a_demo",
         element:<Demofilter/>
+      },
+      {
+        path:"conditions",
+        element:<Conditions/>
       }
     ]
   }

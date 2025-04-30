@@ -23,7 +23,9 @@ function Lfooter(){
                 
                 <div className="grid grid-cols-2 space-x-[60px]">
                     <div className="flex flex-col space-y-[10px]">
-                        <p>Terms & Conditions</p>
+                        <Link to='/conditions'>
+                            <p>Terms & Conditions</p>
+                        </Link>
                         <p>Privacy & policy</p>
                         <p>Refund Policy</p>
                     </div>
