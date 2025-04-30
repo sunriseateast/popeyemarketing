@@ -15,7 +15,7 @@ import Play from "../../svg/Play"
 import Youtube from "../../svg/Youtube"
 import { useEffect, useRef } from "react"
 import { useLocation } from "react-router-dom"
-
+import { Link } from "react-router-dom"
 
 function Lsoftwares(){
     const location=useLocation()
@@ -93,14 +93,16 @@ function Lsoftwares(){
                                     <p className="text-center text-[15px]">Download Now</p>
                                     </button> 
 
-                                    <button className="download-button hover:bg-[#F7F7F7] border border-slate-300 my-[7px] flex items-center justify-center space-x-[7px] max-w-[140px] rounded-[200px] text-black p-[5px]">
-                                        <div className="flex items-center justify-center bg-white drop-shadow rounded-[200px] h-[20px] w-[20px]">
-                                            <div className="max-h-[10px] max-w-[10px]">
-                                                <Play/>
+                                    <Link to='/book_a_demo'>
+                                        <button className="download-button hover:bg-[#F7F7F7] border border-slate-300 my-[7px] flex items-center justify-center space-x-[7px] max-w-[140px] rounded-[200px] text-black p-[5px]">
+                                            <div className="flex items-center justify-center bg-white drop-shadow rounded-[200px] h-[20px] w-[20px]">
+                                                <div className="max-h-[10px] max-w-[10px]">
+                                                    <Play/>
+                                                </div>
                                             </div>
-                                        </div>
-                                    <p className="text-center text-[15px]">Book a Demo</p>
-                                    </button>  
+                                        <p className="text-center text-[15px]">Book a Demo</p>
+                                        </button>  
+                                    </Link>
                                 </div>
 
                             </div>

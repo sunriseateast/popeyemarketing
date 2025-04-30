@@ -26,8 +26,12 @@ function Lfooter(){
                         <Link to='/conditions'>
                             <p>Terms & Conditions</p>
                         </Link>
-                        <p>Privacy & policy</p>
-                        <p>Refund Policy</p>
+                        <Link to='/privacy'>
+                            <p>Privacy & policy</p>
+                        </Link>
+                        <Link to='/refund'>
+                            <p>Refund Policy</p>
+                        </Link>
                     </div>
                     <div className="flex flex-col space-y-[10px]">
                         <p>About Us</p>

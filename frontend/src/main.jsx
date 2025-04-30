@@ -9,6 +9,8 @@ import Resellerfilter from './Reseller/Resellerfilter.jsx'
 import Supportfilter from './Support/Supportfilter.jsx'
 import Demofilter from './Demo/Demofilter.jsx'
 import Conditions from './Conditions.jsx'
+import Privacy from './Privacy.jsx'
+import Refund from './Refund.jsx'
 
 
 const router=createBrowserRouter([
@@ -39,6 +41,14 @@ const router=createBrowserRouter([
       {
         path:"conditions",
         element:<Conditions/>
+      },
+      {
+        path:"privacy",
+        element:<Privacy/>
+      },
+      {
+        path:"refund",
+        element:<Refund/>
       }
     ]
   }
