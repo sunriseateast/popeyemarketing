@@ -16,11 +16,13 @@ import Youtube from "../../svg/Youtube"
 import { useEffect, useRef } from "react"
 import { useLocation } from "react-router-dom"
 import { Link } from "react-router-dom"
+import axios from 'axios'
 
 function Lsoftwares(){
     const location=useLocation()
     const popeyeRef=useRef()
     const contactRef=useRef()
+    let timer=useRef(null)
 
     useEffect(()=>{
         if(location.state?.scrollTo==='popeye-master' && popeyeRef.current){
@@ -32,6 +34,31 @@ function Lsoftwares(){
             contactRef.current.scrollIntoView({behavior:'smooth'})
         }
     },[])
+
+    const downloadFile=async()=>{
+        if(timer.current) clearTimeout(timer.current)
+        try{
+            const headers=await fetch('http://localhost:5000/api/download/whatsapp-setup',{
+                method:'HEAD'
+            })
+            console.log(headers)
+            if(headers.ok===true){
+                const iframe=document.createElement('iframe')
+                iframe.src='http://localhost:5000/api/download/whatsapp-setup'
+                iframe.style.display='none'
+                document.body.appendChild(iframe)
+                timer.current=setTimeout(()=>{
+                    document.body.removeChild(iframe)
+                },2000)
+            }
+            else{
+                throw new Error("Error while Downloading")
+            }
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
 
     return(
         <div className="text-[#F5F5F4] my-[50px]">
@@ -84,15 +111,16 @@ function Lsoftwares(){
                                 </div>
 
                                 <div className="flex items-center justify-center space-x-[20px]">
-                                    <button className="download-button hover:bg-[#F7F7F7] border border-slate-300 my-[7px] flex items-center justify-center space-x-[7px] max-w-[140px] rounded-[200px] text-black p-[5px]">
+                                    <button type='button'
+                                        onClick={downloadFile} 
+                                        className="download-button hover:bg-[#F7F7F7] border border-slate-300 my-[7px] flex items-center justify-center space-x-[7px] max-w-[140px] rounded-[200px] text-black p-[5px]">
                                         <div className="flex items-center justify-center bg-white drop-shadow rounded-[200px] h-[20px] w-[20px]">
                                             <div className="max-h-[10px] max-w-[10px] rotate-90">
                                                 <Arrow/>
                                             </div>
                                         </div>
-                                    <p className="text-center text-[15px]">Download Now</p>
+                                        <p className="text-center text-[15px]">Download Now</p>
                                     </button> 
-
                                     <Link to='/book_a_demo'>
                                         <button className="download-button hover:bg-[#F7F7F7] border border-slate-300 my-[7px] flex items-center justify-center space-x-[7px] max-w-[140px] rounded-[200px] text-black p-[5px]">
                                             <div className="flex items-center justify-center bg-white drop-shadow rounded-[200px] h-[20px] w-[20px]">
