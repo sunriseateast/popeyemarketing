@@ -12,11 +12,13 @@ app.use(cors({
     methods:['GET','HEAD','POST']
 }))
 app.use(express.json())
-app.use(errorHandler)
 
 // Routes
 app.use('/api/users',userRouter)
 app.use('/api/download',downloadRoutes)
+
+//Middlewares
+app.use(errorHandler)
 
 app.listen(PORT,()=>{
     console.log("running")

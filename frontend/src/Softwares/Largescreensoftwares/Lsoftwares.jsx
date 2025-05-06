@@ -13,16 +13,22 @@ import popeye from "/images/popeye.png"
 import Apple from "../../svg/Apple"
 import Play from "../../svg/Play"
 import Youtube from "../../svg/Youtube"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { Link } from "react-router-dom"
-import axios from 'axios'
+import useDebounce from "../../useDebounce"
+import Gcheck from "../../svg/gcheck"
+import useDownloadFile from "../../useDownloadfile"
 
 function Lsoftwares(){
     const location=useLocation()
     const popeyeRef=useRef()
     const contactRef=useRef()
     let timer=useRef(null)
+    const isDownload=useRef(null)
+    const [isFile,setIsFile]=useState(null)
+    const debounce=useDebounce()
+    const downloadFile=useDownloadFile()
 
     useEffect(()=>{
         if(location.state?.scrollTo==='popeye-master' && popeyeRef.current){
@@ -35,29 +41,23 @@ function Lsoftwares(){
         }
     },[])
 
-    const downloadFile=async()=>{
-        if(timer.current) clearTimeout(timer.current)
-        try{
-            const headers=await fetch('http://localhost:5000/api/download/whatsapp-setup',{
-                method:'HEAD'
-            })
-            console.log(headers)
-            if(headers.ok===true){
-                const iframe=document.createElement('iframe')
-                iframe.src='http://localhost:5000/api/download/whatsapp-setup'
-                iframe.style.display='none'
-                document.body.appendChild(iframe)
-                timer.current=setTimeout(()=>{
-                    document.body.removeChild(iframe)
-                },2000)
-            }
-            else{
-                throw new Error("Error while Downloading")
-            }
-        }
-        catch(error){
-            console.log(error)
-        }
+    // const downloadFile=()=>{
+    //         let isAvailable
+    //         if(timer.current) clearTimeout(timer.current)
+    //         const iframe=document.createElement('iframe')
+    //         iframe.src='http://localhost:5000/api/download/whatsapp-setup'
+    //         iframe.style.display='none'
+    //         document.body.appendChild(iframe)
+    //         timer.current=setTimeout(()=>{
+    //             document.body.removeChild(iframe)
+    //             isAvailable=document.cookie.split(';').find(row=>row.startsWith(' success'))
+    //             const value=isAvailable.split('=')
+    //             setIsFile(value[1]=='true')
+    //         },1000)
+    // }
+
+    if(isFile===false){
+        alert("Download Link Broken ..")
     }
 
     return(
@@ -111,15 +111,32 @@ function Lsoftwares(){
                                 </div>
 
                                 <div className="flex items-center justify-center space-x-[20px]">
-                                    <button type='button'
-                                        onClick={downloadFile} 
-                                        className="download-button hover:bg-[#F7F7F7] border border-slate-300 my-[7px] flex items-center justify-center space-x-[7px] max-w-[140px] rounded-[200px] text-black p-[5px]">
+                                    <button ref={isDownload} type='button'
+                                        onClick={()=>debounce(async()=>{
+                                            const result=await downloadFile('http://localhost:5000/api/download/whatsapp-setup')
+                                            setIsFile(result)
+                                        })} 
+                                        className={`download-button hover:bg-[#F7F7F7] border border-slate-300 my-[7px] flex items-center justify-center space-x-[7px] max-w-[140px] rounded-[200px] text-black p-[5px]`}>
                                         <div className="flex items-center justify-center bg-white drop-shadow rounded-[200px] h-[20px] w-[20px]">
-                                            <div className="max-h-[10px] max-w-[10px] rotate-90">
-                                                <Arrow/>
-                                            </div>
+                                            {
+                                                isFile ?
+                                                (
+                                                    <div className="max-h-[15px] max-w-[15px]">
+                                                        <Gcheck/>
+                                                    </div>
+                                                ):
+                                                (
+                                                    <div className="max-h-[10px] max-w-[10px] rotate-90">
+                                                        <Arrow/>
+                                                    </div>
+                                                )
+                                            }
                                         </div>
-                                        <p className="text-center text-[15px]">Download Now</p>
+                                            {
+                                                isFile ?
+                                                (<p className="text-center text-[15px] px-[5px]">Again...?</p>):
+                                                (<p className="text-center text-[15px]">Download Now</p>)
+                                            }
                                     </button> 
                                     <Link to='/book_a_demo'>
                                         <button className="download-button hover:bg-[#F7F7F7] border border-slate-300 my-[7px] flex items-center justify-center space-x-[7px] max-w-[140px] rounded-[200px] text-black p-[5px]">
@@ -132,7 +149,6 @@ function Lsoftwares(){
                                         </button>  
                                     </Link>
                                 </div>
-
                             </div>
                         </div>
 

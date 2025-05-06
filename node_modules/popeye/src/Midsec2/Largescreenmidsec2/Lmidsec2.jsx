@@ -1,16 +1,21 @@
-import { useCallback, useEffect,useRef } from "react";
+import { useCallback, useEffect,useRef, useState } from "react";
 import Arrow from "../../svg/Arrow";
 import "../Midsec2.css";
 import gsap from 'gsap';
 import Rarrow from "../../svg/Rarrow";
 import Play from "../../svg/Play";
 import {Link,useNavigate} from "react-router-dom"
+import useDebounce from "../../useDebounce";
+import useDownloadFile from "../../useDownloadfile";
 
 function Lmidsec2(){
         const liveDot=useRef(null)
         const upCard=useRef(null)
         const upCard2=useRef(null)
         const navigate=useNavigate()
+        const debounce=useDebounce()
+        const downloadFile=useDownloadFile()
+        const [isFile,setIsFile]=useState(null)
 
         useEffect(() => {
 
@@ -51,7 +56,12 @@ function Lmidsec2(){
         const handleClick=(cardName)=>{
             navigate('/softwares',{state:{scrollTo:cardName}})
         }
+    
+    console.log(isFile)
 
+    if(isFile===false){
+        alert("Download Link Broken ..")
+    }
     return(
         <div className="flex items-center justify-center my-[100px]">
             <div>
@@ -93,7 +103,17 @@ function Lmidsec2(){
                                 </div>
                                 <div className="mx-[10px] my-[50px] flex gap-x-[20px]">
                                     <button className="h-12 w-24 rounded-md bg-[#06040D]" onClick={()=>handleClick('popeye-master')}>Buy Now</button>
-                                    <button className="h-12 w-24 rounded-md bg-[#06040D] button">Download</button>
+                                    <button className="h-12 w-24 rounded-md bg-[#06040D] button" 
+                                    onClick={
+                                        ()=>debounce(async()=>{
+                                            const result=await downloadFile('http://localhost:5000/api/download/whatsapp-setup')
+                                            setIsFile(result)
+                                        })}
+                                    >{
+                                        isFile ?
+                                        (<p>Again...?</p>):
+                                        (<p>Download</p>)
+                                    }</button>
                                 </div>
                             </div>
                         </div>

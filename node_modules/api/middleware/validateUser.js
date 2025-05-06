@@ -12,6 +12,6 @@ export const validateUser=(req,res,next)=>{
     catch(error){
         const newError=new Error("Validation Failed")
         newError.statusCode=400
-        next(newError)
+        next(error)
     }
 }

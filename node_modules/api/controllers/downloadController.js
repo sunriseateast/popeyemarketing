@@ -2,17 +2,18 @@ import got from 'got'
 import dotenv from 'dotenv'
 dotenv.config()
 
-export const Whatsapp=async(req,res,next)=>{
-    try{
-        if(req.method==="HEAD"){
-            return res.sendStatus(200)
-        }
-        const awsurl=process.env.AWS_POPEYE_MASTER
+const download=(url,res,next)=>{
+        const awsurl=url
         const stream=got.stream(awsurl)
-
+        res.cookie("success","true")
+        
         stream.on('response',(response)=>{
             if(response.statusCode !==200){
-                throw new Error("File not found")
+                res.cookie("success","false")
+                stream.destroy() //Destroy the stream to prevent hanging resources.
+                const error=new Error("File not found")
+                error.statusCode=400
+                next(error)
             }
             else{
                 res.setHeader('Content-Type','application/octet-stream');
@@ -22,12 +23,16 @@ export const Whatsapp=async(req,res,next)=>{
         })
 
         stream.on('error',(err)=>{  //While Streaming if anything happens this will happend
-            res.destroy()
-            throw new Error(err)
+            res.cookie("success","false")
+            stream.destroy()    //Destroy the stream to prevent hanging resources.
+            const error=new Error("Streaming Error")
+            error.statusCode=400
+            next(error)
         })
-    }
-    catch(error){
-        error.statusCode=400
-        next(error)
-    }
+}
+
+
+
+export const Whatsapp=(req,res)=>{
+    download(process.env.AWS_POPEYE_MASTER,res)
 }

@@ -93,7 +93,7 @@ function Smidsec2(){
                             </div>
                             <div className="mx-[10px] my-[50px] flex gap-x-[20px]">
                                 <button className="h-12 w-24 rounded-md bg-[#06040D]" onClick={()=>handleClick('popeye-master')}>Buy Now</button>
-                                <button className="h-12 w-24 rounded-md bg-[#06040D] button">Download</button>
+                                
                             </div>
                         </div>
                 </div>
@@ -130,7 +130,6 @@ function Smidsec2(){
                             </div>
                             <div className="mx-[10px] my-[50px] flex gap-x-[20px]">
                                 <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D]" onClick={()=>handleClick('contact-exporter')}>Know More</button>
-                                <button className="h-[50px] w-[100px] rounded-[7px] bg-[#06040D] button" onClick={()=>handleClick('contact-exporter')}>Download</button>
                             </div>
                         </div>
                 </div>

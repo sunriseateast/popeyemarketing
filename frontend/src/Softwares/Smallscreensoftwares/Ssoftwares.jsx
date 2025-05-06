@@ -61,10 +61,6 @@ function Ssoftwares(){
                                 <img className="popeye-dashboard h-[155px] w-[250px] drop-shadow" src={popeye} alt="popeye_dashboard" loading="lazy"/>
                             </div>
                         </div>
-                       <div className="flex space-x-[30px] my-[10px]">
-                            <button className="underline">Downlaod Now</button>
-                            <button className="underline">Book a Demo</button>
-                       </div>
 
                         <div className="my-[20px]">
                             <div className="space-y-[20px]">
