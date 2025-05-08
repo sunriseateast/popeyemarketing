@@ -17,6 +17,7 @@
     "express": "^5.1.0",
     "google-auth-library": "^9.15.1",
     "google-spreadsheet": "^4.1.4",
-    "got": "^14.4.7"
+    "got": "^14.4.7",
+    "razorpay": "^2.9.6"
   }
 }

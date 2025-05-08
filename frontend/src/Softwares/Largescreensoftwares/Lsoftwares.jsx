@@ -19,6 +19,9 @@ import { Link } from "react-router-dom"
 import useDebounce from "../../useDebounce"
 import Gcheck from "../../svg/gcheck"
 import useDownloadFile from "../../useDownloadfile"
+import axios from "axios"
+import Close from "../../svg/Close"
+import Check from "../../svg/Check"
 
 function Lsoftwares(){
     const location=useLocation()
@@ -29,6 +32,7 @@ function Lsoftwares(){
     const [isFile,setIsFile]=useState(null)
     const debounce=useDebounce()
     const downloadFile=useDownloadFile()
+    const [isVerfiy,setIsVerify]=useState(null)
 
     useEffect(()=>{
         if(location.state?.scrollTo==='popeye-master' && popeyeRef.current){
@@ -41,23 +45,50 @@ function Lsoftwares(){
         }
     },[])
 
-    // const downloadFile=()=>{
-    //         let isAvailable
-    //         if(timer.current) clearTimeout(timer.current)
-    //         const iframe=document.createElement('iframe')
-    //         iframe.src='http://localhost:5000/api/download/whatsapp-setup'
-    //         iframe.style.display='none'
-    //         document.body.appendChild(iframe)
-    //         timer.current=setTimeout(()=>{
-    //             document.body.removeChild(iframe)
-    //             isAvailable=document.cookie.split(';').find(row=>row.startsWith(' success'))
-    //             const value=isAvailable.split('=')
-    //             setIsFile(value[1]=='true')
-    //         },1000)
-    // }
-
     if(isFile===false){
         alert("Download Link Broken ..")
+    }
+
+    
+    const buynow=async(path)=>{
+        try{
+            const response=await axios.get(path)
+            const order_amount=response.data.amount
+            const order_id=response.data.id
+
+            const options={
+                "key":'rzp_test_vzUSOt5voCc9Qk',
+                "amount":order_amount,
+                "currency": "INR",
+                "name": "popeyemarketing",
+                "order_id":order_id,
+                "handler": async function (response){
+                    try{
+                        const rp1_payment_id=response.razorpay_payment_id;
+                        const rp1_signature=response.razorpay_signature   
+    
+                        const result=await axios.post("http://localhost:5000/api/razorpay/verification",
+                        {
+                            rp1_payment_id,order_id,
+                            rp1_signature
+                        })
+                        setIsVerify(result.data.success)
+                    }
+                    catch(error){
+                        setIsVerify(false)
+                    }
+                },
+            }
+
+            var rzp1 = new Razorpay(options)    
+            rzp1.on('payment.failed', function (response){
+                alert("payment failed")
+            });
+            rzp1.open()
+        }
+        catch(error){
+           setIsVerify(false)
+        }
     }
 
     return(
@@ -215,17 +246,45 @@ function Lsoftwares(){
                                         <p className="text-center">No Need To Save Numbers</p>
                                     </div>
                                 </div>
-                                <div className="flex items-center space-x-[30px]">
-                                        <button className="p-[9px] bg-slate-100 text-black rounded drop-shadow">Buy Now</button>
-                                        <div className="flex flex-col items-center">
-                                            <p className="underline">Rs.2999/Year</p>
-                                            <div className="flex items-center space-x-[5px]">
-                                                <div className="max-[15px] max-w-[15px]">
-                                                    <Youtube/>
+                                <div className="space-y-[5px]">
+                                    <div className="flex items-center space-x-[30px]">
+                                            <button onClick={()=>buynow('http://localhost:5000/api/razorpay/payment/whatsapp')} className="p-[9px] bg-slate-100 text-black rounded drop-shadow">Buy Now</button>
+                                            <div className="flex flex-col items-center">
+                                                <p className="underline">Rs.2999/Year</p>
+                                                <div className="flex items-center space-x-[5px]">
+                                                    <div className="max-[15px] max-w-[15px]">
+                                                        <Youtube/>
+                                                    </div>
+                                                    <a className="text-zinc-600" href="https://www.youtube.com/@popeyemarketing/">Tutorials</a>
                                                 </div>
-                                                <a className="text-zinc-600" href="https://www.youtube.com/@popeyemarketing/">Tutorials</a>
                                             </div>
-                                        </div>
+                                    </div>
+                                    <div className="absolute">
+                                        {
+                                            isVerfiy===true ?
+                                            (
+                                                <div className="flex items-start">
+                                                    <div className="flex space-x-[8px] items-center border border-lime-600 rounded px-[5px] loading">
+                                                        <div className="h-[20px] w-[20px] text-black">
+                                                            <Check/>
+                                                        </div>
+                                                        <p className="text-center">Get a Activation key. <span className="underline"><Link to='/support'>Contact Us</Link></span></p>
+                                                    </div>
+                                                </div> 
+                                            ):
+                                            isVerfiy===false &&
+                                            (
+                                                <div className="flex items-start">
+                                                    <div className="flex items-center justify-center space-x-[8px] border border-[#F72C5B] rounded px-[5px] submit-error">
+                                                        <div className="h-[10px] w-[10px] text-[#F72C5B]">
+                                                            <Close/>
+                                                        </div>
+                                                        <p className="text-center">Something went wrong...</p>
+                                                    </div>
+                                                </div>
+                                            )
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
