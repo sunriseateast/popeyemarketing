@@ -11,12 +11,17 @@ import "../Softwares.css"
 import popeye from "/images/popeye.png"
 import Youtube from "../../svg/Youtube"
 import { useLocation } from "react-router-dom"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef,useState } from "react"
+import { Link } from "react-router-dom"
+import Check from "../../svg/Check"
+import Close from "../../svg/Close"
+import useBuynow from "../useBuynow.js"
 
 function Ssoftwares(){
     const location=useLocation()
     const popeyeRef=useRef(null)
     const contactRef=useRef(null)
+    const {isVerify,buynow}=useBuynow()
 
     useEffect(()=>{
         if(location.state?.scrollTo==='popeye-master' && popeyeRef.current){
@@ -27,6 +32,7 @@ function Ssoftwares(){
             contactRef.current.scrollIntoView({behavior:'smooth'})
         }
     },[])
+
 
     return(
         <div className="text-[#F5F5F4] my-[50px]">
@@ -125,8 +131,11 @@ function Ssoftwares(){
                                         <p className="text-center">No Need To Save Numbers</p>
                                     </div>
                                 </div>
-                                <div className="flex items-center space-x-[30px]">
-                                        <button className="p-[9px] bg-slate-100 text-black rounded drop-shadow">Buy Now</button>
+                                <div className="space-y-[5px]">
+                                    <div className="flex items-center space-x-[30px]">
+                                        <button onTouchStart={()=>{
+                                            buynow('http://localhost:5000/api/razorpay/payment/whatsapp')
+                                            }} className="p-[9px] bg-slate-100 text-black rounded drop-shadow">Buy Now</button>
                                         <div className="flex flex-col items-center">
                                             <p className="underline">Rs.2999/Year</p>
                                             <div className="flex items-center space-x-[5px]">
@@ -136,11 +145,40 @@ function Ssoftwares(){
                                                 <a className="text-zinc-600" href="https://www.youtube.com/@popeyemarketing/">Tutorials</a>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div className="absolute">
+                                        {
+                                            isVerify===true ?
+                                            (
+                                                <div className="flex items-start">
+                                                    <div className="flex space-x-[8px] items-center border border-lime-600 rounded px-[5px] loading">
+                                                        <div className="h-[20px] w-[20px] text-black">
+                                                            <Check/>
+                                                        </div>
+                                                        <p className="text-center">Get a Activation key. <span className="underline"><Link to='/support'>Contact Us</Link></span></p>
+                                                    </div>
+                                                </div> 
+                                            ):
+                                            isVerify===false &&
+                                            (
+                                                <div className="flex items-start">
+                                                    <div className="flex items-center justify-center space-x-[8px] border border-[#F72C5B] rounded px-[5px] submit-error">
+                                                        <div className="h-[10px] w-[10px] text-[#F72C5B]">
+                                                            <Close/>
+                                                        </div>
+                                                        <p className="text-center">Something went wrong...</p>
+                                                    </div>
+                                                </div>
+                                            )
+                                        }
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="my-[50px]">
+                    <div className="my-[60px]">
                         <p className="font-semibold">Disclamier</p>
                         <div className="my-[10px]">
                             <p>

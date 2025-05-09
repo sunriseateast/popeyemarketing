@@ -5,6 +5,7 @@ import SmallscreenMenu from "./SmallscreenMenu.jsx";
 import LargescreenMenu from "./LargescreenMenu.jsx";
 import {Link} from 'react-router-dom';
 import {useLocation} from "react-router-dom";
+import Home from "../svg/Home.jsx";
 
 function Header({isOpen}){
     const location=useLocation()
@@ -61,6 +62,15 @@ function Header({isOpen}){
             </div>
             <div className="hidden md:grid col-start-2 col-end-6 relative content-center justify-items-center">
                 <LargescreenMenu/>
+            </div>
+            <div className="hidden md:grid col-start-6">
+                <div className="flex items-center justify-center text-zinc-500">
+                    <Link to='/'>
+                        <div className="h-[30px] w-[30px]">
+                            <Home/>
+                        </div>
+                    </Link>
+                </div>
             </div>
             <div className="mt-[150px] col-start-1 col-end-7 flex items-center justify-center text-xl md:hidden">
                 <SmallscreenMenu css={`grid grid-rows-4 place-items-center gap-y-[40px]`} icon={hmopen}/>

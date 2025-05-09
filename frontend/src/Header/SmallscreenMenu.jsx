@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 
 function SmallscreenMenu({css,icon}){
-    const smscreen=`opacity-0 ${icon && `transition-all opacity-100 duration-300 transform-gpu ease-in-out`}`
+    const smscreen=`opacity-0 text-lime-500 ${icon && `transition-all opacity-100 duration-300 transform-gpu ease-in-out`}`
     let [isopen,setIsopen]=useState(false)
 
     useEffect(()=>{

@@ -47,7 +47,6 @@ export const verfiy=async(req,res,next)=>{
         res.json({
             success:true
         })
-        console.log("payment successful")
     }
     else{
         const error=new Error("Verification failed")

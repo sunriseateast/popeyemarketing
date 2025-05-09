@@ -19,22 +19,24 @@ import { Link } from "react-router-dom"
 import useDebounce from "../../useDebounce"
 import Gcheck from "../../svg/gcheck"
 import useDownloadFile from "../../useDownloadfile"
-import axios from "axios"
 import Close from "../../svg/Close"
 import Check from "../../svg/Check"
+import useBuynow from "../useBuynow"
 
 function Lsoftwares(){
     const location=useLocation()
     const popeyeRef=useRef()
     const contactRef=useRef()
-    let timer=useRef(null)
     const isDownload=useRef(null)
     const [isFile,setIsFile]=useState(null)
     const debounce=useDebounce()
     const downloadFile=useDownloadFile()
-    const [isVerfiy,setIsVerify]=useState(null)
+    const {isVerify,buynow}=useBuynow()
 
-    useEffect(()=>{
+    if(isFile===false){
+        alert("Download Link Broken ..")
+    }
+     useEffect(()=>{
         if(location.state?.scrollTo==='popeye-master' && popeyeRef.current){
             popeyeRef.current.scrollIntoView({behavior:'smooth'})
             
@@ -44,53 +46,7 @@ function Lsoftwares(){
             contactRef.current.scrollIntoView({behavior:'smooth'})
         }
     },[])
-
-    if(isFile===false){
-        alert("Download Link Broken ..")
-    }
-
     
-    const buynow=async(path)=>{
-        try{
-            const response=await axios.get(path)
-            const order_amount=response.data.amount
-            const order_id=response.data.id
-
-            const options={
-                "key":'rzp_test_vzUSOt5voCc9Qk',
-                "amount":order_amount,
-                "currency": "INR",
-                "name": "popeyemarketing",
-                "order_id":order_id,
-                "handler": async function (response){
-                    try{
-                        const rp1_payment_id=response.razorpay_payment_id;
-                        const rp1_signature=response.razorpay_signature   
-    
-                        const result=await axios.post("http://localhost:5000/api/razorpay/verification",
-                        {
-                            rp1_payment_id,order_id,
-                            rp1_signature
-                        })
-                        setIsVerify(result.data.success)
-                    }
-                    catch(error){
-                        setIsVerify(false)
-                    }
-                },
-            }
-
-            var rzp1 = new Razorpay(options)    
-            rzp1.on('payment.failed', function (response){
-                alert("payment failed")
-            });
-            rzp1.open()
-        }
-        catch(error){
-           setIsVerify(false)
-        }
-    }
-
     return(
         <div className="text-[#F5F5F4] my-[50px]">
             <div>
@@ -261,7 +217,7 @@ function Lsoftwares(){
                                     </div>
                                     <div className="absolute">
                                         {
-                                            isVerfiy===true ?
+                                            isVerify===true ?
                                             (
                                                 <div className="flex items-start">
                                                     <div className="flex space-x-[8px] items-center border border-lime-600 rounded px-[5px] loading">
@@ -272,7 +228,7 @@ function Lsoftwares(){
                                                     </div>
                                                 </div> 
                                             ):
-                                            isVerfiy===false &&
+                                            isVerify===false &&
                                             (
                                                 <div className="flex items-start">
                                                     <div className="flex items-center justify-center space-x-[8px] border border-[#F72C5B] rounded px-[5px] submit-error">

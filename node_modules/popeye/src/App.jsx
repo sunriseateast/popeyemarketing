@@ -3,13 +3,13 @@ import { useState,useEffect } from "react";
 import "./HeroSection/HeroSection.css";
 import "./Midsec/Midsec.css"
 import "./Midsec2/Midsec2.css";
-import { Outlet,useLocation} from "react-router-dom";
+import { Outlet} from "react-router-dom";
 import Footerfilter from "./Footer/Footerfilter.jsx";
+import { ScrollRestoration } from "react-router";
 
 
 function App() {
   let [hmopen,setHmopen]=useState(false)
-  const location=useLocation()
 
   // Disable Scrolling when hmopen is true
   useEffect(() => {
@@ -23,27 +23,16 @@ function App() {
       document.body.classList.remove("overflow-hidden");
     };
   },[hmopen]);
-
-
-
-  useEffect(()=>{
-    const pathsToMatch=['/','/softwares','/reseller','/support','/book_a_demo']
-    const currentPath = location.pathname.toLowerCase();
-
-
-    if(pathsToMatch.includes(currentPath)){
-      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    }
-
-  },[location.pathname])
   
-  //function get hmopen value from header to blurout background
+
+  //function get hmopen value from header to blur-out background
   const handleData=(value)=>{
     setHmopen(value)
   }
 
   return (
     <div className="bg-[#06040D] font-archivo min-h-screen w-full">
+       <ScrollRestoration />
         <div className="sticky top-0 left-0 w-full z-10 h-[80px] md:grid content-center justify-center">
           <div className="">
             <Header isOpen={handleData}/>

@@ -12,7 +12,6 @@ import Conditions from './Conditions.jsx'
 import Privacy from './Privacy.jsx'
 import Refund from './Refund.jsx'
 
-
 const router=createBrowserRouter([
   {
     path:'/',

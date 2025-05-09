@@ -19,10 +19,10 @@ function Refund(){
                             </li>
                             <li>
                                 If the software fails to function entirely and our support team is 
-                                unable to resolve it within a reasonable time
+                                unable to resolve it within a reasonable time.
                             </li>
                             <li>
-                                If a duplicate payment was made accidentally
+                                If a duplicate payment was made accidentally.
                             </li>
                         </ul>
                     </div>
@@ -37,7 +37,7 @@ function Refund(){
                                 Violations of WhatsApp’s terms of service.
                             </li>
                             <li>
-                                Feature limitations not explicitly mentioned on our website
+                                Feature limitations not explicitly mentioned on our website.
                             </li>
                         </ul>
                     </div>
